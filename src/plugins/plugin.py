@@ -8,7 +8,15 @@
 
 class Plugin:
     """The abstract class for all plugins.
-        :param name the name of the plugin
     """
-    def __init__(self, name):
+
+    def __init__(self, name, config):
+        """:param name the name of the plugin"""
         self.name = name
+        self.config = config
+
+    def get_method(self, method_name):
+        """:return the method from from the name"""
+        assert isinstance(method_name, str)
+        return getattr(self, method_name)
+
