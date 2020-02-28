@@ -1,0 +1,14 @@
+bot:
+  name: "Lilly"
+  description: ""
+  environment:
+    - standort: "Rahden"
+    - timezone: "Europe/Berlin"
+  plugins:
+    - name: wiki
+    - name: weather
+    - name: welcome
+
+
+
+

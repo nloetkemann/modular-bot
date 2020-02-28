@@ -1,0 +1,27 @@
+weather:
+  name: "weather"
+  token: ""
+  description: "wetter station"
+  methods:
+    - name: "get_weather"
+      keywords:
+        list:
+          - "gib mir das wetter( aus $standort){0,1}( um $time | in $time){0,1}"
+          - "wie ist das wetter( in $1)( um $2 | in $2)"
+        params:
+          - standort: optional
+            default: ENV.standort
+            description: "the weather from where"
+          - time: optional
+            description: "from what date or in how much minutes/hours"
+      answers:
+        list:
+          - "es ist $weather (in $standort){0,1}( um $time){0,1}"
+          - "(um $3 ist es )$1( in $2)"
+        params:
+          - weather: required
+            description:
+          - standort: optional
+            description: "the weather from where"
+          - time: optional
+            description: "from what date or in how much minutes/hours"

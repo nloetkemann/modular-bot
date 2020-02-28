@@ -1,0 +1,30 @@
+wiki:
+  name: "wiki"
+  token: ""
+  description: "eine Suchmaschine"
+  methods:
+    - name: "say_hello"
+      keywords:
+        list:
+          - "hi"
+          - "hallo"
+          - "moin"
+          - "was geht"
+          - "nabend"
+          - "moin moin"
+      answers:
+        list:
+          - "Hi"
+          - "Moin"
+          - "Was geht"
+          - "Nabend"
+          - "Moin moin"
+    - name: "how_are_you"
+      keywords:
+        list:
+          - "wie geht(s)+( es dir)+"
+          - "was geht"
+      answers:
+        list:
+          - "Mir geht es sehr gut!"
+          - "Mega gut"

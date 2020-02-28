@@ -1,0 +1,19 @@
+wiki:
+  name: "wiki"
+  token: ""
+  description: "eine Suchmaschine"
+  methods:
+    - name: "suche_wiki"
+      keywords:
+        list:
+          - "wer ist $1"
+          - "was ist $1"
+        params:
+          - searchKeyword: required
+            description: "what to search for in wiki"
+      answers:
+        list:
+          - "$result"
+        params:
+          - result: required
+            description: "The result of the wiki search"
