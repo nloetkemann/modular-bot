@@ -17,6 +17,12 @@ class Config:
         ok, error = self.validate_config(config_path)
         if not ok:
             raise ConfigException('The Config file is not correct formatted: ' + error)
+        self.config = self.__read_config_file(config_path)
+
+        self.name = self.config['bot']['name']
+        self.environment = self.config['bot']['environment']
+        self.plugins = self.config['bot']['plugins']
+        self.desciption = self.config['bot']['description']
 
 
 
@@ -51,9 +57,6 @@ class Config:
                 return False, 'environment is not a list'
             elif not isinstance(bot_config['plugins'], list):
                 return False, 'plugins is not a list'
-
-
-
             return True, ''
         else:
             return False, 'bot'
