@@ -6,6 +6,8 @@
 # -----------------------------------------------------------
 import os
 import yaml
+from jsonschema import validate
+import yamale
 
 from src.exceptions.config_exception import ConfigException
 
@@ -24,40 +26,21 @@ class Config:
         self.plugins = self.config['bot']['plugins']
         self.desciption = self.config['bot']['description']
 
-
-
-
     @staticmethod
     def __read_config_file(path):
         if not os.path.isfile(path):
             raise FileNotFoundError('The config file is missing.')
 
         with open(path, 'r') as config_file:
-            return yaml.load(config_file, Loader=yaml.FullLoader)
+            return yaml.load(config_file)
 
     @staticmethod
     def validate_config(path):
+        schema = yamale.make_schema('./schemas/config-schema.yaml')
+        data = yamale.make_data(path)
         try:
-            config = Config.__read_config_file(path)
-        except FileNotFoundError as e:
-            return False, 'File not found'
-
-        if 'bot' in config:
-            bot_config = config['bot']
-            if 'name' not in bot_config:
-                return False, 'name not found'
-            elif 'environment' not in bot_config:
-                return False, 'environment not found'
-            elif 'plugins' not in bot_config:
-                return False, 'plugins not found'
-
-            if not isinstance(bot_config['name'], str):
-                return False, 'name is not a string'
-            elif not isinstance(bot_config['environment'], list):
-                return False, 'environment is not a list'
-            elif not isinstance(bot_config['plugins'], list):
-                return False, 'plugins is not a list'
-            return True, ''
-        else:
-            return False, 'bot'
-
+            yamale.validate(schema, data)
+        except ValueError as e:
+            print(e)
+            return False, 'Yaml file is mal formated. ' + str(e)
+        return True, ''

@@ -1,4 +1,4 @@
-weather:
+plugin:
   name: "weather"
   token: ""
   description: "wetter station"
@@ -9,19 +9,20 @@ weather:
           - "gib mir das wetter( aus $standort){0,1}( um $time | in $time){0,1}"
           - "wie ist das wetter( in $1)( um $2 | in $2)"
         params:
-          - standort: optional
+          - name: standort
             default: ENV.standort
             description: "the weather from where"
-          - time: optional
+          - name: time
             description: "from what date or in how much minutes/hours"
       answers:
         list:
           - "es ist $weather (in $standort){0,1}( um $time){0,1}"
           - "(um $3 ist es )$1( in $2)"
         params:
-          - weather: required
+          - name: weather
             description:
-          - standort: optional
+          - name: standort
+            required: False
             description: "the weather from where"
-          - time: optional
+          - name: time
             description: "from what date or in how much minutes/hours"

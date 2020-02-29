@@ -1,4 +1,4 @@
-wiki:
+plugin:
   name: "wiki"
   token: ""
   description: "eine Suchmaschine"
@@ -9,11 +9,11 @@ wiki:
           - "wer ist $1"
           - "was ist $1"
         params:
-          - searchKeyword: required
+          - name: "searchKeyword"
             description: "what to search for in wiki"
       answers:
         list:
           - "$result"
         params:
-          - result: required
+          - name: result
             description: "The result of the wiki search"

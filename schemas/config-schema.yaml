@@ -1,0 +1,13 @@
+bot: include('bot_type')
+---
+bot_type:
+  name: str()
+  description: str()
+  environment: list(include('environment_type'))
+
+environment_type:
+  name: str()
+  value: str()
+
+plugins_type:
+  name: str()

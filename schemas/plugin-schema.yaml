@@ -1,0 +1,30 @@
+plugin: include('plugin_type')
+---
+plugin_type:
+  name: str()
+  token: str()
+  description: str(required=False)
+  methods: list(include('param'))
+
+method:
+  name: str()
+  keywords: include('keywords')
+  answers: include('answers')
+
+keywords:
+  list: list(str())
+  params: list(include('param'))
+
+answers:
+  list: list(str())
+  params: list(include('param'), include('value'))
+
+value:
+  value: str()
+
+param:
+  name: str()
+  default: str(required=False)
+  description: str(required=False)
+
+

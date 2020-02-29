@@ -2,8 +2,10 @@ bot:
   name: "Lilly"
   description: ""
   environment:
-    - standort: "Rahden"
-    - timezone: "Europe/Berlin"
+    - name: "standort"
+      value: "Rahden"
+    - name: "timezone"
+      value: "Europe/Berlin"
   plugins:
     - name: wiki
     - name: weather
