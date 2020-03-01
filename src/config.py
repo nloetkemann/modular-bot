@@ -6,7 +6,6 @@
 # -----------------------------------------------------------
 import os
 import yaml
-from jsonschema import validate
 import yamale
 
 from src.exceptions.config_exception import ConfigException

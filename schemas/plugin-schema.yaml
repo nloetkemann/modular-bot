@@ -17,7 +17,7 @@ keywords:
 
 answers:
   list: list(str())
-  params: list(include('param'), include('value'))
+  params: list(include('param', required=False), include('value'))
 
 value:
   value: str()
@@ -25,6 +25,8 @@ value:
 param:
   name: str()
   default: str(required=False)
+  type: include('allowed_params_type', required=False)
+  count: int(required=False)
   description: str(required=False)
 
-
+allowed_params_type: enum('string', 'integer')

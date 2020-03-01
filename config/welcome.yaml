@@ -1,5 +1,5 @@
 plugin:
-  name: "wiki"
+  name: "welcome"
   token: ""
   description: "eine Suchmaschine"
   methods:
@@ -22,7 +22,7 @@ plugin:
     - name: "how_are_you"
       keywords:
         list:
-          - "wie geht(s)+( es dir)+"
+          - "wie geht(s)?( es dir)?"
           - "was geht"
       answers:
         list:

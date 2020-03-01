@@ -6,23 +6,24 @@ plugin:
     - name: "get_weather"
       keywords:
         list:
-          - "gib mir das wetter( aus $standort){0,1}( um $time | in $time){0,1}"
-          - "wie ist das wetter( in $1)( um $2 | in $2)"
+          - "gib mir das wetter( aus $standort)?( um $time | in $time)?"
+          - "wie ist das wetter( in $standort)?( um $time | in $time)?"
         params:
           - name: standort
             default: ENV.standort
+            type: string
             description: "the weather from where"
           - name: time
+            type: all
             description: "from what date or in how much minutes/hours"
       answers:
         list:
-          - "es ist $weather (in $standort){0,1}( um $time){0,1}"
-          - "(um $3 ist es )$1( in $2)"
+          - "es ist $weather (in $standort)?( um $time)?"
+          - "(um $3 ist es )?$1( in $2)?"
         params:
           - name: weather
             description:
           - name: standort
-            required: False
             description: "the weather from where"
           - name: time
             description: "from what date or in how much minutes/hours"

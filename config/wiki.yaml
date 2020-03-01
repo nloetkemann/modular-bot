@@ -3,13 +3,14 @@ plugin:
   token: ""
   description: "eine Suchmaschine"
   methods:
-    - name: "suche_wiki"
+    - name: "search_wiki"
       keywords:
         list:
-          - "wer ist $1"
-          - "was ist $1"
+          - "wer ist $searchKeyword"
+          - "was ist $searchKeyword"
         params:
           - name: "searchKeyword"
+            count: 3
             description: "what to search for in wiki"
       answers:
         list:

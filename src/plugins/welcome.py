@@ -2,4 +2,6 @@ from src.plugins.plugin import Plugin
 
 
 class Welcome(Plugin):
-    pass
+
+    def say_hello(self, *args):
+        pass
