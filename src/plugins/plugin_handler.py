@@ -45,13 +45,46 @@ class PluginHandler:
             for method in self.keywords[key]:
                 for match in self.keywords[key][method]:
                     if re.match(match[0], user_input):
-                        self.__get_param_from_user_input(match[1], user_input)
-                        return key, method
+                        foundparams = self.__get_param_from_user_input(match[1], user_input)
+                        return key, method, foundparams
 
     def __get_param_from_user_input(self, original, user_input):
-        print(original)
-        print(user_input)
-        copy = original
-        test = copy.replace(r'\$[A-Za-z]+', '')
-        print(re.match(r'\$[A-Za-z]+', copy)) # todo hier weiter machen
-        print(test)
+        params = re.findall(r'\$[A-Za-z]+', original)
+        foundparams = {}
+        for param in params:
+            foundparam = self.__trim_words(user_input, original.replace(param, '', 1))
+            if foundparam is not None:
+                foundparams[param] = foundparam
+            if foundparam != '':
+                user_input = user_input.replace(foundparam, '')
+
+        return foundparams
+
+    def __trim_words(self, userinput, regex):
+        regex = self.__trim_regex_letters(regex)
+        print(userinput, regex)
+        counter = 0
+        flag = ''
+        found = ''
+        regex_words = regex.split(' ')
+        for word in userinput.split(' '):
+            for reword in range(counter, len(regex_words), 1):
+                if word == regex_words[reword]:
+                    userinput = userinput.replace(word, '').strip()
+                    counter += 1
+                    if flag == 'blub':
+                        flag = 'done'
+                    break
+                elif word != regex_words[reword] and flag == '':
+                    flag = 'blub'
+                    found += ' ' + word
+                elif word != regex_words[reword] and flag == 'blub':
+                    found += ' ' + word
+                elif word != regex_words[reword] and flag == 'done':
+                    userinput = userinput.replace(word, '').strip()
+
+        print(userinput)
+        return userinput
+
+    def __trim_regex_letters(self, regex):
+        return re.sub(r'(\(|\))+', '', regex)

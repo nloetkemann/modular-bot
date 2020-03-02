@@ -10,11 +10,13 @@ if __name__ == '__main__':
 
     first = loader.get_plugins()[0]
 
-    text = 'wer ist taylor swift'
+    text = 'wie ist das wetter in rahden um 2'
 
     handler = PluginHandler(loader.get_plugins())
 
-    plugin, method = handler.validate_user_input(text)
+    plugin, method, foundparams = handler.validate_user_input(text)
+
+    print(plugin, method, foundparams)
 
     # print(first.get_answers('search_wiki'))
     #
