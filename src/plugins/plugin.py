@@ -102,6 +102,9 @@ class Plugin:
 
         return keywords
 
+    def answer(self, method_name, params):
+        answerlist = self.get_answers(method_name) # todo weiter machen
+
     def get_method_names(self):
         """
         get all names of all methods
