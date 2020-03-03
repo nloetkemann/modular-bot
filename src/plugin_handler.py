@@ -61,25 +61,24 @@ class PluginHandler:
     def __trim_words(self, userinput, regex):
         regex = self.__trim_regex_letters(regex)
         counter, flag = 0, 0
-        found = ''
         regex_words = regex.split(' ')
         for word in userinput.split(' '):
             for reword in range(counter, len(regex_words), 1):
                 if word == regex_words[reword]:
-                    userinput = userinput.replace(word, '').strip()
+                    userinput = userinput.replace(word, '', 1).strip()
                     counter += 1
                     if flag == 1:
                         flag = 2
                     break
                 elif word != regex_words[reword] and flag == 0 and word != '':
                     flag = 1
-                    found += ' ' + word
-                elif word != regex_words[reword] and flag == 1 and word != '':
-                    found += ' ' + word
                 elif word != regex_words[reword] and flag == 2 and word != '':
-                    userinput = userinput.replace(word, '').strip()
+                    userinput = userinput.replace(word, '', 1).strip()
 
         return userinput
 
     def __trim_regex_letters(self, regex):
-        return re.sub(r'(\(|\)|\|)+', '', regex)
+        return re.sub(r'(\(|\)|\||\?)+', '', regex)
+
+    def validate(self, user_input):
+        pass

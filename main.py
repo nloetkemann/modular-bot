@@ -1,6 +1,6 @@
 from src.config import Config
 from src.plugin_loader import PluginLoader
-from src.plugins.plugin_handler import PluginHandler
+from src.plugin_handler import PluginHandler
 
 plugins = []
 
@@ -10,7 +10,9 @@ if __name__ == '__main__':
 
     first = loader.get_plugins()[0]
 
-    text = 'wie ist das wetter in rahden um 2'
+    text = 'wie ist das wetter in rahden um 2 uhr'
+
+    print(text)
 
     handler = PluginHandler(loader.get_plugins())
 

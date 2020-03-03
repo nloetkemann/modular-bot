@@ -19,19 +19,18 @@ class Plugin:
         return self.name
 
     def get_method(self, method_name):
+        for method in self.config['methods']:
+            if method['name'] == method_name:
+                return method
+
+    def call_method(self, method_name):
         """:return the method from from the name"""
         assert isinstance(method_name, str)
         return getattr(self, method_name)
 
     def get_answers(self, method_name):
-        all_methods = self.config['methods']
-        for method in all_methods:
-            if method['name'] == method_name:
-                return method['answers']['list']
-        return ['Da gibt es keine Antwort drauf']
+        return self.get_method(method_name)['answers']['list']
 
-    def get_keyword_params(self, userinput):
-        pass
 
     def get_keywords(self):
         keywords = []
@@ -45,7 +44,7 @@ class Plugin:
 
         return keywords
 
-    def get_methods(self):
+    def get_method_names(self):
         all_methods = []
         for method in self.config['methods']:
             all_methods.append(method['name'])
