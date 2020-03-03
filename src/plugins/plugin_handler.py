@@ -53,16 +53,15 @@ class PluginHandler:
         foundparams = {}
         for param in params:
             foundparam = self.__trim_words(user_input, original.replace(param, '', 1))
-            if foundparam is not None:
+            if foundparam is not None and foundparam != '':
                 foundparams[param] = foundparam
-            if foundparam != '':
                 user_input = user_input.replace(foundparam, '')
+
 
         return foundparams
 
     def __trim_words(self, userinput, regex):
         regex = self.__trim_regex_letters(regex)
-        print(userinput, regex)
         counter = 0
         flag = ''
         found = ''
@@ -75,15 +74,14 @@ class PluginHandler:
                     if flag == 'blub':
                         flag = 'done'
                     break
-                elif word != regex_words[reword] and flag == '':
+                elif word != regex_words[reword] and flag == '' and word != '':
                     flag = 'blub'
                     found += ' ' + word
-                elif word != regex_words[reword] and flag == 'blub':
+                elif word != regex_words[reword] and flag == 'blub' and word != '':
                     found += ' ' + word
-                elif word != regex_words[reword] and flag == 'done':
+                elif word != regex_words[reword] and flag == 'done' and word != '':
                     userinput = userinput.replace(word, '').strip()
 
-        print(userinput)
         return userinput
 
     def __trim_regex_letters(self, regex):
