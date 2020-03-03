@@ -27,6 +27,11 @@ class Config:
 
     @staticmethod
     def __read_config_file(path):
+        """
+        reads the config file and returns it
+        :param path: the path of the config file
+        :return: the configuration
+        """
         if not os.path.isfile(path):
             raise FileNotFoundError('The config file is missing.')
 
@@ -35,6 +40,11 @@ class Config:
 
     @staticmethod
     def validate_config(path):
+        """
+        checks if the yaml config file is valid
+        :param path: the path of the config file
+        :return: bool, ''
+        """
         schema = yamale.make_schema('./schemas/config-schema.yaml')
         data = yamale.make_data(path)
         try:
@@ -44,16 +54,26 @@ class Config:
             return False, 'Yaml file is mal formated. ' + str(e)
         return True, ''
 
-    def get_env(self, value):
+    def get_env(self, name):
+        """
+        returns the value of the environment variable
+        :param name: the name of the variable
+        :return: the value
+        """
         for entry in self.environment:
             print(entry)
-            if 'name' in entry and entry['name'] == value:
+            if 'name' in entry and entry['name'] == name:
                 return entry['value']
         return ''
 
-    def env_value_exists(self, value):
+    def env_value_exists(self, name):
+        """
+        checks if the environment variable is set
+        :param name: the name of the variable
+        :return: if set or not
+        """
         for entry in self.environment:
-            if 'name' in entry and entry['name'] == value:
+            if 'name' in entry and entry['name'] == name:
                 return True
         return False
 

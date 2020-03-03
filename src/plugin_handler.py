@@ -19,11 +19,22 @@ class PluginHandler:
             self.keywords[plugin.get_name()] = plugin_method
 
     def get_plugin_by_name(self, plugin_name):
+        """
+        gets the plugin by name
+        :param plugin_name: name of the plugin
+        :return: the Plugin
+        """
         for plugin in self.all_plugins:
             if plugin.get_name() == plugin_name:
                 return plugin
 
     def __get_keywords_as_regex(self, keywords, params):
+        """
+        converts the given regex from the yaml files to valid regex, replacing the params with regex
+        :param keywords: the keyword list from the yaml file
+        :param params: the keyword params from the yaml file
+        :return: for each method an array with the regex keywords (Format: [(regex, matching keyword from yaml file), ...])
+        """
         regex_matcher = []
         for keyword in keywords:
             match = keyword
@@ -44,9 +55,16 @@ class PluginHandler:
                             else:
                                 match = match.replace('$' + param['name'], r'[A-Za-z\d]+')
             regex_matcher.append((match, keyword))
+        print(regex_matcher)
         return regex_matcher
 
     def validate_user_input(self, user_input):
+        """
+        validates the user_input, means iterates through the plugins and checks with the given regex. which plugin,
+        which method and which parameter are given
+        :param user_input: the user input
+        :return: [] an array of three elems. first the plugin, second the method, third the param found
+        """
         assert isinstance(user_input, str)
         for key in self.keywords:
             for method in self.keywords[key]:
@@ -57,6 +75,12 @@ class PluginHandler:
         raise NotFoundException('No Plugin or no Method found for "{0}"'.format(user_input))
 
     def __get_param_from_user_input(self, original, user_input):
+        """
+        iterates through all params and extracts the params from the user_input
+        :param original: the value given in the plugin yaml file. Containing parameters starting with $
+        :param user_input: the user input
+        :return object of the params. Format: {$param: 'value', ...}
+        """
         params = re.findall(r'\$[A-Za-z]+', original)
         foundparams = {}
         for param in params:
@@ -67,6 +91,13 @@ class PluginHandler:
         return foundparams
 
     def __trim_words(self, userinput, regex):
+        """
+        iterates through every word from the user_input und compares it with the regex
+        if its the same, delete it, if not, its a parameter
+        :param userinput: the user input
+        :param regex: the regex without the parameter (without $param)
+        :return: the found param
+        """
         regex = self.__trim_regex_letters(regex)
         counter, flag = 0, 0
         regex_words = regex.split(' ')
@@ -86,4 +117,9 @@ class PluginHandler:
         return userinput
 
     def __trim_regex_letters(self, regex):
+        """
+        removes all regex letters
+        :param regex:
+        :return: a string without regex letters
+        """
         return re.sub(r'(\(|\)|\||\?)+', '', regex)
