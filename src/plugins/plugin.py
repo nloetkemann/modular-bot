@@ -23,6 +23,10 @@ class Plugin:
             if method['name'] == method_name:
                 return method
 
+    def get_params_from_method(self, method_name):
+        method = self.get_method(method_name)
+        return method['keywords']['params'] if 'keywords' in method and 'params' in method['keywords'] else []
+
     def call_method(self, method_name):
         """:return the method from from the name"""
         assert isinstance(method_name, str)

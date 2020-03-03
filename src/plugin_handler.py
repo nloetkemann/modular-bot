@@ -16,6 +16,11 @@ class PluginHandler:
                 plugin_method[keyword['name']] = list_keywords
             self.keywords[plugin.get_name()] = plugin_method
 
+    def get_plugin_by_name(self, plugin_name):
+        for plugin in self.all_plugins:
+            if plugin.get_name() == plugin_name:
+                return plugin
+
     def __get_keywords_as_regex(self, keywords, params):
         regex_matcher = []
         for keyword in keywords:
@@ -80,5 +85,3 @@ class PluginHandler:
     def __trim_regex_letters(self, regex):
         return re.sub(r'(\(|\)|\||\?)+', '', regex)
 
-    def validate(self, user_input):
-        pass
