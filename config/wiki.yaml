@@ -1,6 +1,6 @@
 plugin:
   name: "wiki"
-  token: ""
+  token: "bla"
   description: "eine Suchmaschine"
   methods:
     - name: "search_wiki"
