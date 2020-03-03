@@ -104,6 +104,7 @@ class Plugin:
 
     def answer(self, method_name, params):
         answerlist = self.get_answers(method_name) # todo weiter machen
+        print(answerlist)
 
     def get_method_names(self):
         """
