@@ -6,8 +6,8 @@ plugin:
     - name: "get_weather"
       keywords:
         list:
-          - "gib mir das wetter( aus $standort)?( um $time | in $time)?"
-          - "wie ist das wetter( in $standort)?( um $time | in $time)?"
+          - "gib mir das wetter( aus $standort)?( um $time| in $time)?"
+          - "wie ist das wetter( in $standort)?( um $time| in $time)?"
         params:
           - name: standort
             default: ENV.standort
@@ -15,7 +15,10 @@ plugin:
             description: "the weather from where"
           - name: time
             type: all
-            description: "from what date or in how much minutes/hours"
+            description: "from what date "
+          - name: difftime
+            type: all
+            description: "in how much minutes/hours"
       answers:
         list:
           - "es ist $weather (in $standort)?( um $time)?"
