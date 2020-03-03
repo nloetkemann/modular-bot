@@ -87,4 +87,3 @@ class PluginHandler:
 
     def __trim_regex_letters(self, regex):
         return re.sub(r'(\(|\)|\||\?)+', '', regex)
-

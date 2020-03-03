@@ -1,8 +1,7 @@
-from src.config import Config
+from src.config import config
 from src.plugin_loader import PluginLoader
 from src.plugin_handler import PluginHandler
 
-config = Config()
 loader = PluginLoader(config.plugins)
 handler = PluginHandler(loader.get_plugins())
 if __name__ == '__main__':
@@ -10,7 +9,8 @@ if __name__ == '__main__':
 
     try:
         plugin, method, foundparams = handler.validate_user_input(text)
+        plugin.call_method(method, foundparams)
     except TypeError as t:
-        print('Error: ich weiß nci')
+        print('Error: ich weiß nicht was ich machen soll')
+        print(t)
 
-    plugin.call_method(method, foundparams)

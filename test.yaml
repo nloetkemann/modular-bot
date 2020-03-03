@@ -2,7 +2,7 @@ bot:
   name: "Lilly"
   description: ""
   environment:
-    - name: "standort"
+    - name: "location"
       value: "Rahden"
     - name: "timezone"
       value: "Europe/Berlin"

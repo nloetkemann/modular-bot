@@ -4,6 +4,7 @@
 # 2020 Nikita Lötkemann, Rahden, Germany
 # email n.loetkemann@fh-bielefeld.de
 # -----------------------------------------------------------
+from src.exceptions.not_found_exception import NotFoundException
 from src.exceptions.token_exception import TokenException
 
 
@@ -26,6 +27,10 @@ class Plugin:
             self.token = self.config['token']
         else:
             raise TokenException('Wiki')
+
+    def requiere_param(self, param, name):
+        if name not in param:
+            raise NotFoundException('Parameter not found: {0}'.format(name))
 
     def get_name(self):
         return self.name

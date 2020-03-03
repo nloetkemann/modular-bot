@@ -43,3 +43,19 @@ class Config:
             print(e)
             return False, 'Yaml file is mal formated. ' + str(e)
         return True, ''
+
+    def get_env(self, value):
+        for entry in self.environment:
+            print(entry)
+            if 'name' in entry and entry['name'] == value:
+                return entry['value']
+        return ''
+
+    def env_value_exists(self, value):
+        for entry in self.environment:
+            if 'name' in entry and entry['name'] == value:
+                return True
+        return False
+
+
+config = Config()
