@@ -1,6 +1,6 @@
 plugin:
   name: "weather"
-  token: ""
+  token: "bla"
   description: "wetter station"
   methods:
     - name: "get_weather"

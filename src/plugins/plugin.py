@@ -4,16 +4,28 @@
 # 2020 Nikita Lötkemann, Rahden, Germany
 # email n.loetkemann@fh-bielefeld.de
 # -----------------------------------------------------------
+from src.exceptions.token_exception import TokenException
 
 
 class Plugin:
     """The abstract class for all plugins.
     """
+    token_required = False
+    token = ""
 
     def __init__(self, name, config):
         """:param name the name of the plugin-schema.yaml"""
         self.name = name
         self.config = config
+
+        if self.token_required:
+            self.require_token()
+
+    def require_token(self):
+        if 'token' in self.config and self.config['token'] != '':
+            self.token = self.config['token']
+        else:
+            raise TokenException('Wiki')
 
     def get_name(self):
         return self.name

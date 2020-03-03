@@ -1,4 +1,4 @@
-class ConfigException(Exception):
+class TokenException(Exception):
     def __init__(self, *args):
         if args:
             self.message = args[0]
@@ -7,6 +7,6 @@ class ConfigException(Exception):
 
     def __str__(self):
         if self.message:
-            return 'Configexception: Error with the config: {0}'.format(self.message)
+            return 'Tokenexception: missing Token for {0}'.format(self.message)
         else:
-            return 'Configexception: Error with a the config'
+            return 'Tokenexception: Error with a Token'
