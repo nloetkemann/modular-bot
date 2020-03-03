@@ -27,14 +27,13 @@ class Plugin:
         method = self.get_method(method_name)
         return method['keywords']['params'] if 'keywords' in method and 'params' in method['keywords'] else []
 
-    def call_method(self, method_name):
+    def call_method(self, method_name, param):
         """:return the method from from the name"""
         assert isinstance(method_name, str)
-        return getattr(self, method_name)
+        return getattr(self, method_name)(param)
 
     def get_answers(self, method_name):
         return self.get_method(method_name)['answers']['list']
-
 
     def get_keywords(self):
         keywords = []

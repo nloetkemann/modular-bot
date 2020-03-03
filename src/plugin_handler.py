@@ -51,7 +51,7 @@ class PluginHandler:
                 for match in self.keywords[key][method]:
                     if re.match(match[0], user_input):
                         foundparams = self.__get_param_from_user_input(match[1], user_input)
-                        return key, method, foundparams
+                        return self.get_plugin_by_name(key), method, foundparams
 
     def __get_param_from_user_input(self, original, user_input):
         params = re.findall(r'\$[A-Za-z]+', original)
