@@ -7,7 +7,7 @@
 import yamale
 import yaml
 
-from src.plugins.plugin import Plugin
+from src.yaml.plugin import Plugin
 
 
 class PluginLoader:

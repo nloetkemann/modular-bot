@@ -1,4 +1,4 @@
-from src.plugins.plugin import Plugin
+from src.yaml.plugin import Plugin
 
 
 class Wiki(Plugin):
@@ -10,7 +10,7 @@ class Wiki(Plugin):
         :param args: the params in format {$searchKeyword: 'value'}
         :return: the result of the search
         """
-        self.requiere_param(args, '$searchKeyword')
+        self.requiere_keyword_param(args, '$searchKeyword')
         search_keyword = args['$searchKeyword']
 
         print('Ich suche nach ' + search_keyword)

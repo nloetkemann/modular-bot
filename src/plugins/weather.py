@@ -1,6 +1,6 @@
 import datetime
 from src.config import config
-from src.plugins.plugin import Plugin
+from src.yaml.plugin import Plugin
 
 
 class Weather(Plugin):

@@ -1,6 +1,7 @@
 import re
 
 from src.exceptions.not_found_exception import NotFoundException
+from src.yaml.param import KeywordParam
 
 
 class PluginHandler:
@@ -11,11 +12,12 @@ class PluginHandler:
         assert isinstance(all_plugins, list)
         self.all_plugins = all_plugins
         for plugin in all_plugins:
-            keywords = plugin.get_keywords()
+            methods = plugin.get_all_keywords()
             plugin_method = {}
-            for keyword in keywords:
-                list_keywords = self.__get_keywords_as_regex(keyword['list'], keyword['params'])
-                plugin_method[keyword['name']] = list_keywords
+            for method in methods:
+                keywords = method.get_all_keywords()
+                list_methods = self.__get_keywords_as_regex(keywords.get_list(), keywords.get_params())
+                plugin_method[method.get_name()] = list_methods
             self.keywords[plugin.get_name()] = plugin_method
 
     def get_plugin_by_name(self, plugin_name):
@@ -40,22 +42,21 @@ class PluginHandler:
             match = keyword
             if len(params) > 0:
                 for param in params:
-                    if param['name'] in keyword:
-                        if 'type' in param and param['type'] == 'integer':
-                            if 'count' in param and param['count'] > 1:
-                                count = param['count']
-                                match = match.replace('$' + param['name'], r'(\d *){1,' + str(count - 1) + r'}\d')
+                    assert isinstance(param, KeywordParam)
+                    if param.get_name() in keyword:
+                        count = param.get_count()
+                        if param.get_type() == 'integer':
+                            if count > 1:
+                                match = match.replace(param.get_name(), r'(\d *){1,' + str(count - 1) + r'}\d')
                             else:
-                                match = match.replace('$' + param['name'], r'\d+')
+                                match = match.replace(param.get_name(), r'\d+')
                         else:
-                            if 'count' in param and param['count'] > 1:
-                                count = param['count']
-                                match = match.replace('$' + param['name'],
+                            if count > 1:
+                                match = match.replace(param.get_name(),
                                                       r'[A-Za-z\d]+( [A-Za-z\d]+){0,' + str(count - 1) + r'}')
                             else:
-                                match = match.replace('$' + param['name'], r'[A-Za-z\d]+')
+                                match = match.replace(param.get_name(), r'[A-Za-z\d]+')
             regex_matcher.append((match, keyword))
-        print(regex_matcher)
         return regex_matcher
 
     def validate_user_input(self, user_input):

@@ -4,7 +4,7 @@ plugin_type:
   name: str()
   token: str()
   description: str(required=False)
-  methods: list(include('param'))
+  methods: list(include('method'))
 
 method:
   name: str()
@@ -13,20 +13,23 @@ method:
 
 keywords:
   list: list(str())
-  params: list(include('param'))
+  params: list(include('keywordparam'), required=False)
 
 answers:
   list: list(str())
-  params: list(include('param', required=False), include('value'))
+  params: list(include('answerparam'), required=False)
 
-value:
-  value: str()
 
-param:
+keywordparam:
   name: str()
-  default: str(required=False)
   type: include('allowed_params_type', required=False)
   count: int(required=False)
+  description: str(required=False)
+
+answerparam:
+  name: str()
+  default: str(required=False)
+  required: bool(required=False)
   description: str(required=False)
 
 allowed_params_type: enum('string', 'integer')

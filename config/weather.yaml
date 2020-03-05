@@ -14,7 +14,7 @@ plugin:
             type: string
             description: "the weather from where"
           - name: time
-            type: all
+            type: string
             count: 2
             description: "from what date "
       answers:

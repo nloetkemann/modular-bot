@@ -14,7 +14,7 @@ from src.exceptions.config_exception import ConfigException
 class Config:
     """Stores the config loaded from the yaml files. Serves as Storage"""
 
-    def __init__(self, config_path='./test.yaml'):
+    def __init__(self, config_path='./config.yaml'):
         ok, error = self.validate_config(config_path)
         if not ok:
             raise ConfigException('The Config file is not correct formatted: ' + error)
