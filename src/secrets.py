@@ -6,7 +6,7 @@ class Secrets:
         try:
             Tools.validate_yaml('./schemas/secrets-schema.yaml', path)
             self.secrets = Tools.read_config_file(path)['secrets']
-        except TypeError as t:
+        except TypeError:
             self.secrets = {}
             return
         plugins = {}
