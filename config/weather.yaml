@@ -23,7 +23,7 @@ plugin:
           - "(um $time ist es )?$weather( in $standort)?"
         params:
           - name: weather
-            description:
+            description: ""
           - name: standort
             required: False
             description: "the weather from where"

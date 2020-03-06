@@ -12,5 +12,4 @@ class Wiki(Plugin):
         """
         self.requiere_keyword_param(args, '$searchKeyword')
         search_keyword = args['$searchKeyword']
-
-        print('Ich suche nach ' + search_keyword)
+        return {'$result': 'Ich suche nach ' + search_keyword}

@@ -1,6 +1,8 @@
 import re
 
+from src.exceptions.too_many_words_exception import TooManyWordsException
 from src.exceptions.not_found_exception import NotFoundException
+from src.tools import Tools
 from src.yaml.method import Method
 from src.yaml.param import KeywordParam
 
@@ -74,8 +76,19 @@ class PluginHandler:
                 for match in self.keywords[key][method]:
                     if re.match(match[0], user_input):
                         foundparams = self.__get_param_from_user_input(match[1], user_input)
+                        self.__too_many_params(key, method, foundparams)
                         return self.get_plugin_by_name(key), method, foundparams
         raise NotFoundException('No Plugin or no Method found for "{0}"'.format(user_input))
+
+    def __too_many_params(self, plugin, method, params):
+        plugin = self.get_plugin_by_name(plugin)
+        method = plugin.get_method_attr(method)
+        for param_name in params:
+            count = method.get_keywords().get_count_of_param(param_name[1:])
+            if count < len(params[param_name].split(' ')):
+                raise TooManyWordsException(
+                    '{0} given with a length of {1}, allowed is {2}'.format(params[param_name], len(params[param_name]),
+                                                                            count))
 
     def __get_param_from_user_input(self, original, user_input):
         """
@@ -101,7 +114,7 @@ class PluginHandler:
         :param regex: the regex without the parameter (without $param)
         :return: the found param
         """
-        regex = self.__trim_regex_letters(regex)
+        regex = Tools.remove_regex(regex)
         counter, flag = 0, 0
         regex_words = regex.split(' ')
         for word in userinput.split(' '):
@@ -118,11 +131,3 @@ class PluginHandler:
                     userinput = userinput.replace(word, '', 1).strip()
 
         return userinput
-
-    def __trim_regex_letters(self, regex):
-        """
-        removes all regex letters
-        :param regex:
-        :return: a string without regex letters
-        """
-        return re.sub(r'(\(|\)|\||\?)+', '', regex)

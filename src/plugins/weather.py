@@ -19,5 +19,8 @@ class Weather(Plugin):
         else:
             time = datetime.datetime.now()
 
-        print(location, time)
-        return {'$weather': 'heiß'}
+        return {'$weather': 'heiß', '$standort': location, '$time': str(time)}
+
+    @staticmethod
+    def weather_call(location, time):
+        pass

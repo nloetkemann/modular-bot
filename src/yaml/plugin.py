@@ -2,6 +2,7 @@ import re
 
 from src.exceptions.not_found_exception import NotFoundException
 from src.exceptions.token_exception import TokenException
+from src.tools import Tools
 from src.yaml.method import Method
 import random
 
@@ -25,6 +26,9 @@ class Plugin:
 
     def get_name(self):
         return self.name
+
+    def get_method_attr(self, method_name):
+        return self.methods[method_name]
 
     def __get_method_by_name(self, method_name):
         assert isinstance(method_name, str)
@@ -94,9 +98,9 @@ class Plugin:
             assert isinstance(param, AnswerParam)
             if param.is_required() and param.get_name() not in given_params:
                 raise NotFoundException('{0} in Answerparam'.format(param.get_name()))
-            else:
+            elif param.get_name() not in given_params:
                 # param is not given, so it will be replaced with the brackets
                 answer = re.sub(r'\([A-Za-z\d\s]*\${0}\b[A-Za-z\d\s]*\)\?'.format(param.get_name()[1:]), '', answer)
         for key in given_params:
             answer = answer.replace(key, given_params[key])
-        return answer
+        return Tools.remove_regex(answer)

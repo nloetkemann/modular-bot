@@ -49,6 +49,8 @@ plugin:
             description: "some description"
 ```
 
+> The answer list will have the Syntax you wrote, so if everything is lowercase, so will your answers
+
 The you need to write your own class for the plugin.
 > Hint: the name of the class should be the name of the file with putting the first letter to uppercase.
 ```

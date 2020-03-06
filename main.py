@@ -1,10 +1,12 @@
 from src.config import config
+from src.exceptions.not_found_exception import NotFoundException
 from src.plugin_loader import PluginLoader
 from src.plugin_handler import PluginHandler
 
-loader = PluginLoader(config.plugins)
-handler = PluginHandler(loader.get_plugins())
 if __name__ == '__main__':
+    loader = PluginLoader(config.plugins)
+    handler = PluginHandler(loader.get_plugins())
+
     text = input("Bitte mach eine Eingabe: ")
 
     try:
@@ -13,4 +15,6 @@ if __name__ == '__main__':
     except TypeError as t:
         print('Error: ich weiß nicht was ich machen soll')
         print(t)
-
+    except NotFoundException as n:
+        print('Es gab einen Fehler')
+        exit(n)

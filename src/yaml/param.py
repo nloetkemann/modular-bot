@@ -5,7 +5,7 @@ class Param:
 
     def __init__(self, config):
         self.name = config['name']
-        self.description = config['description']
+        self.description = config['description'] if 'description' in config else ''
         self.__value = ''
 
     def get_name(self):
