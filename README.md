@@ -8,6 +8,18 @@ the plugin will be loaded automaticaly and the command should be executed from t
 First install all the requirements
 `pip install -r requirements.txt`
 
+## Secrets
+If you need to insert your secrets, just create a secrets.yaml file:
+```yaml
+secrets:
+  plugins:
+    - wiki: "to_be_set"
+  bots:
+    - telegram: "to_be_set"
+  environment:
+    - value: "to_be_set"
+```
+
 
 ## Activate the plugins
 
