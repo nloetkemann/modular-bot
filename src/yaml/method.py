@@ -2,6 +2,9 @@ from src.yaml.attribute import Keyword, Answer
 
 
 class Method:
+    """
+    class for a method of the yaml file
+    """
     def __init__(self, config, method):
         self.name = config['name']
         self.keywords = Keyword(config['keywords'])

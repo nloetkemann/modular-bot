@@ -1,6 +1,7 @@
 import re
 
 from src.exceptions.not_found_exception import NotFoundException
+from src.yaml.method import Method
 from src.yaml.param import KeywordParam
 
 
@@ -15,7 +16,8 @@ class PluginHandler:
             methods = plugin.get_all_keywords()
             plugin_method = {}
             for method in methods:
-                keywords = method.get_all_keywords()
+                assert isinstance(method, Method)
+                keywords = method.get_keywords()
                 list_methods = self.__get_keywords_as_regex(keywords.get_list(), keywords.get_params())
                 plugin_method[method.get_name()] = list_methods
             self.keywords[plugin.get_name()] = plugin_method

@@ -1,3 +1,5 @@
+import re
+
 from src.exceptions.not_found_exception import NotFoundException
 from src.exceptions.token_exception import TokenException
 from src.yaml.method import Method
@@ -90,13 +92,11 @@ class Plugin:
 
         for param in required_params:
             assert isinstance(param, AnswerParam)
-            print(param.is_required())
             if param.is_required() and param.get_name() not in given_params:
                 raise NotFoundException('{0} in Answerparam'.format(param.get_name()))
-
+            else:
+                # param is not given, so it will be replaced with the brackets
+                answer = re.sub(r'\([A-Za-z\d\s]*\${0}\b[A-Za-z\d\s]*\)\?'.format(param.get_name()[1:]), '', answer)
         for key in given_params:
-            print(key)
             answer = answer.replace(key, given_params[key])
-
-        print(answer)
         return answer

@@ -1,4 +1,8 @@
 class Param:
+    """
+    Abstract class for all params
+    """
+
     def __init__(self, config):
         self.name = config['name']
         self.description = config['description']
@@ -15,6 +19,9 @@ class Param:
 
 
 class KeywordParam(Param):
+    """
+    class for the keyword param
+    """
     def __init__(self, config):
         super().__init__(config)
         self.count = config['count'] if 'count' in config else 1
@@ -28,6 +35,9 @@ class KeywordParam(Param):
 
 
 class AnswerParam(Param):
+    """
+    class for the answer param
+    """
     def __init__(self, config):
         super().__init__(config)
         self.required = True if 'required' not in config else config['required']

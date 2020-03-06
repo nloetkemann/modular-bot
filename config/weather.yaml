@@ -25,6 +25,8 @@ plugin:
           - name: weather
             description:
           - name: standort
+            required: False
             description: "the weather from where"
           - name: time
+            required: False
             description: "from what date or in how much minutes/hours"

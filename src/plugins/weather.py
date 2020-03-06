@@ -20,3 +20,4 @@ class Weather(Plugin):
             time = datetime.datetime.now()
 
         print(location, time)
+        return {'$weather': 'heiß'}

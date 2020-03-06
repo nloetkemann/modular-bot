@@ -29,7 +29,7 @@ plugins:
 You need a config file for your plugin in the config dir which is by default `./config/`
 ```yaml
 plugin:
-  name: "your-plugin"
+  name: "your_plugin"
   token: "token if nesseccery"
   description: "a description is optional"
   methods:
@@ -52,8 +52,8 @@ plugin:
 The you need to write your own class for the plugin.
 > Hint: the name of the class should be the name of the file with putting the first letter to uppercase.
 ```
-from src.plugins.plugin import Plugin
-class Your-plugin(Plugin):
+from src.yaml.plugin import Plugin
+class Your_plugin(Plugin):
     def name_of_the_implemented_method_in_python(param):
         here your code...
         ...
@@ -63,7 +63,7 @@ class Your-plugin(Plugin):
 ```
 
 If you need something from the globalconfig you need to import the  config. You can get the location
-or the timezone or anything else put to the environment.
+or the timezone or anything else put to the environment variables.
 ```python
 from src.config import config
 

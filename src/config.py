@@ -61,7 +61,6 @@ class Config:
         :return: the value
         """
         for entry in self.environment:
-            print(entry)
             if 'name' in entry and entry['name'] == name:
                 return entry['value']
         return ''

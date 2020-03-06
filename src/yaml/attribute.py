@@ -2,6 +2,9 @@ from src.yaml.param import KeywordParam, AnswerParam
 
 
 class Attribute:
+    """
+    Abstract class for the Attributes
+    """
     def __init__(self, config):
         self.list = []
         self.params = []
@@ -16,6 +19,9 @@ class Attribute:
 
 
 class Keyword(Attribute):
+    """
+    class for the keyword attribute of the yaml
+    """
     def __init__(self, config):
         super().__init__(config)
         if 'params' in config:
@@ -24,6 +30,9 @@ class Keyword(Attribute):
 
 
 class Answer(Attribute):
+    """
+    class for the keyword attribute of the yaml
+    """
     def __init__(self, config):
         super().__init__(config)
         if 'params' in config:
