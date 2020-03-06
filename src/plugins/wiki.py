@@ -10,6 +10,6 @@ class Wiki(Plugin):
         :param args: the params in format {$searchKeyword: 'value'}
         :return: the result of the search
         """
-        self.requiere_keyword_param(args, '$searchKeyword')
+        self.requiere_param(args, '$searchKeyword')
         search_keyword = args['$searchKeyword']
         return {'$result': 'Ich suche nach ' + search_keyword}

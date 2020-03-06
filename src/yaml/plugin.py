@@ -45,7 +45,7 @@ class Plugin:
         else:
             raise TokenException('Wiki')
 
-    def requiere_keyword_param(self, param, name):
+    def requiere_param(self, param, name):
         """
         should be called in the method of the plugin, checks if a parameter is set, which is requiered
         :param param: all params  of the method

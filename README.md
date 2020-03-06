@@ -26,6 +26,7 @@ plugins:
 
 ## Write your own plugin
 
+### First a your_plugin.yaml file
 You need a config file for your plugin in the config dir which is by default `./config/`
 ```yaml
 plugin:
@@ -51,17 +52,18 @@ plugin:
 
 > The answer list will have the Syntax you wrote, so if everything is lowercase, so will your answers
 
-The you need to write your own class for the plugin.
+### Then a Your_plugin class
+Then you need to write your own class for the plugin.
 > Hint: the name of the class should be the name of the file with putting the first letter to uppercase.
 ```
 from src.yaml.plugin import Plugin
 class Your_plugin(Plugin):
-    def name_of_the_implemented_method_in_python(param):
+    def name_of_the_implemented_method_in_python(self, param):
         here your code...
         ...
         ...
         in the end return the answer params
-        return {answer_param: 'value'}
+        return {'$answer_param': 'value'} # <-- name of the key starts with $
 ```
 
 If you need something from the globalconfig you need to import the  config. You can get the location
@@ -71,4 +73,19 @@ from src.config import config
 
 config.get_env('location') # will return the value
 config.env_value_exists('location') # will check if the value is set
+```
+
+#### Required values
+If a token is required for your plugin your just have to set: 
+```python
+class Your_plugin(Plugin):
+    token_required = True
+```
+It will be checked on start, and will throw an exception if non is set
+
+
+To make sure all parameter exists for a method you kann call:
+```python
+def name_of_the_implemented_method_in_python(self, param):
+    self.requiere_param(param)
 ```
