@@ -1,6 +1,5 @@
 plugin:
   name: "welcome"
-  token: ""
   description: "eine Suchmaschine"
   methods:
     - name: "say_hello"

@@ -5,6 +5,7 @@ from src.exceptions.token_exception import TokenException
 from src.tools import Tools
 from src.yaml.method import Method
 import random
+from src.config import config
 
 from src.yaml.param import AnswerParam
 
@@ -40,8 +41,9 @@ class Plugin:
         this will be checked when calling the constuctor of the plugin
         :exception: TokenException if no token is set
         """
-        if 'token' in self.__config and self.__config['token'] != '':
-            self.token = self.__config['token']
+        token = config.secrets.get_secret(self.name)
+        if token is not '':
+            self.token = token
         else:
             raise TokenException('Wiki')
 

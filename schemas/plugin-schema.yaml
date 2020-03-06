@@ -2,7 +2,6 @@ plugin: include('plugin_type')
 ---
 plugin_type:
   name: str()
-  token: str()
   description: str(required=False)
   methods: list(include('method'))
 
