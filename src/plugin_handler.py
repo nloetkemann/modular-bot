@@ -85,9 +85,10 @@ class PluginHandler:
         method = plugin.get_method_attr(method)
         for param_name in params:
             count = method.get_keywords().get_count_of_param(param_name[1:])
-            if count < len(params[param_name].split(' ')):
+            words = params[param_name].split(' ')
+            if count < len(words):
                 raise TooManyWordsException(
-                    '{0} given with a length of {1}, allowed is {2}'.format(params[param_name], len(params[param_name]),
+                    '{0} given with a length of {1}, allowed is {2}'.format(params[param_name], len(words),
                                                                             count))
 
     def __get_param_from_user_input(self, original, user_input):
