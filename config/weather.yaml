@@ -1,6 +1,5 @@
 plugin:
   name: "weather"
-  token: "bla"
   description: "wetter station"
   methods:
     - name: "get_weather"
@@ -14,7 +13,7 @@ plugin:
             type: string
             description: "the weather from where"
           - name: time
-            type: all
+            type: string
             count: 2
             description: "from what date "
       answers:
@@ -23,8 +22,10 @@ plugin:
           - "(um $time ist es )?$weather( in $standort)?"
         params:
           - name: weather
-            description:
+            description: ""
           - name: standort
+            required: False
             description: "the weather from where"
           - name: time
+            required: False
             description: "from what date or in how much minutes/hours"

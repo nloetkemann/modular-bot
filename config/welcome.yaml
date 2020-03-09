@@ -1,6 +1,5 @@
 plugin:
   name: "welcome"
-  token: ""
   description: "eine Suchmaschine"
   methods:
     - name: "say_hello"
@@ -28,3 +27,30 @@ plugin:
         list:
           - "Mir geht es sehr gut!"
           - "Mega gut"
+    - name: "who_are_you"
+      keywords:
+        list:
+          - "wer bist du"
+          - "wie heißt du"
+          - "wie ist dein name"
+      answers:
+        list:
+          - "Ich bin $name"
+          - "mein name ist $name"
+          - "hi ich bin $name"
+        params:
+          - name: name
+            desciption: "the name of the bot"
+    - name: "what_are_you_doing"
+      keywords:
+        list:
+          - "was machst du( gerade)?"
+      answers:
+        list:
+          - "$doing, $how"
+        params:
+          - name: doing
+            description: "what am i doing"
+          - name: how
+            desciption: "how am i doing it"
+

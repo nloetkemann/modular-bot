@@ -2,6 +2,7 @@ bot: include('bot_type')
 ---
 bot_type:
   name: str()
+  messenger: list(str())
   description: str()
   environment: list(include('environment_type'))
 

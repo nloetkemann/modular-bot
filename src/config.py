@@ -4,55 +4,33 @@
 # 2020 Nikita Lötkemann, Rahden, Germany
 # email n.loetkemann@fh-bielefeld.de
 # -----------------------------------------------------------
-import os
-import yaml
-import yamale
-
+from src.bot.telegram_bot import TelegramBot
 from src.exceptions.config_exception import ConfigException
+from src.secrets import Secrets
+from src.tools.tools import Tools
 
 
 class Config:
     """Stores the config loaded from the yaml files. Serves as Storage"""
 
-    def __init__(self, config_path='./test.yaml'):
-        ok, error = self.validate_config(config_path)
+    def __init__(self, config_path='./config.yaml', secrets_path='./secrets.yaml'):
+        ok, error = Tools.validate_yaml('./schemas/config-schema.yaml', config_path)
         if not ok:
             raise ConfigException('The Config file is not correct formatted: ' + error)
-        self.config = self.__read_config_file(config_path)
+        self.config = Tools.read_config_file(config_path)
 
         self.name = self.config['bot']['name']
         self.environment = self.config['bot']['environment']
         self.plugins = self.config['bot']['plugins']
         self.desciption = self.config['bot']['description']
+        self.secrets = Secrets(secrets_path)
 
-    @staticmethod
-    def __read_config_file(path):
-        """
-        reads the config file and returns it
-        :param path: the path of the config file
-        :return: the configuration
-        """
-        if not os.path.isfile(path):
-            raise FileNotFoundError('The config file is missing.')
-
-        with open(path, 'r') as config_file:
-            return yaml.load(config_file)
-
-    @staticmethod
-    def validate_config(path):
-        """
-        checks if the yaml config file is valid
-        :param path: the path of the config file
-        :return: bool, ''
-        """
-        schema = yamale.make_schema('./schemas/config-schema.yaml')
-        data = yamale.make_data(path)
-        try:
-            yamale.validate(schema, data)
-        except ValueError as e:
-            print(e)
-            return False, 'Yaml file is mal formated. ' + str(e)
-        return True, ''
+        self.bots = {}
+        for bot_name in self.config['bot']['messenger']:
+            token = self.secrets.get_secret(bot_name, 'bots')
+            if bot_name == 'telegram':
+                bot = TelegramBot(token)
+                self.bots['telegram'] = bot
 
     def get_env(self, name):
         """
@@ -61,7 +39,6 @@ class Config:
         :return: the value
         """
         for entry in self.environment:
-            print(entry)
             if 'name' in entry and entry['name'] == name:
                 return entry['value']
         return ''

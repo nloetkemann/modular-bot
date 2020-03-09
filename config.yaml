@@ -1,12 +1,17 @@
 bot:
   name: "Lilly"
+  messenger:
+    - 'telegram'
   description: ""
   environment:
     - name: "location"
       value: "Rahden"
     - name: "timezone"
       value: "Europe/Berlin"
+    - name: "language"
+      value: "de"
   plugins:
+    - name: wolfram
     - name: wiki
     - name: weather
     - name: welcome

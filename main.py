@@ -1,16 +1,25 @@
+import logging
+
 from src.config import config
 from src.plugin_loader import PluginLoader
 from src.plugin_handler import PluginHandler
+from src.tools.function_thread import FunctionThread
 
-loader = PluginLoader(config.plugins)
-handler = PluginHandler(loader.get_plugins())
+logging.basicConfig(level=logging.INFO)
+
+
+logger = logging.getLogger(__name__)
+threads = {}
+
 if __name__ == '__main__':
-    text = input("Bitte mach eine Eingabe: ")
+    loader = PluginLoader(config.plugins)
+    handler = PluginHandler(loader.get_plugins())
+    print(handler.keywords)
 
-    try:
-        plugin, method, foundparams = handler.validate_user_input(text)
-        plugin.call_method(method, foundparams)
-    except TypeError as t:
-        print('Error: ich weiß nicht was ich machen soll')
-        print(t)
+    handler.validate_user_input('was ist 2 + 2')
+
+    # for key in config.bots:
+    #     thread = FunctionThread(config.bots[key].run, [handler])
+    #     thread.start()
+    #     threads[key] = thread
 

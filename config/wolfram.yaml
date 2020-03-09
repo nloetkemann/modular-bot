@@ -1,0 +1,23 @@
+plugin:
+  name: "wolfram"
+  description: "a smart calculator"
+  methods:
+    - name: "add_numbers"
+      keywords:
+        list:
+          - "was ist $first \\+ $second"
+        params:
+          - name: "first"
+            count: 1
+            type: number
+            description: "the first number"
+          - name: "second"
+            count: 1
+            type: number
+            description: "the second number"
+      answers:
+        list:
+          - "Das Ergebnis ist $result"
+        params:
+          - name: result
+            description: "The result of the wiki search"
