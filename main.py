@@ -16,8 +16,10 @@ if __name__ == '__main__':
     handler = PluginHandler(loader.get_plugins())
     print(handler.keywords)
 
-    for key in config.bots:
-        thread = FunctionThread(config.bots[key].run, [handler])
-        thread.start()
-        threads[key] = thread
+    handler.validate_user_input('was ist 2 + 2')
+
+    # for key in config.bots:
+    #     thread = FunctionThread(config.bots[key].run, [handler])
+    #     thread.start()
+    #     threads[key] = thread
 

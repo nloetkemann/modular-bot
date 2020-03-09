@@ -34,6 +34,10 @@ class Keyword(Attribute):
         param = self.params[param_name]
         return param.get_count()
 
+    def get_type_of_param(self, param_name):
+        param = self.params[param_name]
+        return param.get_type()
+
 
 class Answer(Attribute):
     """

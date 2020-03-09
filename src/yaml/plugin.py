@@ -45,7 +45,7 @@ class Plugin:
         if token is not '':
             self.token = token
         else:
-            raise TokenException('Wiki')
+            raise TokenException(self.__class__)
 
     def requiere_param(self, param, name):
         """
