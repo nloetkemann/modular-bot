@@ -8,6 +8,8 @@ bot:
       value: "Rahden"
     - name: "timezone"
       value: "Europe/Berlin"
+    - name: "language"
+      value: "de"
   plugins:
     - name: wiki
     - name: weather

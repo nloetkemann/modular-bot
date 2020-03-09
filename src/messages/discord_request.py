@@ -1,5 +1,4 @@
 from src.messages.request import Request
-import discord
 
 
 class DiscordRequest(Request):
