@@ -1,4 +1,3 @@
-import datetime
 import requests
 from src.config import config
 from src.exceptions.http_exception import HTTPException

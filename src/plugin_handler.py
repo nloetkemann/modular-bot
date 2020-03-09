@@ -58,6 +58,12 @@ class PluginHandler:
                                 match = match.replace(param.get_name(), r'(\d *){1,' + str(count - 1) + r'}\d')
                             else:
                                 match = match.replace(param.get_name(), r'\d+')
+
+                        elif param.get_type() == 'number':
+                            if count > 1:
+                                match = match.replace(param.get_name(), r'(\d+\.?\d? *){1,' + str(count - 1) + r'}\d+\.?\d?')
+                            else:
+                                match = match.replace(param.get_name(), r'\d+\.?\d?')
                         else:
                             if count > 1:
                                 match = match.replace(param.get_name(),
@@ -79,7 +85,10 @@ class PluginHandler:
             for method in self.keywords[key]:
                 for match in self.keywords[key][method]:
                     if re.match(match[0], user_input):
+                        print(match[0])
                         foundparams = self.__get_param_from_user_input(match[1], user_input)
+                        print(foundparams)
+                        print(key, method)
                         self.__too_many_params(key, method, foundparams)
                         logger.info('Plugin found with params: {0}'.format(str(foundparams)))
                         return self.get_plugin_by_name(key), method, foundparams
@@ -96,7 +105,7 @@ class PluginHandler:
                     '{0} given with a length of {1}, allowed is {2}'.format(params[param_name], len(words),
                                                                             count))
 
-    def __get_param_from_user_input(self, original, user_input):
+    def __get_param_from_user_input(self, original, user_input):  # todo abhaenig machen von dem regex aus der yaml!!!!!
         """
         iterates through all params and extracts the params from the user_input
         :param original: the value given in the plugin yaml file. Containing parameters starting with $

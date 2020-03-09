@@ -11,6 +11,7 @@ bot:
     - name: "language"
       value: "de"
   plugins:
+    - name: wolfram
     - name: wiki
     - name: weather
     - name: welcome

@@ -14,6 +14,7 @@ threads = {}
 if __name__ == '__main__':
     loader = PluginLoader(config.plugins)
     handler = PluginHandler(loader.get_plugins())
+    print(handler.keywords)
 
     for key in config.bots:
         thread = FunctionThread(config.bots[key].run, [handler])
