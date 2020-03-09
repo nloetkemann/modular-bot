@@ -22,7 +22,7 @@ class PluginLoader:
             ok, error = Tools.validate_yaml('./schemas/plugin-schema.yaml', plugin_path)
             if ok:
                 plugin_config = Tools.read_config_file(plugin_path)
-                name = self.__first_upper(plugin_config['plugin']['name'])
+                name = Tools.first_to_upper(plugin_config['plugin']['name'])
                 plugin = self.import_plugin(name)
                 plugin = plugin(name, plugin_config['plugin'])
                 assert isinstance(plugin, Plugin)
@@ -33,10 +33,6 @@ class PluginLoader:
 
     def get_plugins(self):
         return self.plugins
-
-    @staticmethod
-    def __first_upper(word):
-        return word[0].upper() + word[1:]
 
     @staticmethod
     def import_plugin(name):  # todo add more safety code could be inserted in the loaded plugin

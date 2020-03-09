@@ -48,3 +48,7 @@ class Tools:
 
         with open(path, 'r') as config_file:
             return yaml.load(config_file)
+
+    @staticmethod
+    def first_to_upper(word: str):
+        return word[0].upper() + word[1:]
