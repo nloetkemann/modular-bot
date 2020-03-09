@@ -13,3 +13,6 @@ class Bot:
 
     def send_message(self, response):
         raise NotImplementedError('The send_message method has not been implemented ' + str(self.__class__))
+
+    def exit(self):
+        raise NotImplementedError('The send_message method has not been implemented ' + str(self.__class__))

@@ -19,3 +19,5 @@ if __name__ == '__main__':
         thread = FunctionThread(config.bots[key].run, [handler])
         thread.start()
         threads[key] = thread
+
+        thread.stop()
