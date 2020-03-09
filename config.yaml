@@ -1,5 +1,7 @@
 bot:
   name: "Lilly"
+  messenger:
+    - 'telegram'
   description: ""
   environment:
     - name: "location"

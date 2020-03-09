@@ -4,10 +4,14 @@
 # 2020 Nikita Lötkemann, Rahden, Germany
 # email n.loetkemann@fh-bielefeld.de
 # -----------------------------------------------------------
+import logging
 import yamale
 import yaml
 
+from src.tools.tools import Tools
 from src.yaml.plugin import Plugin
+
+logger = logging.getLogger(__name__)
 
 
 class PluginLoader:
@@ -15,14 +19,17 @@ class PluginLoader:
         self.plugins = []
         for item in pluginlist:
             plugin_path = plugin_dir + item['name'] + '.yaml'
-            with open(plugin_path, 'r') as config_file:
-                self.validate_plugin_config(plugin_path)
-                plugin_config = yaml.load(config_file)
+            ok, error = Tools.validate_yaml('./schemas/plugin-schema.yaml', plugin_path)
+            if ok:
+                plugin_config = Tools.read_config_file(plugin_path)
                 name = self.__first_upper(plugin_config['plugin']['name'])
                 plugin = self.import_plugin(name)
                 plugin = plugin(name, plugin_config['plugin'])
                 assert isinstance(plugin, Plugin)
                 self.plugins.append(plugin)
+            else:
+                logger.error(error)
+                exit(1)
 
     def get_plugins(self):
         return self.plugins
@@ -32,15 +39,5 @@ class PluginLoader:
         return word[0].upper() + word[1:]
 
     @staticmethod
-    def validate_plugin_config(path):
-        schema = yamale.make_schema('./schemas/plugin-schema.yaml')
-        data = yamale.make_data(path)
-        try:
-            yamale.validate(schema, data)
-        except ValueError as e:
-            print('Yaml file is mal formated. ' + path + '\n' + str(e))
-            exit(1)
-
-    @staticmethod
-    def import_plugin(name): # todo add more safety code could be inserted in the loaded plugin
+    def import_plugin(name):  # todo add more safety code could be inserted in the loaded plugin
         return getattr(__import__('src.plugins.' + name.lower(), fromlist=[name]), name)

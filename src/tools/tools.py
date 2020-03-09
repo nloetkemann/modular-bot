@@ -1,7 +1,11 @@
+import logging
 import re
 import yamale
 import os
 import yaml
+
+
+logger = logging.getLogger(__name__)
 
 
 class Tools:
@@ -26,8 +30,9 @@ class Tools:
         data = yamale.make_data(yaml_file)
         try:
             yamale.validate(schema, data)
+            logger.info('Yamlfiles is valid {0}'.format(yaml_file))
         except ValueError as e:
-            print(e)
+            logger.error('Yaml file is mal formated. ' + str(e))
             return False, 'Yaml file is mal formated. ' + str(e)
         return True, ''
 

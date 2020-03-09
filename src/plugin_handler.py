@@ -1,10 +1,12 @@
+import logging
 import re
-
 from src.exceptions.too_many_words_exception import TooManyWordsException
 from src.exceptions.not_found_exception import NotFoundException
-from src.tools import Tools
+from src.tools.tools import Tools
 from src.yaml.method import Method
 from src.yaml.param import KeywordParam
+
+logger = logging.getLogger(__name__)
 
 
 class PluginHandler:
@@ -14,7 +16,9 @@ class PluginHandler:
     def __init__(self, all_plugins):
         assert isinstance(all_plugins, list)
         self.all_plugins = all_plugins
+
         for plugin in all_plugins:
+            logger.info('Activate Plugins: {0}'.format(plugin.get_name()))
             methods = plugin.get_all_keywords()
             plugin_method = {}
             for method in methods:
@@ -77,6 +81,7 @@ class PluginHandler:
                     if re.match(match[0], user_input):
                         foundparams = self.__get_param_from_user_input(match[1], user_input)
                         self.__too_many_params(key, method, foundparams)
+                        logger.info('Plugin found with params: {0}'.format(str(foundparams)))
                         return self.get_plugin_by_name(key), method, foundparams
         raise NotFoundException('No Plugin or no Method found for "{0}"'.format(user_input))
 

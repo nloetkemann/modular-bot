@@ -1,7 +1,7 @@
 class Response:
     def __init__(self, content, receiver):
-        self.message = 'Hallo'
-        self.receiver = 'Nikita'
+        self.message = content
+        self.receiver = receiver
 
     def get_message(self):
         return self.message

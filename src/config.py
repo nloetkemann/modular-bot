@@ -4,10 +4,10 @@
 # 2020 Nikita Lötkemann, Rahden, Germany
 # email n.loetkemann@fh-bielefeld.de
 # -----------------------------------------------------------
-
+from src.bot.telegram_bot import TelegramBot
 from src.exceptions.config_exception import ConfigException
 from src.secrets import Secrets
-from src.tools import Tools
+from src.tools.tools import Tools
 
 
 class Config:
@@ -24,6 +24,13 @@ class Config:
         self.plugins = self.config['bot']['plugins']
         self.desciption = self.config['bot']['description']
         self.secrets = Secrets(secrets_path)
+
+        self.bots = {}
+        for bot_name in self.config['bot']['messenger']:
+            token = self.secrets.get_secret(bot_name, 'bots')
+            if bot_name == 'telegram':
+                bot = TelegramBot(token)
+                self.bots['telegram'] = bot
 
     def get_env(self, name):
         """

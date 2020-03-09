@@ -1,20 +1,21 @@
+import logging
+
 from src.config import config
-from src.exceptions.not_found_exception import NotFoundException
 from src.plugin_loader import PluginLoader
 from src.plugin_handler import PluginHandler
+from src.tools.function_thread import FunctionThread
+
+logging.basicConfig(level=logging.INFO)
+
+
+logger = logging.getLogger(__name__)
+threads = {}
 
 if __name__ == '__main__':
     loader = PluginLoader(config.plugins)
     handler = PluginHandler(loader.get_plugins())
 
-    text = input("Bitte mach eine Eingabe: ")
-
-    try:
-        plugin, method, foundparams = handler.validate_user_input(text)
-        print(plugin.call_method(method, foundparams))
-    except TypeError as t:
-        print('Error: ich weiß nicht was ich machen soll')
-        print(t)
-    except NotFoundException as n:
-        print('Es gab einen Fehler')
-        exit(n)
+    for key in config.bots:
+        thread = FunctionThread(config.bots[key].run, [handler])
+        thread.start()
+        threads[key] = thread
