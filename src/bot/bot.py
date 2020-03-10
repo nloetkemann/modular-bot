@@ -8,7 +8,7 @@ class Bot:
     def __init__(self, token):
         self.token = token
 
-    def run(self, handler):
+    def start_bot(self, handler):
         raise NotImplementedError('The run method has not been implemented ' + str(self.__class__))
 
     def send_message(self, response):

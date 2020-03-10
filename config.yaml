@@ -1,6 +1,7 @@
 bot:
   name: "Lilly"
   messenger:
+    - 'discord'
     - 'telegram'
   description: ""
   environment:

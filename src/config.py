@@ -4,8 +4,10 @@
 # 2020 Nikita Lötkemann, Rahden, Germany
 # email n.loetkemann@fh-bielefeld.de
 # -----------------------------------------------------------
+from src.bot.discord_bot import DiscordBot
 from src.bot.telegram_bot import TelegramBot
 from src.exceptions.config_exception import ConfigException
+from src.exceptions.not_found_exception import NotFoundException
 from src.secrets import Secrets
 from src.tools.tools import Tools
 
@@ -30,7 +32,13 @@ class Config:
             token = self.secrets.get_secret(bot_name, 'bots')
             if bot_name == 'telegram':
                 bot = TelegramBot(token)
-                self.bots['telegram'] = bot
+            elif bot_name == 'discord':
+                bot = DiscordBot(token)
+            else:
+                raise NotFoundException('{0} does not exist'.format(bot_name))
+
+            self.bots[bot_name] = bot
+        print(self.bots)
 
     def get_env(self, name):
         """

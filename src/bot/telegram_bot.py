@@ -19,7 +19,7 @@ class TelegramBot(Bot):
         self.bot = telepot.Bot(self.token)
         self.loop = None
 
-    def run(self, handler: PluginHandler):
+    def start_bot(self, handler: PluginHandler):
         self.handler = handler
         try:
             MessageLoop(self.bot, {
