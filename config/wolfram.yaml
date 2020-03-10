@@ -21,3 +21,17 @@ plugin:
         params:
           - name: result
             description: "The result of the wiki search"
+    - name: "calculate_term"
+      keywords:
+        list:
+          - "berechne( mir)? $term"
+        params:
+          - name: "term"
+            count: 8
+            description: "the term that should be calculated"
+      answers:
+        list:
+          - "Das Ergebnis ist $result"
+        params:
+          - name: result
+            description: "the result of the term"

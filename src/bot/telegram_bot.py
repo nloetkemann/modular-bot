@@ -33,7 +33,7 @@ class TelegramBot(Bot):
         self.bot = None
 
     def send_message(self, response: Response):
-        return self.bot.sendMessage(response.get_receiver(), response.get_message())
+        return self.bot.sendMessage(response.get_receiver(), response.get_message(), parse_mode='Markdown')
 
     def __on_chat_message(self, message: str):
         request = TelegramRequest(message)
