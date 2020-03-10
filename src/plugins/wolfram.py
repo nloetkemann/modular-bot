@@ -1,5 +1,4 @@
 import wolframalpha
-from src.config import config as global_config
 from src.yaml.plugin import Plugin
 
 
@@ -11,7 +10,7 @@ class Wolfram(Plugin):
 
     def __init__(self, name, config):
         super().__init__(name, config)
-        self.wolfram_client = wolframalpha.Client(global_config.secrets.get_secret('wolfram'))
+        self.wolfram_client = wolframalpha.Client(self.token)
 
     def __do_request(self, term):
         return self.wolfram_client.query(term)
