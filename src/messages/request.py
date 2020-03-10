@@ -24,15 +24,3 @@ class Request:
 
     def get_text(self):
         raise NotImplementedError('The get_text method has not been implemented ' + str(self.__class__))
-
-    def is_callback(self):
-        raise NotImplementedError('The is_callback method has not been implemented ' + str(self.__class__))
-
-    def get_file_id(self):
-        raise NotImplementedError('The get_file_id method has not been implemented ' + str(self.__class__))
-
-    def is_command(self):
-        raise NotImplementedError('The is_command method has not been implemented ' + str(self.__class__))
-
-    def get_attr(self, attribute, where=None):
-        raise NotImplementedError('The get_attr method has not been implemented ' + str(self.__class__))

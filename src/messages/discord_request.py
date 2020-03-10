@@ -9,15 +9,3 @@ class DiscordRequest(Request):
 
     def get_text(self):
         return self.text
-
-    def is_callback(self):
-        pass
-
-    def get_file_id(self):
-        pass
-
-    def is_command(self):
-        pass
-
-    def get_attr(self, attribute, where=None):
-        pass
