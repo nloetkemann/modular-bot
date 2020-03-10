@@ -47,15 +47,16 @@ class Plugin:
         else:
             raise TokenException(self.__class__)
 
-    def requiere_param(self, param, name):
+    def requiere_param(self, param, *args):
         """
         should be called in the method of the plugin, checks if a parameter is set, which is requiered
         :param param: all params  of the method
         :param name: the name of the requiered param
         :exception: NotFoundException if the param is not set
         """
-        if name not in param:
-            raise NotFoundException('Parameter not found: {0}'.format(name))
+        for name in args:
+            if name not in param:
+                raise NotFoundException('Parameter not found: {0}'.format(name))
 
     def get_all_keywords(self):
         """
@@ -104,5 +105,5 @@ class Plugin:
                 # param is not given, so it will be replaced with the brackets
                 answer = re.sub(r'\([A-Za-z\d\s]*\${0}\b[A-Za-z\d\s]*\)\?'.format(param.get_name()[1:]), '', answer)
         for key in given_params:
-            answer = answer.replace(key, given_params[key])
+            answer = answer.replace(key, str(given_params[key]))
         return Tools.remove_regex(answer)

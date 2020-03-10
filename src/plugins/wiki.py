@@ -17,7 +17,7 @@ class Wiki(Plugin):
         result = wikipedia.summary(keyword)[:end]
         sentences = result.split('.')
         sentences.pop()
-        return ''.join(sentences)
+        return '. '.join(sentences)
 
     def search_wiki(self, args: dict):
         """
@@ -27,4 +27,4 @@ class Wiki(Plugin):
         """
         self.requiere_param(args, '$searchKeyword')
         search_keyword = args['$searchKeyword']
-        return {'$result': self.__get_summary(search_keyword)}
+        return {'$result': self.__get_summary(search_keyword).replace('*', r'\*')}

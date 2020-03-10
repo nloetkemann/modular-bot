@@ -38,6 +38,23 @@ class PluginHandler:
             if plugin.get_name() == plugin_name:
                 return plugin
 
+    def _get_regex_for_variable_type(self, param_type: str, count: int):
+        if param_type == 'integer':
+            if count > 1:
+                return r'(\d *){1,' + str(count - 1) + r'}\d'
+            else:
+                return r'\d+'
+        elif param_type == 'number':
+            if count > 1:
+                return r'(\d+\.?\d? *){1,' + str(count - 1) + r'}\d+\.?\d?'
+            else:
+                return r'\d+\.?\d?'
+        else:
+            if count > 1:
+                return r'[A-Za-z\d]+( [A-Za-z\d]+){0,' + str(count - 1) + r'}'
+            else:
+                return r'[A-Za-z\d]+'
+
     def __get_keywords_as_regex(self, keywords, params):
         """
         converts the given regex from the yaml files to valid regex, replacing the params with regex
@@ -69,17 +86,9 @@ class PluginHandler:
             for method in self.keywords[key]:
                 for match in self.keywords[key][method]:
                     if re.match(match[0], user_input):
-                        print(match[0])
-                        plugin = self.get_plugin_by_name(key)
-                        method = plugin.get_method_attr(method).get_keywords()
-                        count = method.get_count_of_param(match)
-                        type = method.get_type_of_param(match)
-
-                        print(count, type)
-                        foundparams = self.__get_param_from_user_input(match[1], user_input, type, count)
-                        print(foundparams)
-                        print(key, method)
-                        self.__too_many_params(key, method, foundparams)
+                        method_object = self.get_plugin_by_name(key).get_method_attr(method)
+                        foundparams = self.__get_param_from_user_input(match[1], user_input, method_object)
+                        # self.__too_many_params(key, method, foundparams)
                         logger.info('Plugin found with params: {0}'.format(str(foundparams)))
                         return self.get_plugin_by_name(key), method, foundparams
         raise NotFoundException('No Plugin or no Method found for "{0}"'.format(user_input))
@@ -95,8 +104,8 @@ class PluginHandler:
                     '{0} given with a length of {1}, allowed is {2}'.format(params[param_name], len(words),
                                                                             count))
 
-    def __get_param_from_user_input(self, original, user_input, param_type,
-                                    count):  # todo abhaenig machen von dem regex aus der yaml!!!!!
+    def __get_param_from_user_input(self, original, user_input,
+                                    method):  # todo abhaenig machen von dem regex aus der yaml!!!!!
         """
         iterates through all params and extracts the params from the user_input
         :param original: the value given in the plugin yaml file. Containing parameters starting with $
@@ -106,70 +115,30 @@ class PluginHandler:
         params = re.findall(r'\$[A-Za-z]+', original)
         foundparams = {}
         for param in params:
-            foundparam = self.__trim_words(user_input, original.replace(param, '', 1), param_type, count)
+            count = method.get_keywords().get_count_of_param(param[1:])
+            param_type = method.get_keywords().get_type_of_param(param[1:])
+            foundparam = self.__trim_words(user_input, original.replace(param, '', 1), count, param_type)
             if foundparam is not None and foundparam != '':
                 foundparams[param] = foundparam
-                user_input = user_input.replace(foundparam, '')
+                user_input = user_input.replace(foundparam, '', 1)
         return foundparams
 
-    def _get_regex_for_variable_type(self, param_type, count):
-        if param_type == 'integer':
-            if count > 1:
-                return r'(\d *){1,' + str(count - 1) + r'}\d'
-            else:
-                return r'\d+'
-        elif param_type == 'number':
-            if count > 1:
-                return r'(\d+\.?\d? *){1,' + str(count - 1) + r'}\d+\.?\d?'
-            else:
-                return r'\d+\.?\d?'
-        else:
-            if count > 1:
-                return r'[A-Za-z\d]+( [A-Za-z\d]+){0,' + str(count - 1) + r'}'
-            else:
-                return r'[A-Za-z\d]+'
-
-    def __trim_words(self, userinput, regex, param_type, count):
+    def __trim_words(self, user_input, regex, count, param_type):
         """
-        iterates through every word from the user_input und compares it with the regex
-        if its the same, delete it, if not, its a parameter
-        :param userinput: the user input
+        first remove all words which are the same from regex and the user input
+        then invert the match and replace the result in the user input
+        :param user_input: the user input
         :param regex: the regex without the parameter (without $param)
         :return: the found param
         """
         regex = Tools.remove_regex(regex)
-        counter, flag = 0, 0
         regex_words = regex.split(' ')
-        for word in userinput.split(' '):
-            for reword in range(counter, len(regex_words), 1):
-                if word == regex_words[reword]:
-                    userinput = userinput.replace(word, '', 1).strip()
-                    counter += 1
-                    if flag == 1:
-                        flag = 2
-                    break
-                elif word != regex_words[reword] and flag == 0 and word != '':
-                    flag = 1
-                elif word != regex_words[reword] and flag == 2 and word != '':
-                    userinput = userinput.replace(word, '', 1).strip()
-        param_regex = self._get_regex_for_variable_type(param_type, count)
-        if re.match(param_regex, userinput):
-            return userinput
-        else:
-            return ''
-
-
-    def test(self):
-        regex = r'was ist \d+\.?\d? \+ \d+\.?\d?'
-        param_text = r'was ist $first \\+ $second'
-
-        user_input = 'was ist 2 + 2'
-
-        type = 'number'
-        count = 1
-
-        number_regex = r'\d+\.?\d?'
+        for word in user_input.split(' '):
+            if word in regex_words:
+                user_input = re.sub(word, '', user_input, 1)
 
         invert = r'((?!{0}).)*'
-
-        print(re.match(invert.format(number_regex), user_input))
+        param_regex = self._get_regex_for_variable_type(param_type, count)
+        found = re.sub(invert.format(param_regex), '', user_input, 1)
+        found = found.split(' ')[0:count]
+        return ' '.join(found)
