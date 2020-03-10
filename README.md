@@ -3,10 +3,17 @@ this will be a modular bot where you can load your plugins by writing a single c
 
 the plugin will be loaded automaticaly and the command should be executed from the plugin
 
-
 ## Install
 First install all the requirements
 `pip install -r requirements.txt`
+
+## Messengers
+
+There are two possible messengers
+- telegram
+- discord
+
+Just activate it in the config.yaml
 
 ## Secrets
 If you need to insert your secrets, just create a secrets.yaml file:
