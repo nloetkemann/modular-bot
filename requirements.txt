@@ -1,3 +1,4 @@
+wolframalpha
 requests
 wikipedia==1.4.0
 yamale==2.0.1
