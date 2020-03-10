@@ -1,0 +1,16 @@
+plugin:
+  name: "nothing"
+  description: "eine Suchmaschine"
+  methods:
+    - name: "wrong_command"
+      keywords:
+        list:
+          - ".*"
+      answers:
+        list:
+          - "Hmm deine Eingabe war ziemlich komisch"
+          - "Das war so nicht richtig..."
+          - "Halt stop, das war nicht richtig"
+          - "Ich weiß nicht genau was ich damit machen soll"
+          - "Ich bin verwirrt, damit kann ich nicht arbeiten..."
+

@@ -16,6 +16,7 @@ bot:
     - name: wiki
     - name: weather
     - name: welcome
+    - name: nothing
 
 
 
