@@ -1,6 +1,6 @@
 plugin:
   name: "nothing"
-  description: "eine Suchmaschine"
+  description: "catches every wrong input, should be at the end of the plugin list"
   methods:
     - name: "wrong_command"
       keywords:

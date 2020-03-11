@@ -1,0 +1,15 @@
+plugin:
+  name: "help"
+  description: "offers help"
+  methods:
+    - name: "general_help"
+      keywords:
+        list:
+          - "kannst du mir( bitte)? helfen"
+          - "ich brauche hilfe"
+          - "ich weiß nicht was ich (machen|tun){1} soll"
+      answers:
+        list:
+          - "Na klar ich helfe gerne"
+          - "Für dich google ich alles"
+

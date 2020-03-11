@@ -89,7 +89,7 @@ class PluginHandler:
                         method_object = self.get_plugin_by_name(key).get_method_attr(method)
                         foundparams = self.__get_param_from_user_input(match[1], user_input, method_object)
                         # self.__too_many_params(key, method, foundparams)
-                        logger.info('Plugin found with params: {0}'.format(str(foundparams)))
+                        logger.info('Plugin {0} found with method {1} params: {2}'.format(key, method, str(foundparams)))
                         return self.get_plugin_by_name(key), method, foundparams
         raise NotFoundException('No Plugin or no Method found for "{0}"'.format(user_input))
 
