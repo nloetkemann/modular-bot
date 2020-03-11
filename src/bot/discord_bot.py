@@ -2,13 +2,13 @@ import discord
 import asyncio
 from src.bot.bot import Bot
 from src.messages.discord_request import DiscordRequest
+from src.messages.response import Response
 
 
 class DiscordBot(Bot, discord.Client):
 
     def __init__(self, token):
         Bot.__init__(self, token)
-
         asyncio.get_child_watcher()
 
         self.myloop = asyncio.get_event_loop()
@@ -27,13 +27,14 @@ class DiscordBot(Bot, discord.Client):
         request = DiscordRequest(message)
         plugin, method, params = self.handler.validate_user_input(request.get_text())
         answer = plugin.call_method(method, params)
-        await message.channel.send(answer)
+        response = Response(answer, message)
+        await self.send_message(response)
 
     async def send_message(self, response):
-        pass
+        await response.get_receiver().channel.send(response.get_message())
 
     def exit(self):
-        pass
+        self.myloop.stop()
 
     def start_bot(self, handler):
         self.handler = handler
