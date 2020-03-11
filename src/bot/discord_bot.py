@@ -12,6 +12,8 @@ MENTION_REGEX = r'<@\!\d+>'
 class DiscordBot(Bot, discord.Client):
     client_id = None
 
+    CALL_PATTERN = r'^\-\s'
+
     def __init__(self, token):
         Bot.__init__(self, token)
         asyncio.get_child_watcher()
@@ -32,13 +34,17 @@ class DiscordBot(Bot, discord.Client):
     def is_mentioned(self, message):
         return self.user in message.mentions
 
+    def is_call_pattern(self, message):
+        return re.match(self.CALL_PATTERN + '.*', message.content)
+
     async def on_message(self, message):
         if message.author == self.user:
             return
         request = DiscordRequest(message)
         content = request.get_text()
-        if self.is_direkt_message(message) or self.is_mentioned(message):
+        if self.is_direkt_message(message) or self.is_mentioned(message) or self.is_call_pattern(message):
             content = re.sub(MENTION_REGEX, '', content).strip()
+            content = re.sub(self.CALL_PATTERN, '', content).strip()
             plugin, method, params = self.handler.validate_user_input(content)
             answer = plugin.call_method(method, params)
             response = Response(answer, message)
