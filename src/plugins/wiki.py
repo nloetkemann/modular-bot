@@ -13,11 +13,19 @@ class Wiki(Plugin):
             wikipedia.set_lang('de')
 
     @staticmethod
-    def __get_summary(keyword: str, end: int = 400):
-        result = wikipedia.summary(keyword)[:end]
-        sentences = result.split('.')
-        sentences.pop()
-        return '. '.join(sentences)
+    def cut_result(result, end):
+        part_of_result = result[:end]
+        sentences = part_of_result.split('.')
+        if len(sentences) > 2:
+            sentences.pop()
+            return sentences
+        else:
+            return Wiki.cut_result(result, end + 100)
+
+    @staticmethod
+    def __get_summary(keyword: str, end: int = 600):
+        result = wikipedia.summary(keyword)
+        return '. '.join(Wiki.cut_result(result, end))
 
     def search_wiki(self, args: dict):
         """
