@@ -1,0 +1,19 @@
+plugin:
+  name: "movies"
+  description: "infos about movies"
+  methods:
+    - name: "get_movie_description"
+      keywords:
+        list:
+          - "wovon handelt $movie"
+        params:
+          - name: movie
+            count: 5
+            description: "the movie"
+      answers:
+        list:
+          - "Hier der Film:\n$movie"
+        params:
+          - name: movie
+            description: "the result description"
+

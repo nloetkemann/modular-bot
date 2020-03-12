@@ -7,6 +7,9 @@ the plugin will be loaded automaticaly and the command should be executed from t
 First install all the requirements
 `pip install -r requirements.txt`
 
+> Hint: if imdbpy wont install download the .whl file from [here](https://pypi.org/project/IMDbPY/#files) and install 
+> it with pip3 install IMDbPY-6.8-py3-none-any.whl 
+
 ## Messengers
 
 There are two possible messengers
