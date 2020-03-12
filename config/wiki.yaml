@@ -5,8 +5,8 @@ plugin:
     - name: "search_wiki"
       keywords:
         list:
-          - "wer ist $searchKeyword"
-          - "was ist $searchKeyword"
+          - "wer ist( ein| eine| das| die| der)? $searchKeyword"
+          - "was ist( ein| eine| das| die| der)? $searchKeyword"
         params:
           - name: "searchKeyword"
             count: 3
