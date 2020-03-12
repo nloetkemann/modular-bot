@@ -1,14 +1,22 @@
 from imdb.Movie import Movie
-
+from imdb.Person import Person
 from src.yaml.plugin import Plugin
 from imdb import IMDb
 
 
 class Movies(Plugin):
+    max_cast_count = 7
 
     def __init__(self, name, config):
         super().__init__(name, config)
         self.imdb = IMDb()
+
+    def __get_movie(self, movie_name):
+        movies_list = self.imdb.search_movie(movie_name)
+        movie = movies_list[0]
+        movie = self.imdb.get_movie(movie.getID())
+        assert isinstance(movie, Movie)
+        return movie
 
     def get_movie_description(self, args: dict):
         """
@@ -17,16 +25,33 @@ class Movies(Plugin):
         :return: the result of the search
         """
         self.requiere_param(args, '$movie')
-        movies_list = self.imdb.search_movie(args['$movie'])
-        movie = movies_list[0]
-        assert isinstance(movie, Movie)
-        plot = ''
-        print(movie.getID())
-        print(movie['year'])
-        for key in movie:
-            print(key)
+        movie = self.__get_movie(args['$movie'])
+        title = movie['title']
+        year = movie['year']
+        plot = movie['plot'][0]
 
-        answer = '*{title}* ({year})\nGenres: {genres}'.format(title=movie['title'], year=movie['year'], genres=movie['cast'])
-        # for plot in movies_list[0]['plot']:
-        #     print(plot)
-        return {'$movie': answer}
+        plot = plot.replace('::', '_') + '_'
+
+        answer = '__{title}__ ({year}) handelt von:\n{plot}'.format(title=title, year=year, plot=plot)
+        return {'$description': answer}
+
+    def get_movie_cast(self, args):
+        self.requiere_param(args, '$movie')
+        movie = self.__get_movie(args['$movie'])
+
+        title = movie['title']
+        year = movie['year']
+        cast = movie['cast']
+
+        counter = 0
+        all_cast = ''
+        for actor in cast:
+            assert isinstance(actor, Person)
+            if counter < self.max_cast_count:
+                all_cast += '\n- _{0}_ => {1}'.format(actor.currentRole, actor['name'])
+                counter += 1
+            else:
+                break
+
+        answer = '__{title}__ ({year}) ist besetzt mit:{cast}'.format(title=title, year=year, cast=all_cast)
+        return {'$cast': answer}

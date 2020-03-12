@@ -6,14 +6,29 @@ plugin:
       keywords:
         list:
           - "wovon handelt $movie"
+          - "der inhalt von $movie"
         params:
           - name: movie
             count: 5
             description: "the movie"
       answers:
         list:
-          - "Hier der Film:\n$movie"
+          - "Hier die Beschreibung:\n$description"
+        params:
+          - name: description
+            description: "the result description"
+    - name: "get_movie_cast"
+      keywords:
+        list:
+          - "wer spielt in $movie"
         params:
           - name: movie
-            description: "the result description"
+            count: 5
+            description: "the movie"
+      answers:
+        list:
+          - "Hier der cast:\n$cast"
+        params:
+          - name: "cast"
+            description: "the cast"
 
