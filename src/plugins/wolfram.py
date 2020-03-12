@@ -5,7 +5,7 @@ from src.yaml.plugin import Plugin
 class Wolfram(Plugin):
     token_required = True
     list_of_ignored_infos = ['Length of data', 'Input interpretation', 'Number line']
-    list_of_solutions = ['Solutions', 'Result']
+    list_of_solutions = ['Solutions', 'Result', 'Solution']
 
     list_of_images = ['Plot', 'Pie chart']
 
@@ -66,5 +66,5 @@ class Wolfram(Plugin):
                         all_values[pod['@title']] = description
         return_value = '\n'
         for key in all_values:
-            return_value += '*{0}* => {1}\n\n'.format(key, all_values[key])
+            return_value += '**{0}** => {1}\n\n'.format(key, all_values[key])
         return {'$result': return_value}

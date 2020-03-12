@@ -11,7 +11,9 @@ MENTION_REGEX = r'<@\!\d+>'
 
 class DiscordBot(Bot, discord.Client):
     client_id = None
-
+    bold_regex = '**'
+    bold_italic_regex = '***'
+    italic_regex = '*'
     CALL_PATTERN = r'^\-\s'
 
     def __init__(self, token):
@@ -46,7 +48,7 @@ class DiscordBot(Bot, discord.Client):
             content = re.sub(MENTION_REGEX, '', content).strip()
             content = re.sub(self.CALL_PATTERN, '', content).strip()
             plugin, method, params = self.handler.validate_user_input(content)
-            answer = plugin.call_method(method, params)
+            answer = self.format_answer(plugin.call_method(method, params))
             response = Response(answer, message)
             await self.send_message(response)
 

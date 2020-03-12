@@ -1,8 +1,6 @@
 import logging
-
 import telepot
 from telepot.loop import MessageLoop
-
 from src.bot.bot import Bot
 from src.messages.response import Response
 from src.messages.telegram_request import TelegramRequest
@@ -13,6 +11,9 @@ logger = logging.getLogger(__name__)
 
 class TelegramBot(Bot):
     name = 'telegram'
+    bold_regex = '*'
+    bold_italic_regex = '***'
+    italic_regex = '_'
 
     def __init__(self, token: str):
         super().__init__(token)
@@ -33,7 +34,7 @@ class TelegramBot(Bot):
         self.bot = None
 
     def send_message(self, response: Response):
-        return self.bot.sendMessage(response.get_receiver(), response.get_message(), parse_mode='Markdown')
+        return self.bot.sendMessage(response.get_receiver(), self.format_answer(response.get_message()), parse_mode='Markdown')
 
     def __on_chat_message(self, message: str):
         request = TelegramRequest(message)

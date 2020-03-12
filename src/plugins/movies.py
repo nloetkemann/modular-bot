@@ -30,9 +30,9 @@ class Movies(Plugin):
         year = movie['year']
         plot = movie['plot'][0]
 
-        plot = plot.replace('::', '_') + '_'
+        plot = plot.replace('::', '__') + '__'
 
-        answer = '__{title}__ ({year}) handelt von:\n{plot}'.format(title=title, year=year, plot=plot)
+        answer = '**{title}** ({year}) handelt von:\n{plot}'.format(title=title, year=year, plot=plot)
         return {'$description': answer}
 
     def get_movie_cast(self, args):
@@ -48,10 +48,10 @@ class Movies(Plugin):
         for actor in cast:
             assert isinstance(actor, Person)
             if counter < self.max_cast_count:
-                all_cast += '\n- _{0}_ => {1}'.format(actor.currentRole, actor['name'])
+                all_cast += '\n- __{0}__ => {1}'.format(actor.currentRole, actor['name'])
                 counter += 1
             else:
                 break
 
-        answer = '__{title}__ ({year}) ist besetzt mit:{cast}'.format(title=title, year=year, cast=all_cast)
+        answer = '**{title}** ({year}) ist besetzt mit:{cast}'.format(title=title, year=year, cast=all_cast)
         return {'$cast': answer}

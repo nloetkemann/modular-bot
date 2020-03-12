@@ -27,7 +27,7 @@ plugin:
             description: "the movie"
       answers:
         list:
-          - "Hier der cast:\n$cast"
+          - "Hier der Cast:\n$cast"
         params:
           - name: "cast"
             description: "the cast"
