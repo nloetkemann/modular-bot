@@ -9,7 +9,7 @@ plugin:
           - "der inhalt von $movie"
         params:
           - name: movie
-            count: 5
+            count: 6
             description: "the movie"
       answers:
         list:
@@ -23,7 +23,7 @@ plugin:
           - "wer spielt in $movie"
         params:
           - name: movie
-            count: 5
+            count: 6
             description: "the movie"
       answers:
         list:
@@ -31,4 +31,21 @@ plugin:
         params:
           - name: "cast"
             description: "the cast"
+
+    - name: actor_details
+      keywords:
+        list:
+          - "in welchen filme ist $actor"
+          - "filme von $actor"
+          - "$actor filme"
+        params:
+          - name: actor
+            count: 4
+            description: "the actor"
+      answers:
+        list:
+          - "Hier die Details:$details"
+        params:
+          - name: details
+            description: details of the actor
 
