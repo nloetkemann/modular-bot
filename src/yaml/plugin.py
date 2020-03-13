@@ -14,19 +14,24 @@ class Plugin:
     token_required = False
     token = ""
 
-    def __init__(self, name, config):
+    def __init__(self, name, plugin_config):
         self.name = name
         self.methods = {}
-        self.__config = config
-        for method in config['methods']:
+        self.__config = plugin_config
+        for method in plugin_config['methods']:
             call_method = self.__get_method_by_name(method['name'])
             self.methods[method['name']] = Method(method, call_method)
 
         if self.token_required:
             self.__require_token()
 
+        config.add_to_plugins(self)
+
     def get_name(self):
         return self.name
+
+    def get_description(self):
+        return self.__config['description'] if 'description' in self.__config else ''
 
     def get_method_attr(self, method_name):
         return self.methods[method_name]

@@ -27,6 +27,8 @@ class Config:
         self.desciption = self.config['bot']['description']
         self.secrets = Secrets(secrets_path)
 
+        self.list_plugin_objects = []
+
         self.bots = {}
         for bot_name in self.config['bot']['messenger']:
             token = self.secrets.get_secret(bot_name, 'bots')
@@ -38,7 +40,12 @@ class Config:
                 raise NotFoundException('{0} does not exist'.format(bot_name))
 
             self.bots[bot_name] = bot
-        print(self.bots)
+
+    def add_to_plugins(self, plugin):
+        self.list_plugin_objects.append(plugin)
+
+    def get_plugins(self):
+        return self.list_plugin_objects
 
     def get_env(self, name):
         """

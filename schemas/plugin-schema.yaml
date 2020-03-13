@@ -9,6 +9,7 @@ method:
   name: str()
   keywords: include('keywords')
   answers: include('answers')
+  help: str(required=False)
 
 keywords:
   list: list(str())

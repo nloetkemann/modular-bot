@@ -10,9 +10,13 @@ class Method:
         self.keywords = Keyword(config['keywords'])
         self.answers = Answer(config['answers'])
         self.method = method
+        self.help = config['help'] if 'help' in config else ''
 
     def get_name(self):
         return self.name
+
+    def get_help(self):
+        return self.help
 
     def get_keywords(self):
         return self.keywords

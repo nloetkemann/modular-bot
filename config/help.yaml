@@ -10,6 +10,8 @@ plugin:
           - "ich weiß nicht was ich (machen|tun){1} soll"
       answers:
         list:
-          - "Na klar ich helfe gerne"
-          - "Für dich google ich alles"
+          - "$help"
+        params:
+          - name: help
+            description: "the help"
 
