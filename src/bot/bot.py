@@ -27,4 +27,5 @@ class Bot:
     def format_answer(self, answer):
         answer = re.sub(r'\*\*', self.bold_regex, answer)
         answer = re.sub(r'__', self.italic_regex, answer)
+        answer = re.sub(r'\*_', self.bold_italic_regex, answer)
         return answer

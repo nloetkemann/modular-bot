@@ -3,22 +3,25 @@ from src.config import config
 
 
 class Help(Plugin):
-    def general_help(self, args):
-        plugins = []
+    def __init__(self, name, plugin_config):
+        super().__init__(name, plugin_config)
+        self.plugins = []
         for plugin in config.get_plugins():
             method_help = {}
             for method in plugin.methods:
-                help = plugin.get_method_attr(method).get_help()
-                method_help[method] = help
+                help_text = plugin.get_method_attr(method).get_help()
+                method_help[method] = help_text
 
             plugin_help = {'description': plugin.get_description(), 'methods': method_help, 'name': plugin.name}
-            plugins.append(plugin_help)
+            self.plugins.append(plugin_help)
 
-        help = ''
-        for plugin in plugins:
-            help += '**{0}**\n{1}\n\n'.format(plugin['name'], plugin['description'])
+    def general_help(self, args):
+        help_text = ''
+        for plugin in self.plugins:
+            help_text += '*_{0}*_\n{1}'.format(plugin['name'], plugin['description'])
             for method in plugin['methods']:
-                help += '\n__{0}__:\n{1}'.format(str(method), str(plugin['methods'][method]))
+                help_text += '\n**-> {0}**:\n{1}'.format(method,
+                                                         plugin['methods'][method])
+        print(help_text)
 
-        print(help)
-        return {'$help': help}
+        return {'$help': help_text}

@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 class TelegramBot(Bot):
     name = 'telegram'
     bold_regex = '*'
-    bold_italic_regex = '***'
+    bold_italic_regex = '`'
     italic_regex = '_'
 
     def __init__(self, token: str):
@@ -34,7 +34,8 @@ class TelegramBot(Bot):
         self.bot = None
 
     def send_message(self, response: Response):
-        return self.bot.sendMessage(response.get_receiver(), self.format_answer(response.get_message()), parse_mode='Markdown')
+        message = self.format_answer(response.get_message())
+        return self.bot.sendMessage(response.get_receiver(), message, parse_mode='Markdown')
 
     def __on_chat_message(self, message: str):
         request = TelegramRequest(message)
