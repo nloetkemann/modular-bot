@@ -16,7 +16,7 @@ class Attribute:
         return self.list
 
     def get_params(self):
-        return self.params.values()
+        return list(self.params.values())
 
 
 class Keyword(Attribute):

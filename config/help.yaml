@@ -2,16 +2,35 @@ plugin:
   name: "help"
   description: "offers help"
   methods:
+    - name: plugin_help
+      help: 'A help for one plugin
+
+              '
+      keywords:
+        list:
+          - "hilfe für $plugin"
+        params:
+          - name: plugin
+            description: the name of the plugin
+      answers:
+        list:
+          - '$help'
+        params:
+          - name: help
+            description: 'the answer of the plugin'
+
     - name: "general_help"
       keywords:
         list:
           - "kannst du mir( bitte)? helfen"
           - "ich brauche hilfe"
           - "ich weiß nicht was ich (machen|tun){1} soll"
+          - "hilfe"
       answers:
         list:
           - "$help"
         params:
           - name: help
             description: "the help"
+
 

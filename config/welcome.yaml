@@ -6,7 +6,7 @@ plugin:
       help: 'Just say hello or any greeting'
       keywords:
         list:
-          - "hi"
+          - "hi\\b"
           - "hallo"
           - "moin"
           - "was geht"
