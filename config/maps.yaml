@@ -1,0 +1,24 @@
+plugin:
+  name: "maps"
+  description: "Maps Plugin"
+  methods:
+    - name: "calc_distance"
+      help: ''
+      keywords:
+        list:
+          - "wie weit ist es von $start bis( nach)? $end"
+          - "entfernung von $start bis( nach)? $end"
+          - "distanz zwischen $start und $end"
+        params:
+          - name: start
+            count: 2
+            description: "the start location"
+          - name: end
+            count: 2
+            description: "the end location"
+      answers:
+        list:
+          - "Die Distanze beträgt: $distance km"
+        params:
+          - name: distance
+            description: "the distance"

@@ -13,6 +13,7 @@ bot:
       value: "de"
   plugins:
     - name: wolfram
+    - name: maps
     - name: wiki
     - name: weather
     - name: welcome
