@@ -3,6 +3,7 @@ plugin:
   description: "eine Suchmaschine"
   methods:
     - name: "say_hello"
+      help: 'Just say hello or any greeting'
       keywords:
         list:
           - "hi"
@@ -10,7 +11,6 @@ plugin:
           - "moin"
           - "was geht"
           - "nabend"
-          - "moin moin"
       answers:
         list:
           - "Hi"
@@ -19,6 +19,9 @@ plugin:
           - "Nabend"
           - "Moin moin"
     - name: "how_are_you"
+      help: 'How is the Bot.
+
+            usage: __wie geht es dir__'
       keywords:
         list:
           - "wie geht(s)?( es dir)?"
@@ -28,6 +31,11 @@ plugin:
           - "Mir geht es sehr gut!"
           - "Mega gut"
     - name: "who_are_you"
+      help: 'Asks for the name
+
+            usage: __wer bist du__
+
+            __wie ist dein name__'
       keywords:
         list:
           - "wer bist du"
@@ -42,6 +50,9 @@ plugin:
           - name: name
             desciption: "the name of the bot"
     - name: "what_are_you_doing"
+      help: 'Ask what your bot is doing
+
+            use: __was machst du__'
       keywords:
         list:
           - "was machst du( gerade)?"

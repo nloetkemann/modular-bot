@@ -15,6 +15,7 @@ First install all the requirements
 There are two possible messengers
 - telegram
 - discord
+- (slack in progress)
 
 Just activate it in the config.yaml
 
@@ -45,6 +46,10 @@ plugins:
 > Hint: the name is case sensitive so, take care the name in your 
 > config.yaml matches the name of the yaml file of the plugin
 
+> Hint2: use the Nothing plugin to catch all wrong inputs and 
+> the help plugin to provide help for every activated plugin.
+> The Help plugin should be the last but one plugin in the list.
+> The Nothing plugin should be at the end of the list
 
 ## Write your own plugin
 
@@ -57,6 +62,7 @@ plugin:
   description: "a description is optional"
   methods:
     - name: "name_of_the_implemented_method_in_python"
+      help: 'A litle help for understanding what this method will do'
       keywords:
         list:
           - "do something with $param_name"
@@ -111,3 +117,14 @@ To make sure all parameter exists for a method you kann call:
 def name_of_the_implemented_method_in_python(self, param):
     self.requiere_param(param)
 ```
+
+## Syntax highlighting
+Because every bot has its own syntax highlighting, 
+there is a formatter in the Bot class, which formates the content to
+the highlighting of the messenger.
+
+so catch all highlights, use it like that:
+- to make it bold use: `**test**`
+- to make it italic use: `__test__`
+- for a third highlighting use `*_test*_` (will display differently 
+on telegram and discord)

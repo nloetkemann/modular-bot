@@ -3,6 +3,9 @@ plugin:
   description: "a smart calculator"
   methods:
     - name: "add_numbers"
+      help: 'Adds simply two numbers.
+
+            ask __was ist 3 + 4__'
       keywords:
         list:
           - "was ist $first \\+ $second"
@@ -22,6 +25,9 @@ plugin:
           - name: result
             description: "The result of the wiki search"
     - name: "calculate_term"
+      help: 'Calculates more different math problems.
+
+            use it like: __berechne 12 = x * 2__'
       keywords:
         list:
           - "berechne( mir)? $term"

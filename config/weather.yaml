@@ -3,6 +3,13 @@ plugin:
   description: "wetter station"
   methods:
     - name: "get_weather"
+      help: 'Ask for the weather.
+
+            Possible is:
+
+            __wie ist das wetter__,
+
+            __wie ist das wetter in Espelkamp__'
       keywords:
         list:
           - "gib mir das wetter( aus $standort)?( um $time)?"

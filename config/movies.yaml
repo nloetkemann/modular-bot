@@ -1,8 +1,13 @@
 plugin:
   name: "movies"
-  description: "infos about movies"
+  description: "You can get Infos about movies and actors"
   methods:
     - name: "get_movie_description"
+      help: 'You get the description of a movie.
+
+            Just ask for the content.
+
+            For example: __wovon handelt the Matrix__'
       keywords:
         list:
           - "wovon handelt $movie"
@@ -18,6 +23,9 @@ plugin:
           - name: description
             description: "the result description"
     - name: "get_movie_cast"
+      help: 'Get the first 7 actors a movie
+
+            Ask: __wer spielt in the Matrix__'
       keywords:
         list:
           - "wer spielt in $movie"
@@ -33,6 +41,9 @@ plugin:
             description: "the cast"
 
     - name: actor_details
+      help: 'Get more Information about an actor.
+
+            The question is: __filme von Morgan Freeman__'
       keywords:
         list:
           - "in welchen filme ist $actor"

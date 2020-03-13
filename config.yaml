@@ -16,8 +16,8 @@ bot:
     - name: wiki
     - name: weather
     - name: welcome
-    - name: help
     - name: movies
+    - name: help
     - name: nothing
 
 

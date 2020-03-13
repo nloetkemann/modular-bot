@@ -3,6 +3,11 @@ plugin:
   description: "eine Suchmaschine"
   methods:
     - name: "search_wiki"
+      help: 'This will perform a  wiki search to get the summary
+
+            ask __wer ist Taylor Swift__
+
+            or __was ist ein Nomen__ => Thanks to my litle brother'
       keywords:
         list:
           - "wer ist( ein| eine| das| die| der)? $searchKeyword"
