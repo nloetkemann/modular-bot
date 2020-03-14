@@ -21,6 +21,10 @@ class Maps(Plugin):
         self.geolocator = Nominatim(user_agent="BotMap")
 
     def __get_city(self, city_name):
+        """
+        :param city_name the name of the city
+        :return the city by name
+        """
         try:
             location = self.geolocator.geocode(city_name, timeout=3)
             self.actual_restarts = 0
@@ -36,6 +40,10 @@ class Maps(Plugin):
             return ''
 
     def __get_distance(self, start, end):
+        """
+        :param start the city from where to start
+        :param end the of the distance
+        """
         try:
             distance = geodesic((start.latitude, start.longitude),
                                 (end.latitude, end.longitude))
@@ -50,6 +58,11 @@ class Maps(Plugin):
                 raise e
 
     def calc_distance(self, args):
+        """
+        calcs the distance between two cities
+        :param args format {$start: rahden, $end: epelkamp}
+        :return in format {'$distance': 12)}
+        """
         self.requiere_param(args, '$start', '$end')
         start = args['$start']
         end = args['$end']
@@ -62,6 +75,11 @@ class Maps(Plugin):
         return {'$distance': '{:.2f}'.format(distance.kilometers)}
 
     def city_info(self, args):
+        """
+        get some city infos
+        :param args in format {$city: name}
+        :return in format {'$result': infos}
+        """
         self.requiere_param(args, '$city')
 
         city = self.__get_city(args['$city'])
