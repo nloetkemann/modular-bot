@@ -1,3 +1,6 @@
+from wikipedia import PageError
+
+from src.tools.tools import Tools
 from src.yaml.plugin import Plugin
 from src.config import config as global_config
 import wikipedia
@@ -23,8 +26,11 @@ class Wiki(Plugin):
             return Wiki.cut_result(result, end + 100)
 
     @staticmethod
-    def __get_summary(keyword: str, end: int = 600):
-        result = wikipedia.summary(keyword)
+    def get_summary(keyword: str, end: int = 600):
+        try:
+            result = wikipedia.summary(keyword)
+        except PageError:
+            return 'Kein Ergebnis gefunden'
         return '. '.join(Wiki.cut_result(result, end))
 
     def search_wiki(self, args: dict):
@@ -35,4 +41,4 @@ class Wiki(Plugin):
         """
         self.requiere_param(args, '$searchKeyword')
         search_keyword = args['$searchKeyword']
-        return {'$result': self.__get_summary(search_keyword).replace('*', r'\*')}
+        return {'$result': self.get_summary(search_keyword).replace('*', r'\*')}

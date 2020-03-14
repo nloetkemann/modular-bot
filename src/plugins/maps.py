@@ -1,5 +1,7 @@
 import logging
+from geopy import Location
 from geopy.exc import GeocoderTimedOut, GeocoderUnavailable
+from src.plugins.wiki import Wiki
 from src.yaml.plugin import Plugin
 from geopy.geocoders import Nominatim
 from geopy.distance import geodesic
@@ -58,3 +60,13 @@ class Maps(Plugin):
         distance = self.__get_distance(start_location, end_location)
 
         return {'$distance': '{:.2f}'.format(distance.kilometers)}
+
+    def city_info(self, args):
+        self.requiere_param(args, '$city')
+
+        city = self.__get_city(args['$city'])
+        assert isinstance(city, Location)
+        wiki_infos = Wiki.get_summary(city.address)
+
+        infos = '\n{0}\nKoordinaten: {1}, {2}\n{3}'.format(city.address, city.latitude, city.longitude, wiki_infos)
+        return {'$result': infos}

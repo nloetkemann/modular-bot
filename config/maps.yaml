@@ -9,6 +9,7 @@ plugin:
           - "wie weit ist es von $start bis( nach)? $end"
           - "entfernung von $start bis( nach)? $end"
           - "distanz zwischen $start und $end"
+          - "entfernung zwischen $start und $end"
         params:
           - name: start
             count: 2
@@ -22,3 +23,20 @@ plugin:
         params:
           - name: distance
             description: "the distance"
+
+    - name: city_info
+      help: ''
+      description: ''
+      keywords:
+       list:
+         - 'infos zu $city'
+       params:
+         - name: 'city'
+           description: 'the city name'
+      answers:
+        list:
+          - 'Hier einige Infos:$result'
+        params:
+          - name: result
+            description: 'the infos about the city'
+

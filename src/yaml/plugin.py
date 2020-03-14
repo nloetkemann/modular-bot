@@ -101,6 +101,7 @@ class Plugin:
         required_params = answers.get_params()
         index = random.randint(0, len(answer_list) - 1)
         answer = answer_list[index]
+        answer = Tools.remove_regex(answer)
 
         for param in required_params:
             assert isinstance(param, AnswerParam)
@@ -111,4 +112,4 @@ class Plugin:
                 answer = re.sub(r'\([A-Za-z\d\s]*\${0}\b[A-Za-z\d\s]*\)\?'.format(param.get_name()[1:]), '', answer)
         for key in given_params:
             answer = answer.replace(key, str(given_params[key]))
-        return Tools.remove_regex(answer)
+        return answer
