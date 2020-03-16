@@ -12,7 +12,6 @@ logger = logging.getLogger(__name__)
 
 
 class Maps(Plugin):
-    token_required = True
     max_restarts = 2
     actual_restarts = 0
 

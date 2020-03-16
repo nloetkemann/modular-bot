@@ -30,7 +30,9 @@ secrets:
   environment:
     - value: "to_be_set"
 ```
-
+### Plugins with secrets
+- weather [From here](https://home.openweathermap.org/users/sign_in)
+- wolfram [From here](http://products.wolframalpha.com/api/)
 
 ## Activate the plugins
 
