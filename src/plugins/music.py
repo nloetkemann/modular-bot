@@ -1,3 +1,4 @@
+from src.tools.tools import Tools
 from src.yaml.plugin import Plugin
 from PyLyrics import *
 
@@ -19,6 +20,6 @@ class Music(Plugin):
         self.requiere_param(args, '$song'), '$singer'
         song_name = args['$song']
         singer = args['$singer']
-        lyrics = PyLyrics.getLyrics(singer, song_name)
+        lyrics = '\n' + PyLyrics.getLyrics(singer, song_name)
 
-        return {'$result': lyrics, '$song': song_name}
+        return {'$result': lyrics, '$song': Tools.first_to_upper(song_name)}

@@ -3,10 +3,14 @@ plugin:
   description: "eine Suchmaschine für songtexte und musiker"
   methods:
     - name: "get_album"
-      help: ''
+      help: 'Returns all the albums of the musician
+
+            Ask: __welche Alben hat $singer__'
       keywords:
         list:
-          - "alben von $singer"
+          - "(die )?alben von $singer"
+          - "welche alben hat $singer"
+          - "Zeig mir die alben von $singer"
         params:
           - name: "singer"
             count: 3
@@ -18,10 +22,14 @@ plugin:
           - name: result
             description: "The result of the music search"
     - name: "get_lyric"
-      help: ''
+      help: 'Get the lyrics of a song
+
+            Ask: __text zu Mockingbird von Emninem__'
       keywords:
         list:
           - "text zu $song von $singer"
+          - "text von $song von $singer"
+          - "der inhalt von $song von $singer"
         params:
           - name: "song"
             count: 5
@@ -31,7 +39,7 @@ plugin:
             description: "the singer of the album"
       answers:
         list:
-          - "Der Text zu $song:$result"
+          - "**Der Text zu $song**:$result"
         params:
           - name: result
             description: "The result of the music search"
