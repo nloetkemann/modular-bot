@@ -49,5 +49,15 @@ class Tools:
             return yaml.load(config_file)
 
     @staticmethod
+    def split(content: str, count: int = 600, needle: str = '.'):
+        content_part = content[:count]
+        sentences = content_part.split(needle)
+        if len(sentences) > 2:
+            sentences.pop()
+            return needle.join(sentences)
+        else:
+            return needle.join(Tools.split(content, count + 100))
+
+    @staticmethod
     def first_to_upper(word: str):
         return word[0].upper() + word[1:]

@@ -5,6 +5,7 @@ from src.bot.bot import Bot
 from src.messages.response import Response
 from src.messages.telegram_request import TelegramRequest
 from src.plugin_handler import PluginHandler
+from src.tools.tools import Tools
 
 logger = logging.getLogger(__name__)
 
@@ -35,7 +36,14 @@ class TelegramBot(Bot):
 
     def send_message(self, response: Response):
         message = self.format_answer(response.get_message())
-        return self.bot.sendMessage(response.get_receiver(), message, parse_mode='Markdown')
+        if len(message) > 1000:
+            shorter_message = Tools.split(message, 1000, '\n')
+            rest_message = message[len(shorter_message):len(message)]
+            self.bot.sendMessage(response.get_receiver(), shorter_message, parse_mode='Markdown')
+            response.message = rest_message
+            self.send_message(response)
+        else:
+            self.bot.sendMessage(response.get_receiver(), message, parse_mode='Markdown')
 
     def __on_chat_message(self, message: str):
         request = TelegramRequest(message)

@@ -16,11 +16,9 @@ class Music(Plugin):
         return {'$result': result}
 
     def get_lyric(self, args):
-        self.requiere_param(args, '$song')
+        self.requiere_param(args, '$song'), '$singer'
         song_name = args['$song']
+        singer = args['$singer']
+        lyrics = PyLyrics.getLyrics(singer, song_name)
 
-        if '$singer' in args:
-
-
-
-        return {'$result': '', '$song': song_name}
+        return {'$result': lyrics, '$song': song_name}

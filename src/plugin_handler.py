@@ -38,7 +38,8 @@ class PluginHandler:
             if plugin.get_name() == plugin_name:
                 return plugin
 
-    def _get_regex_for_variable_type(self, param_type: str, count: int):
+    @staticmethod
+    def _get_regex_for_variable_type(param_type: str, count: int):
         if param_type == 'integer':
             if count > 1:
                 return r'(\d *){1,' + str(count - 1) + r'}\d'
@@ -90,7 +91,8 @@ class PluginHandler:
                         method_object = self.get_plugin_by_name(key).get_method_attr(method)
                         foundparams = self.__get_param_from_user_input(match[1], user_input, method_object)
                         # self.__too_many_params(key, method, foundparams)
-                        logger.info('Plugin {0} found with method {1} params: {2}'.format(key, method, str(foundparams)))
+                        logger.info(
+                            'Plugin {0} found with method {1} params: {2}'.format(key, method, str(foundparams)))
                         return self.get_plugin_by_name(key), method, foundparams
         raise NotFoundException('No Plugin or no Method found for "{0}"'.format(user_input))
 
@@ -137,9 +139,10 @@ class PluginHandler:
         for word in user_input.split(' '):
             if word in regex_words:
                 user_input = re.sub(word, '', user_input, 1)
-
         invert = r'((?!{0}).)*'
         param_regex = self._get_regex_for_variable_type(param_type, count)
         found = re.sub(invert.format(param_regex), '', user_input, 1)
         found = found.split(' ')[0:count]
+        if '' in found:
+            found = found[0:found.index('')]
         return ' '.join(found)

@@ -16,22 +16,12 @@ class Wiki(Plugin):
             wikipedia.set_lang('de')
 
     @staticmethod
-    def cut_result(result, end):
-        part_of_result = result[:end]
-        sentences = part_of_result.split('.')
-        if len(sentences) > 2:
-            sentences.pop()
-            return sentences
-        else:
-            return Wiki.cut_result(result, end + 100)
-
-    @staticmethod
     def get_summary(keyword: str, end: int = 600):
         try:
             result = wikipedia.summary(keyword)
         except PageError:
             return 'Kein Ergebnis gefunden'
-        return '. '.join(Wiki.cut_result(result, end))
+        return Tools.split(result, end)
 
     def search_wiki(self, args: dict):
         """
