@@ -5,6 +5,7 @@
 # email n.loetkemann@fh-bielefeld.de
 # -----------------------------------------------------------
 from src.bot.discord_bot import DiscordBot
+from src.bot.slack_bot import SlackBot
 from src.bot.telegram_bot import TelegramBot
 from src.exceptions.config_exception import ConfigException
 from src.exceptions.not_found_exception import NotFoundException
@@ -36,6 +37,8 @@ class Config:
                 bot = TelegramBot(token)
             elif bot_name == 'discord':
                 bot = DiscordBot(token)
+            elif bot_name == 'slack':
+                bot = SlackBot(token)
             else:
                 raise NotFoundException('{0} does not exist'.format(bot_name))
 

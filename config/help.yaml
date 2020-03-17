@@ -8,7 +8,7 @@ plugin:
               '
       keywords:
         list:
-          - "hilfe für $plugin"
+          - "hilfe (für |zu )$plugin"
         params:
           - name: plugin
             description: the name of the plugin

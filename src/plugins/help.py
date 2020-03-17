@@ -50,4 +50,4 @@ class Help(Plugin):
                                                                        keywords, params)
 
                 return {'$help': help_text}
-        return {'$help': 'Zu dem Plugin {0} konnte ich keine Hilfe finden.'.format(plugin_name)}
+        return {'$help': 'Zu dem Plugin **{0}** konnte ich keine Hilfe finden.'.format(plugin_name)}
