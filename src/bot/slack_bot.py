@@ -1,7 +1,9 @@
+import asyncio
+
 from src.bot.bot import Bot
-from slackclient import SlackClient
-import time
-import re
+from slack import RTMClient
+from src.messages.response import Response
+from src.messages.slack_request import SlackRequest
 
 DELAY = 1
 MENTION_REGEX = "^<@(|[WU].+?)>(.*)"
@@ -11,31 +13,33 @@ class SlackBot(Bot):
 
     def __init__(self, token):
         super().__init__(token)
-        self.slack_client = SlackClient(self.token)
-        self.bot_id = self.slack_client.api_call("auth.test")["user_id"]
+        print(token)
+        asyncio.get_child_watcher()
+        self.myloop = asyncio.get_event_loop()
+        self.myloop.create_task(self.__start_loop())
+        self.slack_client = RTMClient(token=str(self.token), loop=self.myloop)
 
-    def __parse_bot_commands(self, slack_events):
-        for event in slack_events:
-            if event["type"] == "message" and not "subtype" in event:
-                user_id, message = self.__parse_direct_mention(event["text"])
-                if user_id == self.bot_id:
-                    return message, event["channel"]
-        return None, None
+    async def __start_loop(self):
+        await asyncio.ensure_future(self.slack_client._connect_and_read(), loop=self.myloop)
 
-    def __parse_direct_mention(self, message_text):
-        matches = re.search(MENTION_REGEX, message_text)
-        return (matches.group(1), matches.group(2).strip()) if matches else (None, None)
+    @RTMClient.run_on(event='message')
+    def __handle_command(self, **payload):
+        data = payload['data']
+        print(data)
+        request = SlackRequest(payload)
+        response = Response('Hallo', request.chat_id, payload['rtm_client'])
+        self.send_message(response)
+
+    def send_message(self, response: Response):
+        if len(response.args) == 1:
+            response.args[0].chat_postMessage(
+                channel=response.get_receiver(),
+                text=response.get_message()
+            )
 
     def start_bot(self, handler):
-        while True:
-            command, channel = self.__parse_bot_commands(self.slack_client.rtm_read())
-            if command:
-                print(command)
-                # handle_command(command, channel)
-            time.sleep(DELAY)
-
-    def send_message(self, response):
-        pass
+        self.handler = handler
+        self.myloop.run_forever()
 
     def exit(self):
-        pass
+        self.myloop.stop()
