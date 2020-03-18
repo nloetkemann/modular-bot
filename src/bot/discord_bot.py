@@ -5,6 +5,7 @@ import asyncio
 from src.bot.bot import Bot
 from src.messages.discord_request import DiscordRequest
 from src.messages.response import Response
+from src.tools.tools import Tools
 
 MENTION_REGEX = r'<@\!\d+>'
 
@@ -53,7 +54,15 @@ class DiscordBot(Bot, discord.Client):
             await self.send_message(response)
 
     async def send_message(self, response):
-        await response.get_receiver().channel.send(response.get_message())
+        message = response.get_message()
+        if len(message) > 2000:
+            shorter_message = Tools.split(message, 2000 , '\n')
+            rest_message = message[len(shorter_message):len(message)]
+            await response.get_receiver().channel.send(shorter_message)
+            response.message = rest_message
+            await self.send_message(response)
+        else:
+            await response.get_receiver().channel.send(response.get_message())
 
     def exit(self):
         self.myloop.stop()
