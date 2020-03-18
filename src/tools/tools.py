@@ -3,6 +3,7 @@ import re
 import yamale
 import os
 import yaml
+from emoji import emojize
 
 logger = logging.getLogger(__name__)
 
@@ -50,13 +51,14 @@ class Tools:
 
     @staticmethod
     def split(content: str, count: int = 600, needle: str = '.'):
+        seperator = needle + ' '
         content_part = content[:count]
         sentences = content_part.split(needle)
         if len(sentences) > 2:
             sentences.pop()
-            return needle.join(sentences)
+            return seperator.join(sentences)
         else:
-            return needle.join(Tools.split(content, count + 100))
+            return seperator.join(Tools.split(content, count + 100))
 
     @staticmethod
     def first_to_upper(word: str):

@@ -3,7 +3,9 @@ plugin:
   description: "Maps Plugin"
   methods:
     - name: "calc_distance"
-      help: ''
+      help: 'get the distance between to cities.
+
+            Ask: __distanz zwischen Hamburg und Berlin__'
       keywords:
         list:
           - "wie weit ist es von $start bis( nach)? $end"
@@ -25,8 +27,9 @@ plugin:
             description: "the distance"
 
     - name: city_info
-      help: ''
-      description: ''
+      help: 'gets some details about the location.
+
+            Ask: __infos zu Hamburg__'
       keywords:
        list:
          - 'infos zu $city'

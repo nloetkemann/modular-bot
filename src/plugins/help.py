@@ -51,3 +51,10 @@ class Help(Plugin):
 
                 return {'$help': help_text}
         return {'$help': 'Zu dem Plugin **{0}** konnte ich keine Hilfe finden.'.format(plugin_name)}
+
+    def plugin_list(self, args):
+        plugins = ''
+        for plugin in self.plugins:
+            plugins += '\n- {0}'.format(plugin['name'])
+
+        return {'$list': plugins}

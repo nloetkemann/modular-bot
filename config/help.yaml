@@ -5,7 +5,9 @@ plugin:
     - name: plugin_help
       help: 'A help for one plugin
 
-              '
+            Ask: __hilfe für Wiki__
+
+            or __hilfe zu Wolfram__'
       keywords:
         list:
           - "hilfe (für |zu )$plugin"
@@ -20,6 +22,11 @@ plugin:
             description: 'the answer of the plugin'
 
     - name: "general_help"
+      help: 'Help for one plugin.
+
+            Ask: __hilfe__
+
+            or __ich brauche hilfe__'
       keywords:
         list:
           - "kannst du mir( bitte)? helfen"
@@ -32,5 +39,19 @@ plugin:
         params:
           - name: help
             description: "the help"
+    - name: "plugin_list"
+      help: 'Just ask __list plugins__ or __welche plugins gibt es__'
+      keywords:
+        list:
+          - 'list plugins'
+          - 'welche plugins gibt es'
+          - 'alle plugins'
+      answers:
+        list:
+          - 'Hier sind alle aktiven Plugins:$list'
+        params:
+          - name: list
+            description: 'the plugin list'
+
 
 
