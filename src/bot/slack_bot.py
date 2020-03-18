@@ -16,11 +16,11 @@ class SlackBot(Bot):
         print(token)
         asyncio.get_child_watcher()
         self.myloop = asyncio.get_event_loop()
-        self.myloop.create_task(self.__start_loop())
         self.slack_client = RTMClient(token=str(self.token), loop=self.myloop)
 
-    async def __start_loop(self):
-        await asyncio.ensure_future(self.slack_client._connect_and_read(), loop=self.myloop)
+    def __start_loop(self):
+        future = asyncio.ensure_future(self.slack_client._connect_and_read(), loop=self.myloop)
+        return self.myloop.run_until_complete(future)
 
     @RTMClient.run_on(event='message')
     def __handle_command(self, **payload):
@@ -39,7 +39,7 @@ class SlackBot(Bot):
 
     def start_bot(self, handler):
         self.handler = handler
-        self.myloop.run_forever()
+        self.__start_loop()
 
     def exit(self):
         self.myloop.stop()
