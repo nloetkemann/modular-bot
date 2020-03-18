@@ -1,3 +1,4 @@
+translate==3.5.0
 PyLyrics==1.1.0
 wolframalpha
 requests

@@ -1,0 +1,24 @@
+plugin:
+  name: "translate"
+  description: "Translate Plugin"
+  methods:
+    - name: "translate_from_german"
+      help: ''
+      keywords:
+        list:
+          - "was bedeutet $content auf $language"
+          - "translate $content - $language"
+        params:
+          - name: content
+            count: 6
+            description: "the content in german"
+          - name: language
+            count: 2
+            description: "the target language"
+      answers:
+        list:
+          - "Übersetzt:$translation"
+        params:
+          - name: translation
+            description: "the translation"
+

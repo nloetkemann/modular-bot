@@ -12,6 +12,7 @@ bot:
     - name: "language"
       value: "de"
   plugins:
+    - name: translate
     - name: wolfram
     - name: maps
     - name: music
