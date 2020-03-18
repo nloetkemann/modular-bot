@@ -2,8 +2,40 @@ plugin:
   name: "translate"
   description: "Translate Plugin"
   methods:
-    - name: "translate_from_german"
-      help: ''
+    - name: "translate_into_language"
+      help: 'For translations. from any language into another language.
+
+            Ask: __was bedeutet hallo von de nach en__
+
+            or: __translate $content - $base - $target__'
+      keywords:
+        list:
+          - "was bedeutet $content von $base nach $target"
+          - "translate $content - $base - $target"
+        params:
+          - name: content
+            count: 6
+            description: "the content in german"
+          - name: base
+            count: 2
+            description: "the base language"
+          - name: target
+            count: 2
+            description: "the target language"
+      answers:
+        list:
+          - "Übersetzt:$translation"
+        params:
+          - name: translation
+            description: "the translation"
+    - name: "translate_from_default"
+      help: 'For translations from german into other languages.
+
+            You can use the language codes to define which translations you want.
+
+            Ask: __was bedeutet hallo auf chinesisch__
+
+            or: __translate hallo - lt__'
       keywords:
         list:
           - "was bedeutet $content auf $language"
@@ -13,6 +45,32 @@ plugin:
             count: 6
             description: "the content in german"
           - name: language
+            count: 2
+            description: "the target language"
+      answers:
+        list:
+          - "Übersetzt:$translation"
+        params:
+          - name: translation
+            description: "the translation"
+    - name: "translate_into_language"
+      help: 'For translations. from any language into another language.
+
+            Ask: __was bedeutet hallo von de nach en__
+
+            or: __translate $content - $base - $target__'
+      keywords:
+        list:
+          - "was bedeutet $content von $base nach $target"
+          - "translate $content - $base - $target"
+        params:
+          - name: content
+            count: 6
+            description: "the content in german"
+          - name: base
+            count: 2
+            description: "the base language"
+          - name: target
             count: 2
             description: "the target language"
       answers:

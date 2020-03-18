@@ -1,5 +1,6 @@
 from src.yaml.plugin import Plugin
 from translate import Translator
+from src.config import config as global_config
 
 
 class Translate(Plugin):
@@ -26,10 +27,24 @@ class Translate(Plugin):
         if len(language) == 2:
             return language
 
-    def translate_from_german(self, args):
+    @staticmethod
+    def translate(content, base_language, target_language):
+        translator = Translator(from_lang=base_language, to_lang=target_language)
+        return translator.translate(content)
+
+    def translate_from_default(self, args):
         self.requiere_param(args, '$content', '$language')
         content = args['$content']
         language = args['$language']
-        translator = Translator(from_lang='de', to_lang=self.__get_language(language))
-        translation = translator.translate(content)
-        return {'$translation': '\n' + translation}
+        if global_config.env_value_exists('language'):
+            base_language = global_config.get_env('language')
+        else:
+            base_language = 'de'
+        return {'$translation': '\n' + self.translate(content, base_language, self.__get_language(language))}
+
+    def translate_into_language(self, args):
+        self.requiere_param(args, '$content', '$base', '$target')
+        content = args['$content']
+        base = args['$base']
+        target = args['$target']
+        return {'$translation': '\n' + self.translate(content, self.__get_language(base), self.__get_language(target))}
