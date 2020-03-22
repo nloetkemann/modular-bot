@@ -64,4 +64,69 @@ plugin:
             description: "what am i doing"
           - name: how
             desciption: "how am i doing it"
+    - name: 'if_bot_needs_help'
+      help: 'Ask __brauchst du Hilfe__'
+      keywords:
+        list:
+          - 'kann ich dir helfen'
+          - 'ist dir noch zu helfen'
+          - 'brauchst du hilfe'
+      answers:
+        list:
+          - 'Nee danke, ich komme sehr gut klar'
+          - 'Hm nicht sicher, aufgrund der Gesundheitsbestimmungen darf ich keine Handshakes mehr machen.
+              Ist also alles nicht sicher'
+          - 'Ohh das ist aber nett....'
+          - 'Sehe ich so aus als würde ich Hilfe brauchen'
+          - 'Jetzt wo ich darüber nachdenke, fällt mir bestimmt was ein...'
+          - 'Nicht sicher wie du mir helfen willst.'
+    - name: how_old_is_bot
+      help: ''
+      keywords:
+        list:
+          - 'wie alt bist du'
+          - 'wie lange lebst du schon'
+          - 'wie lange gibt es dich schon'
+          - 'wie viele jahre alt bist du'
+      answers:
+        list:
+          - 'ich bin schon $days Tage alt'
+          - 'Mich gibt es schon $days Tage'
+          - 'Ich wurde vor $days erschaffen'
+    - name: what_bot_is_able_to
+      help: ''
+      keywords:
+        list:
+          - 'was kannst du'
+      answers:
+        list:
+          - 'Gar nicht mal so wenig, frag mich mal nach meinen Plugins. "__list plugins__"'
+          - 'Ich lerne immer mehr. Du kannst mich immer nach meinen Plugins fragen. "__list_plugins__"'
+    - name: where_is_your_work
+      help: ''
+      keywords:
+        list:
+          - 'wo arbeitest du'
+          - 'als was arbeitest du'
+          - 'was ist dein job'
+      answers:
+        list:
+          - 'Ich arbeite im Internet und helfe Leuten die mich die ganze mit Fragen löchern.'
+          - 'Ich mache Homeoffice, ich kann sehr gut von zu Hause arbeiten.'
+          - 'Man könnte mich sagen, ich arbeite im Kundenservice.'
+    - name: what_is_your_gender
+      help: ''
+      keywords:
+        list:
+          - 'bist du eine frau'
+          - 'welches geschlect hast du'
+          - 'bist du ein mann'
+      answers:
+        list:
+          - 'Ich bin was immer du auch möchtest...'
+          - 'Spielt das wirkliche eine Rolle'
+          - 'Da bin ich mir selber nicht ganz sicher, aber ich bin glücklich, so wie ich bin.'
+          - 'Kömische Frage, ist ziemlich persönlich oder?'
+          - 'Ach das ist doch egal, Hauptsache ich kann dir helfen.'
+
 

@@ -14,6 +14,7 @@ bot:
   plugins:
     - name: translate
     - name: wolfram
+    - name: date
     - name: maps
     - name: music
     - name: wiki

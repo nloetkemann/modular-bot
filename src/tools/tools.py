@@ -3,7 +3,6 @@ import re
 import yamale
 import os
 import yaml
-from emoji import emojize
 
 logger = logging.getLogger(__name__)
 

@@ -1,0 +1,38 @@
+plugin:
+  name: "date"
+  description: "You can get the time or the date"
+  methods:
+    - name: "get_time"
+      help: 'You can get the time.
+
+            For example: __wie viel Uhr ist es__'
+      keywords:
+        list:
+          - "wie viel uhr ist es"
+          - "welche Zeit ist es"
+          - "welche Uhrzeit ist es"
+      answers:
+        list:
+          - "Es ist $time"
+          - "Jetzt ist es $time"
+        params:
+          - name: time
+            description: "the time"
+    - name: "get_date"
+      help: 'You can get the date.
+
+            For example: __welchen Tag haben wir heute__'
+      keywords:
+        list:
+          - "welchen tag haben wir heute"
+          - "welches datum haben wir"
+          - "was für ein datum haben wir"
+          - "welches datum ist es"
+      answers:
+        list:
+          - "Es ist $day, der $date"
+        params:
+          - name: "day"
+            description: "the name of the day"
+          - name: "date"
+            description: "the date"
