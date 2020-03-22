@@ -68,7 +68,7 @@ plugin:
       help: 'Ask __brauchst du Hilfe__'
       keywords:
         list:
-          - 'kann ich dir helfen'
+          - '(wie )?kann ich dir helfen'
           - 'ist dir noch zu helfen'
           - 'brauchst du hilfe'
       answers:
@@ -102,6 +102,7 @@ plugin:
         list:
           - 'Gar nicht mal so wenig, frag mich mal nach meinen Plugins. "__list plugins__"'
           - 'Ich lerne immer mehr. Du kannst mich immer nach meinen Plugins fragen. "__list_plugins__"'
+          - 'Es kommt ganz drauf an, welche Skills aktiviert sind. Frag einfach nach "__list_plugins__"'
     - name: where_is_your_work
       help: ''
       keywords:
