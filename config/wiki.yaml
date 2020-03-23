@@ -7,7 +7,7 @@ plugin:
 
             ask __wer ist Taylor Swift__
 
-            or __was ist ein Nomen__ => Thanks to my litle brother'
+            or __was ist ein Nomen__ => Thanks to my little brother'
       keywords:
         list:
           - "wer ist( ein| eine| das| die| der)? $searchKeyword"
