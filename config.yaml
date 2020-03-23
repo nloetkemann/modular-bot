@@ -16,6 +16,7 @@ bot:
     - name: wolfram
     - name: date
     - name: maps
+    - name: entertainment
     - name: music
     - name: wiki
     - name: weather

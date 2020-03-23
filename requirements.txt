@@ -11,3 +11,4 @@ discord==1.0.1
 slackclient==2.5.0
 IMDbPY==6.8
 geopy==1.21.0
+bs4==0.0.1

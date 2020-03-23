@@ -83,7 +83,7 @@ class PluginHandler:
         :return: [] an array of three elems. first the plugin, second the method, third the param found
         """
         assert isinstance(user_input, str)
-        user_input = user_input.lower()
+        user_input = user_input.lower().replace('  ', ' ')
         for key in self.keywords:
             for method in self.keywords[key]:
                 for match in self.keywords[key][method]:
