@@ -138,7 +138,7 @@ class PluginHandler:
         regex_words = regex.split(' ')
         for word in user_input.split(' '):
             if word in regex_words:
-                user_input = re.sub(word, '', user_input, 1)
+                user_input = re.sub(r'\b' + word, '', user_input, 1)
         invert = r'((?!{0}).)*'
         param_regex = self._get_regex_for_variable_type(param_type, count)
         found = re.sub(invert.format(param_regex), '', user_input, 1)
