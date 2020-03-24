@@ -19,6 +19,13 @@ class Maps(Plugin):
         super().__init__(name, plugin_config)
         self.geolocator = Nominatim(user_agent="BotMap")
 
+    @staticmethod
+    def get_coordinates(city_name):
+        geolocator = Nominatim()
+        city = geolocator.geocode(city_name, timeout=3)
+        assert isinstance(city, Location)
+        return city.latitude, city.longitude
+
     def __get_city(self, city_name):
         """
         :param city_name the name of the city

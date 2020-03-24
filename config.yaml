@@ -14,6 +14,7 @@ bot:
   plugins:
     - name: translate
     - name: wolfram
+    - name: gas_prices
     - name: date
     - name: maps
     - name: entertainment

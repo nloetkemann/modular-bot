@@ -1,0 +1,25 @@
+plugin:
+  name: "gas_prices"
+  description: "get the gas prices
+
+              nutzt:
+                - clever-tanken.de"
+  methods:
+    - name: "get_prices"
+      help: ''
+      keywords:
+        list:
+          - "wie teuer ist $type"
+        params:
+          - name: 'type'
+            count: 2
+            description: 'the type of gas'
+      answers:
+        list:
+          - "$type: $price"
+        params:
+          - name: type
+            description: "the type of gas"
+          - name: price
+            description: "the price of the gas"
+
