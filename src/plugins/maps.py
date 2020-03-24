@@ -22,9 +22,13 @@ class Maps(Plugin):
     @staticmethod
     def get_coordinates(city_name):
         geolocator = Nominatim()
-        city = geolocator.geocode(city_name, timeout=3)
+        city = geolocator.geocode(city_name, timeout=5)
         assert isinstance(city, Location)
-        return city.latitude, city.longitude
+        return city.latitude, city.longitude, Maps.extract_plz(city)
+
+    @staticmethod
+    def extract_plz(city: Location):
+        return city.raw['display_name'].split(',')[-2].strip()
 
     def __get_city(self, city_name):
         """

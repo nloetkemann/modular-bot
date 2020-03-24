@@ -5,6 +5,28 @@ plugin:
               nutzt:
                 - clever-tanken.de"
   methods:
+    - name: get_prices_in_city
+      help: ''
+      keywords:
+        list:
+          - "wie teuer ist $type in $city"
+        params:
+          - name: 'type'
+            count: 2
+            description: 'the type of gas'
+          - name: 'city'
+            count: 3
+            description: 'the city to search'
+      answers:
+        list:
+          - "$type in $city: $list"
+        params:
+          - name: type
+            description: "the type of gas"
+          - name: list
+            description: "the price of the gas"
+          - name: city
+            description: "the city"
     - name: "get_prices"
       help: ''
       keywords:
@@ -16,10 +38,9 @@ plugin:
             description: 'the type of gas'
       answers:
         list:
-          - "$type: $price"
+          - "$type: $list"
         params:
           - name: type
             description: "the type of gas"
-          - name: price
+          - name: list
             description: "the price of the gas"
-
