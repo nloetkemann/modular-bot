@@ -93,22 +93,28 @@ class Maps(Plugin):
         :return in format {'$result': infos}
         """
         self.requiere_param(args, '$city')
-
-        city = self.__get_city(args['$city'])
+        city_name = args['$city']
+        city = self.__get_city(city_name)
         assert isinstance(city, Location)
         wiki_infos = Wiki.get_summary(city.address)
+        city_photo = self.get_map_by_name(city_name)
 
         infos = '\n{0}\nKoordinaten: {1}, {2}\n{3}'.format(city.address, city.latitude, city.longitude, wiki_infos)
-        return {'$result': infos}
+        return {'$result': infos, '__photo': city_photo}
 
     @staticmethod
-    def get_map_as_img():
+    def get_map_by_name(location: str) -> str:
+        m = StaticMap(1400, 1400)
+        lat, long, _ = Maps.get_coordinates(location)
+        return Maps.get_map_by_coords(lat, long)
+
+    @staticmethod
+    def get_map_by_coords(latitude: float, longitude: float) -> str:
         m = StaticMap(800, 800)
-        lat, long, _ = Maps.get_coordinates('Rahden')
-        icon_flag = IconMarker((long, lat), './static/flag.png', 12, 32)
+        icon_flag = IconMarker((longitude, latitude), './static/flag.png', 12, 32)
         m.add_marker(icon_flag)
-        image = m.render()
+        image = m.render(zoom=12)
         timestamp = datetime.datetime.now().timestamp()
-        name = './temp/{0}-{1}-{2}.png'.format(timestamp, lat, long)
+        name = './temp/{0}-{1}-{2}.png'.format(timestamp, latitude, longitude)
         image.save(name)
         return name

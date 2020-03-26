@@ -1,7 +1,7 @@
 from threading import Thread
 
 
-class FunctionThread:
+class BotThread:
     def __init__(self, function, args=[]):
         self.function = function
         self.thread = Thread(target=self.function, args=args)

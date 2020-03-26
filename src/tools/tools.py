@@ -62,3 +62,7 @@ class Tools:
     @staticmethod
     def first_to_upper(word: str):
         return word[0].upper() + word[1:]
+
+    @staticmethod
+    def remove_file(file_path):
+        os.remove(file_path)

@@ -58,6 +58,7 @@ class TelegramBot(Bot):
         if _type != '':
             if _type == 'photo':
                 self.send_image(Response(file, request.chat_id))
+            Tools.remove_file(file)
 
     def __on_callback(self, callback):
         print(callback)

@@ -2,7 +2,7 @@ import logging
 from src.config import config
 from src.plugin_loader import PluginLoader
 from src.plugin_handler import PluginHandler
-from src.tools.function_thread import FunctionThread
+from src.tools.bot_thread import BotThread
 
 logging.basicConfig(level=logging.INFO)
 
@@ -14,6 +14,6 @@ if __name__ == '__main__':
     handler = PluginHandler(loader.get_plugins())
 
     for key in config.bots:
-        thread = FunctionThread(config.bots[key].start_bot, [handler])
+        thread = BotThread(config.bots[key].start_bot, [handler])
         thread.start()
         threads[key] = thread
