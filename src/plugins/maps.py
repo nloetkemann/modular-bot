@@ -3,6 +3,7 @@ import logging
 from geopy import Location
 from geopy.exc import GeocoderTimedOut, GeocoderUnavailable
 from src.plugins.wiki import Wiki
+from src.tools.method_thread import MethodThread
 from src.yaml.plugin import Plugin
 from geopy.geocoders import Nominatim
 from geopy.distance import geodesic
@@ -96,9 +97,14 @@ class Maps(Plugin):
         city_name = args['$city']
         city = self.__get_city(city_name)
         assert isinstance(city, Location)
-        wiki_infos = Wiki.get_summary(city.address)
-        city_photo = self.get_map_by_name(city_name)
+        wiki_thread = MethodThread(Wiki.get_summary, city.address)
+        wiki_thread.start()
 
+        photo_thread = MethodThread(self.get_map_by_name, city_name)
+        photo_thread.start()
+
+        city_photo = photo_thread.join_get_response()
+        wiki_infos = wiki_thread.join_get_response()
         infos = '\n{0}\nKoordinaten: {1}, {2}\n{3}'.format(city.address, city.latitude, city.longitude, wiki_infos)
         return {'$result': infos, '__photo': city_photo}
 
