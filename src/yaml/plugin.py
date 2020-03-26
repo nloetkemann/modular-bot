@@ -84,7 +84,11 @@ class Plugin:
         assert isinstance(method_name, str)
         assert isinstance(params, dict)
         answer_params = self.__get_method_by_name(method_name)(params)
-        return self.__answer(method_name, answer_params)
+        if '__photo' in answer_params:
+            return self.__answer(method_name, answer_params), answer_params['__file'], 'photo'
+        elif '__file' in answer_params:
+            return self.__answer(method_name, answer_params), answer_params['__file'], 'file'
+        return self.__answer(method_name, answer_params), None, ''
 
     def __answer(self, method_name, given_params):
         """

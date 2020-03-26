@@ -1,3 +1,4 @@
+import datetime
 import logging
 from geopy import Location
 from geopy.exc import GeocoderTimedOut, GeocoderUnavailable
@@ -5,6 +6,7 @@ from src.plugins.wiki import Wiki
 from src.yaml.plugin import Plugin
 from geopy.geocoders import Nominatim
 from geopy.distance import geodesic
+from staticmap import StaticMap, IconMarker
 
 logging.basicConfig(level=logging.INFO)
 
@@ -98,3 +100,15 @@ class Maps(Plugin):
 
         infos = '\n{0}\nKoordinaten: {1}, {2}\n{3}'.format(city.address, city.latitude, city.longitude, wiki_infos)
         return {'$result': infos}
+
+    @staticmethod
+    def get_map_as_img():
+        m = StaticMap(800, 800)
+        lat, long, _ = Maps.get_coordinates('Rahden')
+        icon_flag = IconMarker((long, lat), './static/flag.png', 12, 32)
+        m.add_marker(icon_flag)
+        image = m.render()
+        timestamp = datetime.datetime.now().timestamp()
+        name = './temp/{0}-{1}-{2}.png'.format(timestamp, lat, long)
+        image.save(name)
+        return name

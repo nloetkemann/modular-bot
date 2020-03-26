@@ -49,7 +49,7 @@ class DiscordBot(Bot, discord.Client):
             content = re.sub(MENTION_REGEX, '', content).strip()
             content = re.sub(self.CALL_PATTERN, '', content).strip()
             plugin, method, params = self.handler.validate_user_input(content)
-            answer = self.format_answer(plugin.call_method(method, params))
+            answer, file, _type = self.format_answer(plugin.call_method(method, params))
             response = Response(answer, message)
             await self.send_message(response)
 

@@ -37,6 +37,9 @@ class SlackBot(Bot):
                 text=response.get_message()
             )
 
+    def send_image(self, response: Response):
+        pass
+
     def start_bot(self, handler):
         self.handler = handler
         self.__start_loop()

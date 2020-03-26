@@ -45,12 +45,19 @@ class TelegramBot(Bot):
         else:
             self.bot.sendMessage(response.get_receiver(), message, parse_mode='Markdown')
 
+    def send_image(self, response: Response):
+        with open(response.get_message(), 'rb') as file:
+            self.bot.sendPhoto(response.get_receiver(), file)
+
     def __on_chat_message(self, message: str):
         request = TelegramRequest(message)
         plugin, method, params = self.handler.validate_user_input(request.get_text())
-        answer = plugin.call_method(method, params)
+        answer, file, _type = plugin.call_method(method, params)
         response = Response(answer, request.chat_id)
         self.send_message(response)
+        if _type != '':
+            if _type == 'photo':
+                self.send_image(Response(file, request.chat_id))
 
     def __on_callback(self, callback):
         print(callback)
