@@ -6,7 +6,6 @@ class MethodThread(Thread):
     _args = None
 
     def __init__(self, function=None, *args):
-        print(args)
         self.arguments = args
         Thread.__init__(self, target=function, args=args)
 
