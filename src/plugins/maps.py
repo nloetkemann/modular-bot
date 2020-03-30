@@ -110,7 +110,6 @@ class Maps(Plugin):
 
     @staticmethod
     def get_map_by_name(location: str) -> str:
-        m = StaticMap(1400, 1400)
         lat, long, _ = Maps.get_coordinates(location)
         return Maps.get_map_by_coords(lat, long)
 

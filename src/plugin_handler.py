@@ -28,7 +28,7 @@ class PluginHandler:
                 plugin_method[method.get_name()] = list_methods
             self.keywords[plugin.get_name()] = plugin_method
 
-    def get_plugin_by_name(self, plugin_name):
+    def get_plugin_by_name(self, plugin_name: str) -> any:
         """
         gets the plugin by name
         :param plugin_name: name of the plugin
@@ -39,7 +39,7 @@ class PluginHandler:
                 return plugin
 
     @staticmethod
-    def _get_regex_for_variable_type(param_type: str, count: int):
+    def _get_regex_for_variable_type(param_type: str, count: int) -> str:
         if param_type == 'integer':
             if count > 1:
                 return r'(\d *){1,' + str(count - 1) + r'}\d'
@@ -56,7 +56,7 @@ class PluginHandler:
             else:
                 return r'[A-Za-z\d]+'
 
-    def __get_keywords_as_regex(self, keywords, params):
+    def __get_keywords_as_regex(self, keywords: list, params: dict):
         """
         converts the given regex from the yaml files to valid regex, replacing the params with regex
         :param keywords: the keyword list from the yaml file
@@ -75,7 +75,7 @@ class PluginHandler:
             regex_matcher.append((match, keyword))
         return regex_matcher
 
-    def validate_user_input(self, user_input):
+    def validate_user_input(self, user_input: str) -> (any, Method, dict):
         """
         validates the user_input, means iterates through the plugins and checks with the given regex. which plugin,
         which method and which parameter are given
@@ -96,7 +96,7 @@ class PluginHandler:
                         return self.get_plugin_by_name(key), method, foundparams
         raise NotFoundException('No Plugin or no Method found for "{0}"'.format(user_input))
 
-    def __too_many_params(self, plugin, method, params):
+    def __too_many_params(self, plugin: any, method: Method, params: dict):
         plugin = self.get_plugin_by_name(plugin)
         method = plugin.get_method_attr(method)
         for param_name in params:
@@ -107,8 +107,7 @@ class PluginHandler:
                     '{0} given with a length of {1}, allowed is {2}'.format(params[param_name], len(words),
                                                                             count))
 
-    def __get_param_from_user_input(self, original, user_input,
-                                    method):  # todo abhaenig machen von dem regex aus der yaml!!!!!
+    def __get_param_from_user_input(self, original: str, user_input: str, method: Method) -> dict:
         """
         iterates through all params and extracts the params from the user_input
         :param original: the value given in the plugin yaml file. Containing parameters starting with $
@@ -126,7 +125,7 @@ class PluginHandler:
                 user_input = user_input.replace(foundparam, '', 1)
         return foundparams
 
-    def __trim_words(self, user_input, regex, count, param_type):
+    def __trim_words(self, user_input: str, regex: str, count: int, param_type: str) -> str:
         """
         first remove all words which are the same from regex and the user input
         then invert the match and replace the result in the user input
@@ -138,7 +137,10 @@ class PluginHandler:
         regex_words = regex.split(' ')
         for word in user_input.split(' '):
             if word in regex_words:
-                user_input = re.sub(r'\b' + word, '', user_input, 1)
+                if word == '-':
+                    user_input = re.sub(word, '', user_input, 1)
+                else:
+                    user_input = re.sub(r'\b' + word, '', user_input, 1)
         invert = r'((?!{0}).)*'
         param_regex = self._get_regex_for_variable_type(param_type, count)
         found = re.sub(invert.format(param_regex), '', user_input, 1)

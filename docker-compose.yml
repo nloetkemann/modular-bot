@@ -4,3 +4,8 @@ services:
   bot:
     build: .
     container_name: bot
+    entrypoint:
+      DESCRIPTION: ''
+      BOT_NAME: ''
+
+

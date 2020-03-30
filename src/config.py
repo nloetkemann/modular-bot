@@ -4,6 +4,8 @@
 # 2020 Nikita Lötkemann, Rahden, Germany
 # email n.loetkemann@fh-bielefeld.de
 # -----------------------------------------------------------
+import os
+
 from src.bot.discord_bot import DiscordBot
 from src.bot.slack_bot import SlackBot
 from src.bot.telegram_bot import TelegramBot
@@ -15,8 +17,37 @@ from src.tools.tools import Tools
 
 class Config:
     """Stores the config loaded from the yaml files. Serves as Storage"""
+    config = None
+    name = ''
+    environment = None
+    plugins = None
+    description = ''
+    list_plugin_objects = []
+    bots = {}
 
-    def __init__(self, config_path='./config.yaml', secrets_path='./secrets.yaml'):
+    messenger_names = {'': ''}
+
+    def __init__(self, config_path='./config.yaml', secrets_path=''):
+        self.secrets = Secrets(secrets_path)
+        if 'CONFIG_ENV' in os.environ:
+            self.load_from_env()
+        else:
+            self.load_from_file(config_path)
+        print(self.environment)
+        print(self.config)
+        print(self.name)
+        print(self.list_plugin_objects)
+
+    def load_from_env(self):
+        for messenger in self.messenger_names:
+            bot_name = self.messenger_names[messenger]
+            bot = self.__create_bot_by_name(bot_name)
+            self.bots[bot_name] = bot
+
+        self.name = 'BOT_NAME' in os.environ if os.environ['BOT_NAME'] else 'Bot'
+        # todo keep going
+
+    def load_from_file(self, config_path: str):
         ok, error = Tools.validate_yaml('./schemas/config-schema.yaml', config_path)
         if not ok:
             raise ConfigException('The Config file is not correct formatted: ' + error)
@@ -25,32 +56,34 @@ class Config:
         self.name = self.config['bot']['name']
         self.environment = self.config['bot']['environment']
         self.plugins = self.config['bot']['plugins']
-        self.desciption = self.config['bot']['description']
-        self.secrets = Secrets(secrets_path)
+        self.description = self.config['bot']['description']
 
         self.list_plugin_objects = []
 
         self.bots = {}
         for bot_name in self.config['bot']['messenger']:
-            token = self.secrets.get_secret(bot_name, 'bots')
-            if bot_name == 'telegram':
-                bot = TelegramBot(token)
-            elif bot_name == 'discord':
-                bot = DiscordBot(token)
-            elif bot_name == 'slack':
-                bot = SlackBot(token)
-            else:
-                raise NotFoundException('{0} does not exist'.format(bot_name))
-
+            bot = self.__create_bot_by_name(bot_name)
             self.bots[bot_name] = bot
+
+    def __create_bot_by_name(self, bot_name: str):
+        token = self.secrets.get_secret(bot_name, 'bots')
+        if bot_name == 'telegram':
+            bot = TelegramBot(token)
+        elif bot_name == 'discord':
+            bot = DiscordBot(token)
+        elif bot_name == 'slack':
+            bot = SlackBot(token)
+        else:
+            raise NotFoundException('{0} does not exist'.format(bot_name))
+        return bot
 
     def add_to_plugins(self, plugin):
         self.list_plugin_objects.append(plugin)
 
-    def get_plugins(self):
+    def get_plugins(self) -> list:
         return self.list_plugin_objects
 
-    def get_env(self, name):
+    def get_env(self, name: str) -> str:
         """
         returns the value of the environment variable
         :param name: the name of the variable
@@ -61,7 +94,7 @@ class Config:
                 return entry['value']
         return ''
 
-    def env_value_exists(self, name):
+    def env_value_exists(self, name: str) -> bool:
         """
         checks if the environment variable is set
         :param name: the name of the variable
@@ -73,4 +106,4 @@ class Config:
         return False
 
 
-config = Config()
+config = Config(secrets_path='./secrets.yaml')

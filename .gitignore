@@ -3,3 +3,4 @@
 secrets.yaml
 *.png
 ./temp/*
+docker-compose.override.yml

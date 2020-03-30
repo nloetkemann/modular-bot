@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 
 class Tools:
     @staticmethod
-    def remove_regex(regex: str):
+    def remove_regex(regex: str) -> str:
         """
         removes all regex chars
         :param regex: the regex
@@ -18,7 +18,7 @@ class Tools:
         return re.sub(r'(\(|\)|\||\?)+', '', regex)
 
     @staticmethod
-    def validate_yaml(schema_file: str, yaml_file: str):
+    def validate_yaml(schema_file: str, yaml_file: str) -> (bool, str):
         """
         checks if the yaml config file is valid
         :param schema_file: the path of the schema file
@@ -36,7 +36,7 @@ class Tools:
         return True, ''
 
     @staticmethod
-    def read_config_file(path: str):
+    def read_config_file(path: str) -> dict:
         """
         reads the config file and returns it
         :param path: the path of the config file
@@ -49,7 +49,7 @@ class Tools:
             return yaml.load(config_file)
 
     @staticmethod
-    def split(content: str, count: int = 600, needle: str = '.'):
+    def split(content: str, count: int = 600, needle: str = '.') -> str:
         seperator = needle + ' '
         content_part = content[:count]
         sentences = content_part.split(needle)
@@ -60,9 +60,9 @@ class Tools:
             return seperator.join(Tools.split(content, count + 100))
 
     @staticmethod
-    def first_to_upper(word: str):
+    def first_to_upper(word: str) -> str:
         return word[0].upper() + word[1:]
 
     @staticmethod
-    def remove_file(file_path):
+    def remove_file(file_path: str):
         os.remove(file_path)

@@ -31,7 +31,7 @@ class PluginLoader:
                 logger.error(error)
                 exit(1)
 
-    def get_plugins(self):
+    def get_plugins(self) -> list:
         return self.plugins
 
     @staticmethod
