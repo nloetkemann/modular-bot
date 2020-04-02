@@ -21,7 +21,7 @@ class Wiki(Plugin):
             result = wikipedia.summary(keyword)
         except PageError:
             return 'Kein Ergebnis gefunden'
-        return Tools.split(result, end)
+        return Tools.split(result, end, '.')
 
     def search_wiki(self, args: dict):
         """

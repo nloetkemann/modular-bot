@@ -38,7 +38,7 @@ class TelegramBot(Bot):
         message = self.format_answer(response.get_message())
         if len(message) > 1000:
             shorter_message = Tools.split(message, 1000, '\n')
-            rest_message = message[len(shorter_message):len(message)]
+            rest_message = message[len(shorter_message):]
             self.bot.sendMessage(response.get_receiver(), shorter_message, parse_mode='Markdown')
             response.message = rest_message
             self.send_message(response)

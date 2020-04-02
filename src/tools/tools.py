@@ -50,14 +50,13 @@ class Tools:
 
     @staticmethod
     def split(content: str, count: int = 600, needle: str = '.') -> str:
-        seperator = needle + ' '
         content_part = content[:count]
         sentences = content_part.split(needle)
         if len(sentences) > 2:
             sentences.pop()
-            return seperator.join(sentences)
+            return needle.join(sentences)
         else:
-            return seperator.join(Tools.split(content, count + 100))
+            return Tools.split(content, count + 100)
 
     @staticmethod
     def first_to_upper(word: str) -> str:
