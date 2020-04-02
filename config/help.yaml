@@ -1,6 +1,6 @@
 plugin:
   name: "help"
-  description: "offers help"
+  description: "description"
   methods:
     - name: plugin_help
       help: 'A help for one plugin

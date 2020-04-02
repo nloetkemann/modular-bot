@@ -6,7 +6,6 @@
 # -----------------------------------------------------------
 import os
 import re
-
 from src.bot.discord_bot import DiscordBot
 from src.bot.slack_bot import SlackBot
 from src.bot.telegram_bot import TelegramBot
@@ -21,14 +20,15 @@ class Config:
     config = None
     name = ''
     environment = []
-    plugins = None
+    plugins = []
     description = ''
     list_plugin_objects = []
     bots = {}
 
     messenger_names = {'': ''}
 
-    def __init__(self, config_path='./config.yaml', secrets_path=''):
+    def __init__(self, config_path='./config.yaml', secrets_path='', translation_dir='./translation'):
+        self.translation_dir = translation_dir
         self.secrets = Secrets(secrets_path)
         self.load_from_file(config_path)
 

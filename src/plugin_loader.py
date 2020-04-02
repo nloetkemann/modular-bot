@@ -5,9 +5,6 @@
 # email n.loetkemann@fh-bielefeld.de
 # -----------------------------------------------------------
 import logging
-import yamale
-import yaml
-
 from src.tools.tools import Tools
 from src.yaml.plugin import Plugin
 
@@ -15,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 
 class PluginLoader:
-    def __init__(self, pluginlist, plugin_dir='./config/'):
+    def __init__(self, pluginlist, plugin_dir='./config/', translation_dir='./translation'):
         self.plugins = []
         for item in pluginlist:
             plugin_path = plugin_dir + item['name'] + '.yaml'

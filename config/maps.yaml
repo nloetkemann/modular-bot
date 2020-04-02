@@ -1,6 +1,6 @@
 plugin:
   name: "maps"
-  description: "Maps Plugin"
+  description: "description"
   methods:
     - name: "calc_distance"
       help: 'get the distance between to cities.

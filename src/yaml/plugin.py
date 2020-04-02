@@ -4,6 +4,7 @@ from src.config import config
 from src.exceptions.not_found_exception import NotFoundException
 from src.exceptions.token_exception import TokenException
 from src.tools.tools import Tools
+from src.translation import Translation
 from src.yaml.method import Method
 import random
 
@@ -17,7 +18,10 @@ class Plugin:
     def __init__(self, name, plugin_config):
         self.name = name
         self.methods = {}
+        self.translation = Translation(self.name, config.translation_dir)
         self.__config = plugin_config
+        self.__load_translation()
+
         for method in plugin_config['methods']:
             call_method = self.__get_method_by_name(method['name'])
             self.methods[method['name']] = Method(method, call_method)
@@ -26,6 +30,12 @@ class Plugin:
             self.__require_token()
 
         config.add_to_plugins(self)
+
+    def __load_translation(self):
+        description_key = self.__config['description']
+        print(description_key)
+        print(self.translation.get_other_translation(description_key, 'de'))
+        # self.__config['description'] = self.translation.get_other_translation(description_key, 'de')
 
     def get_name(self):
         return self.name

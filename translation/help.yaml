@@ -1,0 +1,37 @@
+help:
+  keywords:
+    - plugin_help__help_plugin:
+        de: "hilfe (für |zu )$plugin"
+        en: "help for $plugin"
+    - general_help__trigger:
+        de: "hilfe"
+        en: "help"
+    - plugin_list__trigger:
+        de/en: "list plugins"
+  answers:
+    - plugin_help__help_plugin:
+        de/en: "$help"
+    - general_help__answer:
+        de/en: "$help"
+    - plugin_list__answer:
+        de: "Hier sind alle aktiven Plugins:$list"
+        en: "Here are all active plugins:$list"
+  other:
+    - description:
+        de: "beschreibung"
+        en: "description"
+    - plugin_help__param_plugin:
+        de: "parameter plugin"
+        en: "param plugin"
+    - plugin_help__help:
+        de: "so nutzen"
+        en: "use like this:..."
+    - general_help__help:
+        de: "hife ist unterwegs"
+        en: "help incoming"
+    - help__param_result:
+        de: "das ist die Hilfe"
+        en: "that what help is"
+    - plugin_list__param_list:
+        de: "list parameter"
+        en: "list param"
