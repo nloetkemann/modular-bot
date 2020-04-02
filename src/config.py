@@ -5,6 +5,7 @@
 # email n.loetkemann@fh-bielefeld.de
 # -----------------------------------------------------------
 import os
+import re
 
 from src.bot.discord_bot import DiscordBot
 from src.bot.slack_bot import SlackBot
@@ -19,7 +20,7 @@ class Config:
     """Stores the config loaded from the yaml files. Serves as Storage"""
     config = None
     name = ''
-    environment = None
+    environment = []
     plugins = None
     description = ''
     list_plugin_objects = []
@@ -29,23 +30,7 @@ class Config:
 
     def __init__(self, config_path='./config.yaml', secrets_path=''):
         self.secrets = Secrets(secrets_path)
-        if 'CONFIG_ENV' in os.environ:
-            self.load_from_env()
-        else:
-            self.load_from_file(config_path)
-        print(self.environment)
-        print(self.config)
-        print(self.name)
-        print(self.list_plugin_objects)
-
-    def load_from_env(self):
-        for messenger in self.messenger_names:
-            bot_name = self.messenger_names[messenger]
-            bot = self.__create_bot_by_name(bot_name)
-            self.bots[bot_name] = bot
-
-        self.name = 'BOT_NAME' in os.environ if os.environ['BOT_NAME'] else 'Bot'
-        # todo keep going
+        self.load_from_file(config_path)
 
     def load_from_file(self, config_path: str):
         ok, error = Tools.validate_yaml('./schemas/config-schema.yaml', config_path)
@@ -53,10 +38,12 @@ class Config:
             raise ConfigException('The Config file is not correct formatted: ' + error)
         self.config = Tools.read_config_file(config_path)
 
-        self.name = self.config['bot']['name']
+        self.name = self.config['bot']['name'] if 'BOT_NAME' not in os.environ else os.environ['BOT_NAME']
         self.environment = self.config['bot']['environment']
+        self.__extract_env_variables_from_env()
         self.plugins = self.config['bot']['plugins']
-        self.description = self.config['bot']['description']
+        self.description = self.config['bot']['description'] if 'BOT_DESCRIPTION' not in os.environ else os.environ[
+            'BOT_DESCRIPTION']
 
         self.list_plugin_objects = []
 
@@ -64,6 +51,12 @@ class Config:
         for bot_name in self.config['bot']['messenger']:
             bot = self.__create_bot_by_name(bot_name)
             self.bots[bot_name] = bot
+
+    def __extract_env_variables_from_env(self):
+        for var in os.environ:
+            if re.match(r'^(ENV_).*', var):
+                key = re.sub(r'^(ENV_)', '', var).lower()
+                self.environment.append({'name': key, 'value': os.environ[var]})
 
     def __create_bot_by_name(self, bot_name: str):
         token = self.secrets.get_secret(bot_name, 'bots')
