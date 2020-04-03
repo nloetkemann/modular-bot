@@ -31,6 +31,15 @@ class Config:
         self.translation_dir = translation_dir
         self.secrets = Secrets(secrets_path)
         self.load_from_file(config_path)
+        self.__set_language()
+
+    def __set_language(self):
+        if self.env_value_exists('language'):
+            self.language = self.get_env('language')
+        elif 'LANGUAGE' in os.environ:
+            self.language = os.environ['LANGUAGE']
+        else:
+            self.language = 'de'
 
     def load_from_file(self, config_path: str):
         ok, error = Tools.validate_yaml('./schemas/config-schema.yaml', config_path)

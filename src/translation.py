@@ -1,4 +1,6 @@
 import os
+import re
+
 from src.exceptions.not_found_exception import NotFoundException
 from src.tools.tools import Tools
 
@@ -19,14 +21,14 @@ class Translation:
         self.translation = translation[plugins_name]
 
     def __get_translation(self,  keyword: str, category: str, language: str):
-        print(keyword, category, language)
         for other in self.translation[category]:
-            print(other)
             for key in other:
                 if key == keyword:
-                    print(key)
-                    print(self.translation[category][other])
-                    # return self.translation[category][other][keyword][language]
+                    given_language = other[key]
+                    for lang_key in given_language:
+                        languages = lang_key.split('/')
+                        if language in languages:
+                            return other[key][lang_key]
         return ''
 
     def get_keyword_translation(self, keyword: str, language: str):

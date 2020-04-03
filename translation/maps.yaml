@@ -1,8 +1,17 @@
 maps:
   keywords:
-    - calc_distance__the_distance:
+    - calc_distance__how_far:
         de: "wie weit ist es von $start bis( nach)? $end"
+        en: "how far is it from $start to $end"
+    - calc_distance__distance:
+        de: "entfernung von $start bis( nach)? $end"
         en: "the distance from $start to $end"
+    - calc_distance__calc:
+        de: "distanz zwischen $start und $end"
+        en: "calc the distance between $start and $end"
+    - calc_distance__between:
+        de: "entfernung zwischen $start und $end"
+        en: "distance between $start and $end"
     - city_info__infos:
         de: "infos zu $city"
         en: "infos to $city"
@@ -15,20 +24,34 @@ maps:
         en: "The distance is $distance km"
   other:
     - description:
-        de: "die beschreibung"
+        de: "die maps beschreibung"
         en: "the description"
     - city_info__help:
-        de: "hier ist deine Hilfe"
-        en: "here is your help"
+        de: "Hier kiregst du ein paar Infos zu einer Stadt.
+
+            Frag einfach __infos zu Berlin__"
+        en: "Gets some details about the location.
+
+             Ask: __infos to Hamburg__"
     - calc_distance__help:
-        de: "hier ist mehr hilfe"
-        en: "here is more help"
+        de: "Berechne die Distanz zwischen zwei Städten.
+
+            Frage einfach __distanz zwischen Hamburg und Berlin__"
+        en: "get the distance between to cities.
+
+             Ask: __the distance from Berlin to Hamburg__"
     - calc_distance__param_start:
-        de: "der parameter start"
-        en: "the param start"
+        de: "Der Startpunkt"
+        en: "The start point"
     - calc_distance__param_end:
-        de: "der parameter end"
-        en: "the param end"
+        de: "Der Endpunkt"
+        en: "The end point"
+    - calc_distance__param_distance:
+        de: "Die Distanz zwischen den beiden Punkten"
+        en: "The distance between the two points"
     - city_info__param_city:
-        de: "der parameter city"
-        en: "param city"
+        de: "Den Namen der Stadt"
+        en: "The cityname"
+    - city_info__param_result:
+        de: "Hier sind die Infos zu der Stadt"
+        en: "the infos about the city"

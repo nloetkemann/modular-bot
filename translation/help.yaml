@@ -3,9 +3,26 @@ help:
     - plugin_help__help_plugin:
         de: "hilfe (für |zu )$plugin"
         en: "help for $plugin"
-    - general_help__trigger:
+    - general_help__help:
         de: "hilfe"
         en: "help"
+    - general_help__please:
+        de: "kannst du mir( bitte)? helfen"
+        en: "can you help me( please)?"
+    - general_help__need_help:
+        de: "ich brauche hilfe"
+        en: "i need( some)? help"
+    - general_help__no_knowlegde:
+        de: "ich weiß nicht was ich (machen|tun){1} soll"
+        en: "i (do not|dont|don't) what to do"
+    - plugin_list__list:
+        en/de: "list plugins"
+    - plugin_list__which:
+        de: "welche plugins gibt es"
+        en: "which plugins exists"
+    - plugin_list__all:
+        de: "alle plugins"
+        en: ""
     - plugin_list__trigger:
         de/en: "list plugins"
   answers:
@@ -18,20 +35,40 @@ help:
         en: "Here are all active plugins:$list"
   other:
     - description:
-        de: "beschreibung"
+        de: "die hilfe beschreibung"
         en: "description"
     - plugin_help__param_plugin:
-        de: "parameter plugin"
-        en: "param plugin"
+        de: "der Name des Plugins"
+        en: "the name of the plugin"
+    - general_help__param_help:
+        de: "hier ist die Hilfe"
+        en: "this is the help"
     - plugin_help__help:
-        de: "so nutzen"
-        en: "use like this:..."
+        de: "Eine Hilfe für ein Plugin
+
+             Frag einfach: __hilfe für Wiki__
+
+             oder __hilfe zu Wolfram__"
+        en: "A help for one plugin
+
+             Ask: __help for Wiki__"
     - general_help__help:
-        de: "hife ist unterwegs"
-        en: "help incoming"
-    - help__param_result:
-        de: "das ist die Hilfe"
-        en: "that what help is"
+        de: "Hilfe.
+
+            Frage einfach: __hilfe__
+
+            oder __ich brauche hilfe__"
+        en: "Help.
+
+             Ask: __help__
+
+             or __i need help__"
+    - plugin_list__help:
+        de: "Frag einfach nach nach __list plugins__"
+        en: "Just ask __list plugins__ or __which plugins are activated__"
+    - plugin_help__param_help:
+        de: "Die Antwort der Pluginhilfe"
+        en: "the answer of the plugin help"
     - plugin_list__param_list:
-        de: "list parameter"
-        en: "list param"
+        de: "Die Plugin Liste"
+        en: "The plugin list"

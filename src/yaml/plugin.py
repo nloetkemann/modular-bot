@@ -32,10 +32,47 @@ class Plugin:
         config.add_to_plugins(self)
 
     def __load_translation(self):
+        language = config.language
         description_key = self.__config['description']
-        print(description_key)
-        print(self.translation.get_other_translation(description_key, 'de'))
-        # self.__config['description'] = self.translation.get_other_translation(description_key, 'de')
+        self.__config['description'] = self.translation.get_other_translation(description_key, language)
+
+        methods = []
+        for method in self.__config['methods']:
+            # for help
+            method['help'] = self.translation.get_other_translation(method['help'], language)
+
+            # for keywords params
+            if 'params' in method['keywords']:
+                params = []
+                for param in method['keywords']['params']:
+                    param['description'] = self.translation.get_other_translation(param['description'], language)
+                    params.append(param)
+                method['keywords']['params'] = params
+
+            # for answers params
+            if 'params' in method['answers']:
+                params = []
+                for param in method['answers']['params']:
+                    param['description'] = self.translation.get_other_translation(param['description'], language)
+                    params.append(param)
+                method['answers']['params'] = params
+
+            # for keywords
+            if 'list' in method['keywords']:
+                key_word_list = []
+                for keyword in method['keywords']['list']:
+                    key_word_list.append(self.translation.get_keyword_translation(keyword, language))
+                method['keywords']['list'] = key_word_list
+
+            # for answers
+            if 'list' in method['answers']:
+                answer_list = []
+                for answer in method['answers']['list']:
+                    answer_list.append(self.translation.get_answer_translation(answer, language))
+                method['answers']['list'] = answer_list
+            methods.append(method)
+
+        self.__config['methods'] = methods
 
     def get_name(self):
         return self.name
