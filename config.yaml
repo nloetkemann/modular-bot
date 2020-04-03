@@ -24,7 +24,7 @@ bot:
 #    - name: welcome
 #    - name: movies
     - name: help
-#    - name: nothing
+    - name: nothing
 
 
 

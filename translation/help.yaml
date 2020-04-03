@@ -22,7 +22,7 @@ help:
         en: "which plugins exists"
     - plugin_list__all:
         de: "alle plugins"
-        en: ""
+        en: "all plugins"
     - plugin_list__trigger:
         de/en: "list plugins"
   answers:
