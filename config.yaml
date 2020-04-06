@@ -20,7 +20,7 @@ bot:
 #    - name: entertainment
 #    - name: music
 #    - name: wiki
-#    - name: weather
+    - name: weather
 #    - name: welcome
 #    - name: movies
     - name: help

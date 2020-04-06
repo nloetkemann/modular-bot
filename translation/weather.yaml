@@ -1,0 +1,43 @@
+weather:
+  keywords:
+    - get_weather__give_weather:
+        de: "gib mir das wetter( aus $standort)?( um $time)?"
+        en: "give me the weather( from $standort)?( at $time)?"
+    - get_weather__how:
+        de: "wie ist das wetter( in $standort)?( um $time)?"
+        en: "how is the weather( in $standort)?( at $time)?"
+  answers:
+    - get_weather__it_is:
+        de: "es ist $weather (in $standort)?( um $time)?"
+        en: "it is $weather (in $standort)?( at $time)"
+    - get_weather__weather:
+        de: "(um $time ist es )?$weather( in $standort)?"
+        en: "(at $time )?the weather is $weather( in $standort)?"
+  other:
+    - description:
+        de: "Wetter station"
+        en: "Weather station"
+    - get_weather__help:
+        de: "Frag einfach nach dem Wetter
+
+            Möglich ist:
+
+            __wie ist das wetter__,
+
+            __wie ist das wetter in Espelkamp__"
+        en: "Ask for the weather.
+
+            Possible is:
+
+            __how is the weather__,
+
+            __how is the weather in Berlin__"
+    - get_weather__param_standort:
+        de: "das Wetter aus..."
+        en: "the weather from where..."
+    - get_weather__param_time:
+        de: "das Wetter von welchem Datum"
+        en: "from what date"
+    - get_weather__param_weather:
+        de: "Das Wetter"
+        en: "The weather"

@@ -1,38 +1,32 @@
 plugin:
   name: "weather"
-  description: "wetter station"
+  description: "description"
   methods:
     - name: "get_weather"
-      help: 'Ask for the weather.
-
-            Possible is:
-
-            __wie ist das wetter__,
-
-            __wie ist das wetter in Espelkamp__'
+      help: 'get_weather__help'
       keywords:
         list:
-          - "gib mir das wetter( aus $standort)?( um $time)?"
-          - "wie ist das wetter( in $standort)?( um $time)?"
+          - get_weather__give_weather
+          - get_weather__how
         params:
           - name: standort
             default: ENV.standort
             type: string
-            description: "the weather from where"
+            description: get_weather__param_standort
           - name: time
             type: string
             count: 2
-            description: "from what date "
+            description: get_weather__param_time
       answers:
         list:
-          - "es ist $weather (in $standort)?( um $time)?"
-          - "(um $time ist es )?$weather( in $standort)?"
+          - get_weather__it_is
+          - get_weather__weather
         params:
           - name: weather
-            description: ""
+            description: get_weather__param_weather
           - name: standort
             required: False
-            description: "the weather from where"
+            description: get_weather__param_standort
           - name: time
             required: False
-            description: "from what date or in how much minutes/hours"
+            description: get_weather__param_time

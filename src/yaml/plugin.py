@@ -21,7 +21,6 @@ class Plugin:
         self.translation = Translation(self.name, config.translation_dir)
         self.__config = plugin_config
         self.__load_translation()
-        print(self.__config)
 
         for method in plugin_config['methods']:
             call_method = self.__get_method_by_name(method['name'])
