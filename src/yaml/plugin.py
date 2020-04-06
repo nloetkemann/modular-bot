@@ -40,21 +40,26 @@ class Plugin:
         for method in self.__config['methods']:
             # for help
             if 'help' in method:
-                method['help'] = self.translation.get_other_translation(method['help'], language)
+                translation = self.translation.get_other_translation(method['help'], language)
+                if translation != "":
+                    method['help'] = translation
 
             # for keywords params
             if 'params' in method['keywords']:
                 params = []
                 for param in method['keywords']['params']:
-                    param['description'] = self.translation.get_other_translation(param['description'], language)
-                    params.append(param)
+                    translation = self.translation.get_other_translation(param['description'], language)
+                    if translation != "":
+                        param['description'] = translation
+                        params.append(param)
                 method['keywords']['params'] = params
 
             # for answers params
             if 'params' in method['answers']:
                 params = []
                 for param in method['answers']['params']:
-                    param['description'] = self.translation.get_other_translation(param['description'], language)
+                    translation = self.translation.get_other_translation(param['description'], language)
+                    param['description'] = translation
                     params.append(param)
                 method['answers']['params'] = params
 
@@ -62,14 +67,18 @@ class Plugin:
             if 'list' in method['keywords']:
                 key_word_list = []
                 for keyword in method['keywords']['list']:
-                    key_word_list.append(self.translation.get_keyword_translation(keyword, language))
+                    translation = self.translation.get_keyword_translation(keyword, language)
+                    if translation != "":
+                        key_word_list.append(translation)
                 method['keywords']['list'] = key_word_list
 
             # for answers
             if 'list' in method['answers']:
                 answer_list = []
                 for answer in method['answers']['list']:
-                    answer_list.append(self.translation.get_answer_translation(answer, language))
+                    translation = self.translation.get_answer_translation(answer, language)
+                    if translation != "":
+                        answer_list.append(translation)
                 method['answers']['list'] = answer_list
             methods.append(method)
 

@@ -10,12 +10,12 @@ bot:
     - name: "timezone"
       value: "Europe/Berlin"
     - name: "language"
-      value: "de"
+      value: "en"
   plugins:
 #    - name: translate
 #    - name: wolfram
 #    - name: gas_prices
-#    - name: date
+    - name: date
     - name: maps
 #    - name: entertainment
 #    - name: music
