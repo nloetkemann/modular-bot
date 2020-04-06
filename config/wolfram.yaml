@@ -1,43 +1,39 @@
 plugin:
   name: "wolfram"
-  description: "a smart calculator"
+  description: description
   methods:
     - name: "add_numbers"
-      help: 'Adds simply two numbers.
-
-            ask __was ist 3 + 4__'
+      help: add_numbers__help
       keywords:
         list:
-          - "was ist $first \\+ $second"
+          - add_numbers__what
         params:
           - name: "first"
             count: 1
             type: number
-            description: "the first number"
+            description: add_numbers__param_first
           - name: "second"
             count: 1
             type: number
-            description: "the second number"
+            description: add_numbers__param_second
       answers:
         list:
-          - "Das Ergebnis ist $result"
+          - wolfram__result
         params:
           - name: result
-            description: "The result of the wiki search"
+            description: wolfram__param_result
     - name: "calculate_term"
-      help: 'Calculates more different math problems.
-
-            use it like: __berechne 12 = x * 2__'
+      help: calculate_term__help
       keywords:
         list:
-          - "berechne( mir)? $term"
+          - calculate_term_calc
         params:
           - name: "term"
             count: 8
-            description: "the term that should be calculated"
+            description: calculate_term__param_term
       answers:
         list:
-          - "Das Ergebnis ist $result"
+          - wolfram__result
         params:
           - name: result
-            description: "the result of the term"
+            description: wolfram__param_result

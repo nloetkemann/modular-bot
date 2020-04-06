@@ -12,8 +12,7 @@ class Date(Plugin):
 
     def __init__(self, name, plugin_config):
         super().__init__(name, plugin_config)
-        if global_config.env_value_exists('language'):
-            self.language = global_config.get_env('language')
+        self.language = global_config.language
 
     def __get_day_name(self, day):
         try:

@@ -17,6 +17,9 @@ class Translation:
 
     def __load_translation(self, plugins_name: str):
         translation_path = self.path + '/' + plugins_name + '.yaml'
+        ok, error = Tools.validate_yaml('./schemas/translation-schema.yaml', translation_path)
+        if not ok:
+            exit(1)
         translation = Tools.read_config_file(translation_path)
         self.translation = translation[plugins_name]
 

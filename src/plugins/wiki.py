@@ -10,13 +10,10 @@ class Wiki(Plugin):
 
     def __init__(self, name, config):
         super().__init__(name, config)
-        if global_config.env_value_exists('language'):
-            wikipedia.set_lang(global_config.get_env('language'))
-        else:
-            wikipedia.set_lang('de')
 
     @staticmethod
     def get_summary(keyword: str, end: int = 600):
+        wikipedia.set_lang(global_config.language)
         try:
             result = wikipedia.summary(keyword)
         except PageError:

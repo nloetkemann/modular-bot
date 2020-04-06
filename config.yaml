@@ -12,17 +12,17 @@ bot:
     - name: "language"
       value: "en"
   plugins:
-#    - name: translate
-#    - name: wolfram
-#    - name: gas_prices
+    - name: translate
+    - name: wolfram
+    - name: gas_prices
     - name: date
     - name: maps
-#    - name: entertainment
-#    - name: music
-#    - name: wiki
+    - name: entertainment
+    - name: music
+    - name: wiki
     - name: weather
-#    - name: welcome
-#    - name: movies
+    - name: welcome
+    - name: movies
     - name: help
     - name: nothing
 

@@ -1,0 +1,63 @@
+translate:
+  keywords:
+    - translate_into_language__long_version:
+        de: "was bedeutet $content von $base nach $target"
+        en: "what means $content in $base to $target"
+    - translate_into_language__short_version:
+        de/en: "translate $content - $base - $target"
+    - translate_into_language__german_short_version:
+        de: "übersetze $content - $base - $target"
+    - translate_from_default__long_version:
+        de: "was bedeutet $content auf $language"
+        en: "what means $content in $language"
+    - translate_from_default__short_version:
+        de/en: "translate $content - $language"
+    - translate_from_default__german_short_version:
+        de: "übersetze $content - $language"
+  answers:
+    - translate__translated:
+        de: "Übersetzt:$translation"
+        en: "Translated:$translation"
+  other:
+    - description:
+        de: "Übersetzungs Plugin. Kann bis zu 6 Wörter übersetzen."
+        en: "Translate Plugin. Can translate up to 6 words."
+    - translate_into_language__help:
+        de: "Kann in mehrere Sprachn übersetzen.
+             Die Ursprungssprache muss mit angegeben werden.
+
+             Frag einfach: __was bedeutet hallo von de nach en__
+
+             or: __translate $content - $base - $target__"
+        en: "For translations. from any language into another language.
+
+             Ask: __what means hallo von de nach en__
+
+             or: __translate $content - $base - $target__"
+    - translate__param_content:
+        de: "Der Inhalt der übersetzt werden soll"
+        en: "The content that should be translated"
+    - translate_into_language__param_base:
+        de: "Die Basissprache, der Inhalt sollte in der Sprache"
+        en: "The base language. The content should be in that language"
+    - translate__param_target:
+        de: "Die Zielsprache"
+        en: "The Targetsprache"
+    - translate_from_default__help:
+        de: "Zur schnellen Übersetzung vom deutschen in andere Sprachen
+
+            Man kann auch die Länderkürzel nutzen.
+
+            Frag einfach __was bedeutet hallo auf chinesisch__
+
+            oder __übersetze hallo - lt"
+        en: "For translations from english into other languages.
+
+             You can use the language codes to define which translations you want.
+
+             Ask: __what means hallo in chinese
+
+             or: __translate hello - lt__"
+    - translate__param_translation_result:
+        de: "Der Inhalt in der Zielsprache"
+        en: "The content in the target language"
