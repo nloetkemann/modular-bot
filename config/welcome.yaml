@@ -10,6 +10,7 @@ plugin:
           - say_hello__hello
           - say_hello__moin
           - say_hello__evening
+          - say_hello__whats_up
       answers:
         list:
           - say_hello__hi

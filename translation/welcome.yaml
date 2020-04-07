@@ -1,5 +1,8 @@
 welcome:
   keywords:
+    say_hello__whats_up:
+      de: "was geht"
+      en: "whatz u+p"
     say_hello__hi:
       de/en: "hi\\b"
     say_hello__hello:
@@ -14,7 +17,6 @@ welcome:
       de: "wie geht(s)?( es dir)?"
       en: "how are you"
     how_are_you__whats_up:
-      de: "was geht"
       en: "what('s|s)? up"
     who_are_you__who:
       de: "wer bist du"

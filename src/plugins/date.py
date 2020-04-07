@@ -26,13 +26,27 @@ class Date(Plugin):
             return '0' + str(value)
         return str(value)
 
+    @staticmethod
+    def time_to_12h(hour):
+        if hour > 12:
+            return hour - 12, 'pm'
+        else:
+            return hour, 'am'
+
     def get_time(self, args):
         date = datetime.datetime.now()
         hour = self.__add_zero_if_required(date.hour)
         minute = self.__add_zero_if_required(date.minute)
-        return {'$time': '{0}:{1}'.format(hour, minute)}
+        if global_config.language == 'en':
+            hour, time = self.time_to_12h(hour)
+        else:
+            time = ''
+        return {'$time': '{0}:{1} {2}'.format(hour, minute, time)}
 
     def get_date(self, args):
         date = datetime.datetime.now()
         day = self.__get_day_name(date.weekday())
-        return {'$day': day, '$date': '{0}.{1}'.format(date.day, date.month)}
+        if global_config.language == 'de':
+            return {'$day': day, '$date': '{0}.{1}'.format(date.day, date.month)}
+        else:
+            return {'$day': day, '$date': '{0}/{1}'.format(date.month, date.day)}

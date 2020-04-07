@@ -10,7 +10,7 @@ bot:
     - name: "timezone"
       value: "Europe/Berlin"
     - name: "language"
-      value: "en"
+      value: "de"
   plugins:
     - name: translate
     - name: wolfram

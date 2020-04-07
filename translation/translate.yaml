@@ -50,12 +50,12 @@ translate:
 
           Frag einfach __was bedeutet hallo auf chinesisch__
 
-          oder __übersetze hallo - lt"
+          oder __übersetze hallo - lt__"
       en: "For translations from english into other languages.
 
            You can use the language codes to define which translations you want.
 
-           Ask: __what means hallo in chinese
+           Ask: __what means hallo in chinese__
 
            or: __translate hello - lt__"
     translate__param_translation_result:
