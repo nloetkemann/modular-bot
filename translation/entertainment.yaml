@@ -16,7 +16,7 @@ entertainment:
     user_is_boring__result:
       de/en: "$response"
     make_jokes__jokes:
-      de/en: "$jokes"
+      de/en: "$joke"
   other:
     description:
       de: "Hier gibt es Unterhaltung, Witzt und coole Sprüche

@@ -7,6 +7,13 @@ from src.config import config as global_config
 
 
 class Entertainment(Plugin):
+    translations = {
+        'not_found': {
+            'de': 'Ich habe leider nichts gefunden...',
+            'en': 'Nothing found...'
+        }
+    }
+
     def __init__(self, name, plugin_config):
         super().__init__(name, plugin_config)
         self.jokes = {
@@ -32,10 +39,12 @@ class Entertainment(Plugin):
         return jokes
 
     def __jokes(self):
-        index_method = random.randint(0, len(self.jokes[self.language]) - 1)
-        jokes = self.jokes[self.language][index_method]()
-        index_jokes = random.randint(0, len(jokes) - 1)
-        return jokes[index_jokes]
+        if len(self.jokes[self.language]) > 0:
+            index_method = random.randint(0, len(self.jokes[self.language]) - 1)
+            jokes = self.jokes[self.language][index_method]()
+            index_jokes = random.randint(0, len(jokes) - 1)
+            return jokes[index_jokes]
+        return self.translations['not_found'][self.language]
 
     def make_jokes(self, args):
         answer = self.__jokes()
