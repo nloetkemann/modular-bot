@@ -1,55 +1,55 @@
 date:
   keywords:
-    - get_time__clock:
-        de: "wie viel uhr ist es"
-        en: "what time is it"
-    - get_time__time:
-        de: "welche Zeit ist es"
-    - get_time__clocktime:
-        de: "welche Uhrzeit ist es"
-    - get_date__day:
-        de: "welchen tag haben wir heute"
-        en: "What day is it"
-    - get_date__date:
-        de: "welches datum haben wir"
-        en: "What date do we have"
-    - get_date__daydate:
-        de: "was für ein datum haben wir"
-    - get_date__which_date:
-        de: "welches datum ist es"
+    get_time__clock:
+      de: "wie viel uhr ist es"
+      en: "what time is it"
+    get_time__time:
+      de: "welche Zeit ist es"
+    get_time__clocktime:
+      de: "welche Uhrzeit ist es"
+    get_date__day:
+      de: "welchen tag haben wir heute"
+      en: "What day is it"
+    get_date__date:
+      de: "welches datum haben wir"
+      en: "What date do we have"
+    get_date__daydate:
+      de: "was für ein datum haben wir"
+    get_date__which_date:
+      de: "welches datum ist es"
   answers:
-    - get_time__time:
-        de: "Es ist $time"
-        en: "It is $time"
-    - get_time__now:
-        de: "Jetzt ist es $time"
-    - get_date__result:
-        de: "Es ist $day, der $date"
-        en: "It is $day, the $date"
+    get_time__time:
+      de: "Es ist $time"
+      en: "It is $time"
+    get_time__now:
+      de: "Jetzt ist es $time"
+    get_date__result:
+      de: "Es ist $day, der $date"
+      en: "It is $day, the $date"
   other:
-    - description:
-        de: "Du kriegst das Datum oder die Uhrzeit."
-        en: "You can get the time or the date"
-    - get_time__help:
-        de: "Du kriegst die Uhrzeit.
+    description:
+      de: "Du kriegst das Datum oder die Uhrzeit."
+      en: "You can get the time or the date"
+    get_time__help:
+      de: "Du kriegst die Uhrzeit.
 
-              Zum Beispiel: __wie viel Uhr ist es__"
-        en: "You can get the time.
+            Zum Beispiel: __wie viel Uhr ist es__"
+      en: "You can get the time.
 
-             For example: __what time is it__"
-    - get_time__param_time:
-        de: "Die Uhrzeit"
-        en: "the time"
-    - get_date__help:
-        de: "Hier kriegst du das Datum..
+           For example: __what time is it__"
+    get_time__param_time:
+      de: "Die Uhrzeit"
+      en: "the time"
+    get_date__help:
+      de: "Hier kriegst du das Datum..
 
-            Zum Beispiel: __welchen Tag haben wir heute__"
-        en: "You can get the date.
+          Zum Beispiel: __welchen Tag haben wir heute__"
+      en: "You can get the date.
 
-             For example: __What day is it__"
-    - get_date__param_day:
-        de: "Der Name des Tages."
-        en: "the name of the day"
-    - get_date__param_date:
-        de: "Das Datum"
-        en: "The Date"
+           For example: __What day is it__"
+    get_date__param_day:
+      de: "Der Name des Tages."
+      en: "the name of the day"
+    get_date__param_date:
+      de: "Das Datum"
+      en: "The Date"

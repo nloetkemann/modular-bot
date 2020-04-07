@@ -1,8 +1,7 @@
 map(str(), include('attr'))
 ---
-entry: map(str(), map(str, str))
 attr:
-  keywords: list(include('entry'))
-  answers: list(include('entry'))
-  other: list(include('entry'))
+  keywords: map(str(), map(str, str))
+  answers: map(str(), map(str, str))
+  other: map(str(), map(str, str))
 

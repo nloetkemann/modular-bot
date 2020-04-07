@@ -1,33 +1,33 @@
 wiki:
   keywords:
-    - search_wiki__who:
-        de: "wer ist( ein| eine| das| die| der)? $searchKeyword"
-        en: "who is( a| the) $searchKeyword"
-    - search_wiki__what:
-        de: "was ist( ein| eine| das| die| der)? $searchKeyword"
-        en: "what is( a| the) $searchKeyword"
+    search_wiki__who:
+      de: "wer ist( ein| eine| das| die| der)? $searchKeyword"
+      en: "who is( a| the) $searchKeyword"
+    search_wiki__what:
+      de: "was ist( ein| eine| das| die| der)? $searchKeyword"
+      en: "what is( a| the) $searchKeyword"
   answers:
-    - search_wiki__result:
-        de/en: "$result"
+    search_wiki__result:
+      de/en: "$result"
   other:
-    - description:
-        de: "eine Wiki-Suchmaschine"
-        en: "a Wiki-Searchplugin"
-    - search_wiki__help:
-        de: "Hier wird eine Wiki-Suche gestartet und
-             das Ergebnis ist die Zusammenfassung.
+    description:
+      de: "eine Wiki-Suchmaschine"
+      en: "a Wiki-Searchplugin"
+    search_wiki__help:
+      de: "Hier wird eine Wiki-Suche gestartet und
+           das Ergebnis ist die Zusammenfassung.
 
-             Frag einfach __wer ist Taylor Swift__
+           Frag einfach __wer ist Taylor Swift__
 
-             oder __was ist ein Nomen__ => Danke an meinen kleinen Bruder"
-        en: "This will perform a wiki search to get the summary
+           oder __was ist ein Nomen__ => Danke an meinen kleinen Bruder"
+      en: "This will perform a wiki search to get the summary
 
-             ask __who is Taylor Swift__
+           ask __who is Taylor Swift__
 
-             or __what is a noun__ => Thanks to my little brother"
-    - search_wiki__param_searchKeyword:
-        de: "der Suchbegriff"
-        en: "what to search for in wiki"
-    - search_wiki__param_result:
-        de: "Das Wiki-Suchergebnis"
-        en: "The result of the wiki search"
+           or __what is a noun__ => Thanks to my little brother"
+    search_wiki__param_searchKeyword:
+      de: "der Suchbegriff"
+      en: "what to search for in wiki"
+    search_wiki__param_result:
+      de: "Das Wiki-Suchergebnis"
+      en: "The result of the wiki search"

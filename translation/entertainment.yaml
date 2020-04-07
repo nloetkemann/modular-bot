@@ -1,49 +1,49 @@
 entertainment:
   keywords:
-    - user_is_boring__bored:
-        de: "mir ist langweilig"
-        en: "i( am|'m) bored"
-    - make_jokes__make:
-        de: "mach einen witz"
-        en: "make a joke"
-    - make_jokes__tell:
-        de: "erzähl mir einen witz"
-        en: "tell me a joke"
-    - make_jokes__know:
-        de: "kennst du einen witz"
-        en: "do you know a joke"
+    user_is_boring__bored:
+      de: "mir ist langweilig"
+      en: "i( am|'m) bored"
+    make_jokes__make:
+      de: "mach einen witz"
+      en: "make a joke"
+    make_jokes__tell:
+      de: "erzähl mir einen witz"
+      en: "tell me a joke"
+    make_jokes__know:
+      de: "kennst du einen witz"
+      en: "do you know a joke"
   answers:
-    - user_is_boring__result:
-        de/en: "$response"
-    - make_jokes__jokes:
-        de/en: "$jokes"
+    user_is_boring__result:
+      de/en: "$response"
+    make_jokes__jokes:
+      de/en: "$jokes"
   other:
-    - description:
-        de: "Hier gibt es Unterhaltung, Witzt und coole Sprüche
+    description:
+      de: "Hier gibt es Unterhaltung, Witzt und coole Sprüche
 
-             nutzt:
-               - lustige-sprueche.net"
-        en: "this is for entertainment, jokes, and so on
+           nutzt:
+             - lustige-sprueche.net"
+      en: "this is for entertainment, jokes, and so on
 
-             uses:
-               - lustige-sprueche.net"
-    - user_is_boring__help:
-        de: "Ein paar interessante Infos oder witze
+           uses:
+             - lustige-sprueche.net"
+    user_is_boring__help:
+      de: "Ein paar interessante Infos oder witze
 
-             Zum Beispiel: __mir ist langweilig__"
-        en: "get some interesting infos, or jokes
+           Zum Beispiel: __mir ist langweilig__"
+      en: "get some interesting infos, or jokes
 
-             For example: __i am bored__"
-    - make_jokes__help:
-        de: "ein paar Witze machen
+           For example: __i am bored__"
+    make_jokes__help:
+      de: "ein paar Witze machen
 
-             Zum Beispiel: __mach einen witz__'"
-        en: "get some jokes
+           Zum Beispiel: __mach einen witz__'"
+      en: "get some jokes
 
-             For example: __make a joke__'"
-    - make_jokes__param_joke:
-        de: "der Witz"
-        en: "the Joke"
-    - user_is_boring__param_response:
-        de: "Die Antwort auf die Langeweile"
-        en: "The response to the boredom "
+           For example: __make a joke__'"
+    make_jokes__param_joke:
+      de: "der Witz"
+      en: "the Joke"
+    user_is_boring__param_response:
+      de: "Die Antwort auf die Langeweile"
+      en: "The response to the boredom "

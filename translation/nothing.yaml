@@ -1,23 +1,24 @@
 nothing:
   keywords:
-    - de/en: ".*"
+    all:
+      de/en: ".*"
   answers:
-    - wrong_command__wired:
-        de: "Hmm deine Eingabe war ziemlich komisch"
-        en: "Hmm your input was wired"
-    - wrong_command__not_right:
-        de: "Das war so nicht richtig..."
-        en: "That was not right"
-    - wrong_command__stop:
-        de: "Halt stop, das war nicht richtig"
-        en: "Stop, that was wrong"
-    - wrong_command__what_to_do:
-        de: "Ich weiß nicht genau was ich damit machen soll"
-        en: "I dont know what to do"
-    - wrong_command__confused:
-        de: "Ich bin verwirrt, damit kann ich nicht arbeiten..."
-        en: "I am confused, i cant work with that."
+    wrong_command__wired:
+      de: "Hmm deine Eingabe war ziemlich komisch"
+      en: "Hmm your input was wired"
+    wrong_command__not_right:
+      de: "Das war so nicht richtig..."
+      en: "That was not right"
+    wrong_command__stop:
+      de: "Halt stop, das war nicht richtig"
+      en: "Stop, that was wrong"
+    wrong_command__what_to_do:
+      de: "Ich weiß nicht genau was ich damit machen soll"
+      en: "I dont know what to do"
+    wrong_command__confused:
+      de: "Ich bin verwirrt, damit kann ich nicht arbeiten..."
+      en: "I am confused, i cant work with that."
   other:
-    - description:
-        de: "Das Plugin fängt alle falschen Eingaben ab."
-        en: "catches every wrong input, should be at the end of the plugin list"
+    description:
+      de: "Das Plugin fängt alle falschen Eingaben ab."
+      en: "catches every wrong input, should be at the end of the plugin list"

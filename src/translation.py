@@ -24,14 +24,12 @@ class Translation:
         self.translation = translation[plugins_name]
 
     def __get_translation(self,  keyword: str, category: str, language: str):
-        for other in self.translation[category]:
-            for key in other:
-                if key == keyword:
-                    given_language = other[key]
-                    for lang_key in given_language:
-                        languages = lang_key.split('/')
-                        if language in languages:
-                            return other[key][lang_key]
+        for key in self.translation[category]:
+            if key == keyword:
+                languages = self.translation[category][key]
+                for lang_key in languages:
+                    if language in lang_key.split('/'):
+                        return languages[lang_key]
         return ''
 
     def get_keyword_translation(self, keyword: str, language: str):

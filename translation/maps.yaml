@@ -1,57 +1,57 @@
 maps:
   keywords:
-    - calc_distance__how_far:
-        de: "wie weit ist es von $start bis( nach)? $end"
-        en: "how far is it from $start to $end"
-    - calc_distance__distance:
-        de: "entfernung von $start bis( nach)? $end"
-        en: "the distance from $start to $end"
-    - calc_distance__calc:
-        de: "distanz zwischen $start und $end"
-        en: "calc the distance between $start and $end"
-    - calc_distance__between:
-        de: "entfernung zwischen $start und $end"
-        en: "distance between $start and $end"
-    - city_info__infos:
-        de: "infos zu $city"
-        en: "infos to $city"
+    calc_distance__how_far:
+      de: "wie weit ist es von $start bis( nach)? $end"
+      en: "how far is it from $start to $end"
+    calc_distance__distance:
+      de: "entfernung von $start bis( nach)? $end"
+      en: "the distance from $start to $end"
+    calc_distance__calc:
+      de: "distanz zwischen $start und $end"
+      en: "calc the distance between $start and $end"
+    calc_distance__between:
+      de: "entfernung zwischen $start und $end"
+      en: "distance between $start and $end"
+    city_info__infos:
+      de: "infos zu $city"
+      en: "infos to $city"
   answers:
-    - city_info__result:
-        de: "Hier einige Infos:$result"
-        en: "Some Infos:$result"
-    - calc_distance__result:
-        de: "Die Distanze beträgt: $distance km"
-        en: "The distance is $distance km"
+    city_info__result:
+      de: "Hier einige Infos:$result"
+      en: "Some Infos:$result"
+    calc_distance__result:
+      de: "Die Distanze beträgt: $distance km"
+      en: "The distance is $distance km"
   other:
-    - description:
-        de: "die maps beschreibung"
-        en: "the description"
-    - city_info__help:
-        de: "Hier kiregst du ein paar Infos zu einer Stadt.
+    description:
+      de: "die maps beschreibung"
+      en: "the description"
+    city_info__help:
+      de: "Hier kiregst du ein paar Infos zu einer Stadt.
 
-            Frag einfach __infos zu Berlin__"
-        en: "Gets some details about the location.
+          Frag einfach __infos zu Berlin__"
+      en: "Gets some details about the location.
 
-             Ask: __infos to Hamburg__"
-    - calc_distance__help:
-        de: "Berechne die Distanz zwischen zwei Städten.
+           Ask: __infos to Hamburg__"
+    calc_distance__help:
+      de: "Berechne die Distanz zwischen zwei Städten.
 
-            Frage einfach __distanz zwischen Hamburg und Berlin__"
-        en: "get the distance between to cities.
+          Frage einfach __distanz zwischen Hamburg und Berlin__"
+      en: "get the distance between to cities.
 
-             Ask: __the distance from Berlin to Hamburg__"
-    - calc_distance__param_start:
-        de: "Der Startpunkt"
-        en: "The start point"
-    - calc_distance__param_end:
-        de: "Der Endpunkt"
-        en: "The end point"
-    - calc_distance__param_distance:
-        de: "Die Distanz zwischen den beiden Punkten"
-        en: "The distance between the two points"
-    - city_info__param_city:
-        de: "Den Namen der Stadt"
-        en: "The cityname"
-    - city_info__param_result:
-        de: "Hier sind die Infos zu der Stadt"
-        en: "the infos about the city"
+           Ask: __the distance from Berlin to Hamburg__"
+    calc_distance__param_start:
+      de: "Der Startpunkt"
+      en: "The start point"
+    calc_distance__param_end:
+      de: "Der Endpunkt"
+      en: "The end point"
+    calc_distance__param_distance:
+      de: "Die Distanz zwischen den beiden Punkten"
+      en: "The distance between the two points"
+    city_info__param_city:
+      de: "Den Namen der Stadt"
+      en: "The cityname"
+    city_info__param_result:
+      de: "Hier sind die Infos zu der Stadt"
+      en: "the infos about the city"
