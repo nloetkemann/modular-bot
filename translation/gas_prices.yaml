@@ -33,3 +33,6 @@ gas_prices:
     get_prices__help:
       de: "Hol dir die Preise aus der Stadt die als Standart angegeben ist"
       en: "Get the prices from the default city"
+    get_prices_in_city__help:
+      de: "Hol dir die Spritpreise aus jeder Stadt"
+      en: "Get the gas prices from every city"
