@@ -1,62 +1,53 @@
 plugin:
   name: "movies"
-  description: "You can get Infos about movies and actors"
+  description: description
   methods:
     - name: "get_movie_description"
-      help: 'You get the description of a movie.
-
-            Just ask for the content.
-
-            For example: __wovon handelt the Matrix__'
+      help: get_movie_description__help
       keywords:
         list:
-          - "wovon handelt $movie"
-          - "der inhalt von $movie"
+          - get_movie_description__what
+          - get_movie_description__content
         params:
           - name: movie
             count: 6
-            description: "the movie"
+            description: get_movie_description__param_movie
       answers:
         list:
-          - "Hier die Beschreibung:\n$description"
+          - get_movie_description__result
         params:
           - name: description
-            description: "the result description"
+            description: get_movie_description__param_description
     - name: "get_movie_cast"
-      help: 'Get the first 7 actors a movie
-
-            Ask: __wer spielt in the Matrix__'
+      help: get_movie_cast__help
       keywords:
         list:
-          - "wer spielt in $movie"
+          - get_movie_cast__who
         params:
           - name: movie
             count: 6
-            description: "the movie"
+            description: get_movie_cast__param_movie
       answers:
         list:
-          - "Hier der Cast:\n$cast"
+          - get_movie_cast__result
         params:
           - name: "cast"
-            description: "the cast"
-
+            description: get_movie_cast__param_cast
     - name: actor_details
-      help: 'Get more Information about an actor.
-
-            The question is: __filme von Morgan Freeman__'
+      help: actor_details__help
       keywords:
         list:
-          - "in welchen filme ist $actor"
-          - "filme von $actor"
-          - "$actor filme"
+          - actor_details__which
+          - actor_details__movies
+          - actor_details__actor
         params:
           - name: actor
             count: 4
-            description: "the actor"
+            description: actor_details__param_actor
       answers:
         list:
-          - "Hier die Details:$details"
+          - actor_details__result
         params:
           - name: details
-            description: details of the actor
+            description: actor_details__param_details
 

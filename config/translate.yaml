@@ -1,82 +1,47 @@
 plugin:
   name: "translate"
-  description: "Translate Plugin"
+  description: description
   methods:
     - name: "translate_into_language"
-      help: 'For translations. from any language into another language.
-
-            Ask: __was bedeutet hallo von de nach en__
-
-            or: __translate $content - $base - $target__'
+      help: translate_into_language__help
       keywords:
         list:
-          - "was bedeutet $content von $base nach $target"
-          - "translate $content - $base - $target"
+          - translate_into_language__long_version
+          - translate_into_language__short_version
+          - translate_into_language__german_short_version
         params:
           - name: content
             count: 6
-            description: "the content in german"
+            description: translate__param_content
           - name: base
             count: 2
-            description: "the base language"
+            description: translate_into_language__param_base
           - name: target
             count: 2
-            description: "the target language"
+            description: translate__param_target
       answers:
         list:
-          - "Übersetzt:$translation"
+          - translate_into_language__translated
         params:
           - name: translation
-            description: "the translation"
+            description: translate__param_translation_result
     - name: "translate_from_default"
-      help: 'For translations from german into other languages.
-
-            You can use the language codes to define which translations you want.
-
-            Ask: __was bedeutet hallo auf chinesisch__
-
-            or: __translate hallo - lt__'
+      help: translate_from_default__help
       keywords:
         list:
-          - "was bedeutet $content auf $language"
-          - "translate $content - $language"
+          - translate_from_default__long_version
+          - translate_from_default__short_version
+          - translate_from_default__german_short_version
         params:
           - name: content
             count: 6
-            description: "the content in german"
+            description: translate__param_content
           - name: language
             count: 2
-            description: "the target language"
+            description: translate__param_target
       answers:
         list:
-          - "Übersetzt:$translation"
+          - translate__translated
         params:
           - name: translation
-            description: "the translation"
-    - name: "translate_into_language"
-      help: 'For translations. from any language into another language.
-
-            Ask: __was bedeutet hallo von de nach en__
-
-            or: __translate $content - $base - $target__'
-      keywords:
-        list:
-          - "was bedeutet $content von $base nach $target"
-          - "translate $content - $base - $target"
-        params:
-          - name: content
-            count: 6
-            description: "the content in german"
-          - name: base
-            count: 2
-            description: "the base language"
-          - name: target
-            count: 2
-            description: "the target language"
-      answers:
-        list:
-          - "Übersetzt:$translation"
-        params:
-          - name: translation
-            description: "the translation"
-
+            description: translate__param_translation_result

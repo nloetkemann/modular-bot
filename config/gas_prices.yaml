@@ -1,46 +1,43 @@
 plugin:
   name: "gas_prices"
-  description: "get the gas prices
-
-              nutzt:
-                - clever-tanken.de"
+  description: description
   methods:
     - name: get_prices_in_city
       help: ''
       keywords:
         list:
-          - "wie teuer ist $type in $city"
+          - get_prices_in_city__price
         params:
           - name: 'type'
             count: 2
-            description: 'the type of gas'
+            description: gas_prices__param_type
           - name: 'city'
             count: 3
-            description: 'the city to search'
+            description: get_prices_in_city__param_city
       answers:
         list:
-          - "$type in $city: $list"
+          - get_prices_in_city__result
         params:
           - name: type
-            description: "the type of gas"
+            description: gas_prices__param_type
           - name: list
-            description: "the price of the gas"
+            description: gas_prices__param_list
           - name: city
-            description: "the city"
+            description: get_prices_in_city__param_city
     - name: "get_prices"
-      help: ''
+      help: get_prices__help
       keywords:
         list:
-          - "wie teuer ist $type"
+          - get_prices__price
         params:
           - name: 'type'
             count: 2
-            description: 'the type of gas'
+            description: gas_prices__param_type
       answers:
         list:
-          - "$type: $list"
+          - get_prices__result
         params:
           - name: type
-            description: "the type of gas"
+            description: gas_prices__param_type
           - name: list
-            description: "the price of the gas"
+            description: gas_prices__param_list

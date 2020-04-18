@@ -1,38 +1,34 @@
 plugin:
   name: "date"
-  description: "You can get the time or the date"
+  description: description
   methods:
     - name: "get_time"
-      help: 'You can get the time.
-
-            For example: __wie viel Uhr ist es__'
+      help: get_time__help
       keywords:
         list:
-          - "wie viel uhr ist es"
-          - "welche Zeit ist es"
-          - "welche Uhrzeit ist es"
+          - get_time__clock
+          - get_time__time
+          - get_time__clocktime
       answers:
         list:
-          - "Es ist $time"
-          - "Jetzt ist es $time"
+          - get_time__time
+          - get_time__now
         params:
           - name: time
-            description: "the time"
+            description: get_time__param_time
     - name: "get_date"
-      help: 'You can get the date.
-
-            For example: __welchen Tag haben wir heute__'
+      help: get_date__help
       keywords:
         list:
-          - "welchen tag haben wir heute"
-          - "welches datum haben wir"
-          - "was für ein datum haben wir"
-          - "welches datum ist es"
+          - get_date__day
+          - get_date__date
+          - get_date__daydate
+          - get_date__which_date
       answers:
         list:
-          - "Es ist $day, der $date"
+          - get_date__result
         params:
           - name: "day"
-            description: "the name of the day"
+            description: get_date__param_day
           - name: "date"
-            description: "the date"
+            description: get_date__param_date

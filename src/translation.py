@@ -17,18 +17,19 @@ class Translation:
 
     def __load_translation(self, plugins_name: str):
         translation_path = self.path + '/' + plugins_name + '.yaml'
+        ok, error = Tools.validate_yaml('./schemas/translation-schema.yaml', translation_path)
+        if not ok:
+            exit(1)
         translation = Tools.read_config_file(translation_path)
         self.translation = translation[plugins_name]
 
     def __get_translation(self,  keyword: str, category: str, language: str):
-        for other in self.translation[category]:
-            for key in other:
-                if key == keyword:
-                    given_language = other[key]
-                    for lang_key in given_language:
-                        languages = lang_key.split('/')
-                        if language in languages:
-                            return other[key][lang_key]
+        for key in self.translation[category]:
+            if key == keyword:
+                languages = self.translation[category][key]
+                for lang_key in languages:
+                    if language in lang_key.split('/'):
+                        return languages[lang_key]
         return ''
 
     def get_keyword_translation(self, keyword: str, language: str):

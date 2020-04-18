@@ -1,24 +1,20 @@
 plugin:
   name: "wiki"
-  description: "eine Suchmaschine"
+  description: description
   methods:
     - name: "search_wiki"
-      help: 'This will perform a  wiki search to get the summary
-
-            ask __wer ist Taylor Swift__
-
-            or __was ist ein Nomen__ => Thanks to my little brother'
+      help: search_wiki__help
       keywords:
         list:
-          - "wer ist( ein| eine| das| die| der)? $searchKeyword"
-          - "was ist( ein| eine| das| die| der)? $searchKeyword"
+          - search_wiki__who
+          - search_wiki__what
         params:
           - name: "searchKeyword"
             count: 3
-            description: "what to search for in wiki"
+            description: search_wiki__param_searchKeyword
       answers:
         list:
-          - "$result"
+          - search_wiki__result
         params:
           - name: result
-            description: "The result of the wiki search"
+            description: search_wiki__param_result

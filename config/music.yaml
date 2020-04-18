@@ -1,45 +1,40 @@
 plugin:
   name: "music"
-  description: "eine Suchmaschine für songtexte und musiker"
+  description: description
   methods:
     - name: "get_album"
-      help: 'Returns all the albums of the musician
-
-            Ask: __welche Alben hat $singer__'
+      help: get_album__help
       keywords:
         list:
-          - "(die )?alben von $singer"
-          - "welche alben hat $singer"
-          - "Zeig mir die alben von $singer"
+          - get_album__albums
+          - get_album__which
+          - get_album__show
         params:
           - name: "singer"
             count: 3
-            description: "the singer of the album"
+            description: get_album__param_singer
       answers:
         list:
-          - "Hier sind die Alben:$result"
+          - get_album__albums
         params:
           - name: result
             description: "The result of the music search"
     - name: "get_lyric"
-      help: 'Get the lyrics of a song
-
-            Ask: __text zu Mockingbird von Emninem__'
+      help: get_lyric__help
       keywords:
         list:
-          - "text zu $song von $singer"
-          - "text von $song von $singer"
-          - "der inhalt von $song von $singer"
+          - get_lyric__from
+          - get_lyric__long_form
         params:
           - name: "song"
             count: 5
-            description: "the song"
+            description: get_lyric__param_song
           - name: "singer"
             count: 3
-            description: "the singer of the album"
+            description: get_lyric__param_singer
       answers:
         list:
-          - "**Der Text zu $song**:$result"
+          - get_lyric__lyrics
         params:
           - name: result
             description: "The result of the music search"

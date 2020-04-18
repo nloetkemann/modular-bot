@@ -1,0 +1,53 @@
+music:
+  keywords:
+    get_album__albums:
+      de: "(die )?alben von $singer"
+      en: "(the )?albums of $singer"
+    get_album__which:
+      de: "welche alben hat $singer"
+      en: "which albums has $singer"
+    get_album__show:
+      de: "zeig mir die alben von $singer"
+      en: "show( me)? the albums of $singer"
+    get_lyric__from:
+      de: "text (von|zu) $song von $singer"
+      en: "lyrics to $song from $singer"
+    get_lyric__long_form:
+      de: "der inhalt von $song von $singer"
+      en: "the content from $song from $singer"
+  answers:
+    get_album__albums:
+      de: "Hier sind die Alben:$result"
+      en: "Here are the albums:$result"
+    get_lyric__lyrics:
+      de: "**Der Text zu $song**:$result"
+      en: "**The lyrics to $song**:$result"
+  other:
+    description:
+      de: "eine Suchmaschine für songtexte und musiker"
+      en: "Search for song lyrics and musicians"
+    get_album__help:
+      de: "Zeigt alle Alben von dem Musiker,
+          der Name des Musiker darf nicht länger sein als 3 Wörter
+
+          Frag einfach: __welche Alben hat Marc Forster__"
+      en: "Returns all the albums of the musician, the name of the
+          musician should be shorter than 4 words.
+
+          Ask: __which albums has $singer__"
+    get_album__param_singer:
+      de: "Der Name des Sängers"
+      en: "the singer of the album"
+    get_lyric__help:
+      de: "Hol dir die Texte zu einem Lied
+
+          Frag einfach: __text zu Mockingbird von Emninem__"
+      en: "Get the lyrics of a song
+
+          Ask: __lyrics to Mockingbird from Emninem__"
+    get_lyric__param_song:
+      de: "Der Liedname"
+      en: "the song name"
+    get_lyric__param_singer:
+      de: "Der Sänger/Die Band"
+      en: "the singer of the song"

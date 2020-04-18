@@ -22,7 +22,11 @@ class Help(Plugin):
                     all_keywords.append(keyword)
                 method_help[method] = {'help': help_text, 'params': all_params, 'keywords': keywords}
 
-            plugin_help = {'description': plugin.get_description(), 'methods': method_help, 'name': plugin.name}
+            plugin_help = {
+                'description': plugin.get_description(),
+                'methods': method_help,
+                'name': plugin.name.replace('_', r'\_')
+            }
             self.plugins.append(plugin_help)
 
     def general_help(self, args):

@@ -1,0 +1,35 @@
+gas_prices:
+  keywords:
+    get_prices_in_city__price:
+      de: "wie teuer ist $type in $city"
+      en: "how expensive is $type in $city"
+    get_prices__price:
+      de: "wie teuer ist $type"
+      en: "how expensive is $type"
+  answers:
+    get_prices_in_city__result:
+      de/en: "$type in $city: $list"
+    get_prices__result:
+      de/en: "$type: $list"
+  other:
+    description:
+      de: "Hier kriegst du die aktuellen Spritpreise
+
+           nutzt:
+             - clever-tanken.de"
+      en: "get the gas prices
+
+           uses:
+             - clever-tanken.de"
+    gas_prices__param_type:
+      de: "Der Sprit-Type"
+      en: "the type of gas"
+    get_prices_in_city__param_city:
+      de: "In der Stadt wirst du nach den Preisen suchen."
+      en: "In this city you will search for the prices"
+    gas_prices__param_list:
+      de: "Eine Liste mit den Preisen der Stadt."
+      en: "A list with all the prices of that city"
+    get_prices__help:
+      de: "Hol dir die Preise aus der Stadt die als Standart angegeben ist"
+      en: "Get the prices from the default city"

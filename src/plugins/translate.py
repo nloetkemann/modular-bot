@@ -36,10 +36,7 @@ class Translate(Plugin):
         self.requiere_param(args, '$content', '$language')
         content = args['$content']
         language = args['$language']
-        if global_config.env_value_exists('language'):
-            base_language = global_config.get_env('language')
-        else:
-            base_language = 'de'
+        base_language = global_config.language
         return {'$translation': '\n' + self.translate(content, base_language, self.__get_language(language))}
 
     def translate_into_language(self, args):

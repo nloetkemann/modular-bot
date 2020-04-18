@@ -1,0 +1,7 @@
+map(str(), include('attr'))
+---
+attr:
+  keywords: map(str(), map(str, str))
+  answers: map(str(), map(str, str))
+  other: map(str(), map(str, str))
+

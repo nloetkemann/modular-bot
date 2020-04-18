@@ -3,12 +3,17 @@ import random
 from src.yaml.plugin import Plugin
 import requests
 from bs4 import BeautifulSoup, element
+from src.config import config as global_config
 
 
 class Entertainment(Plugin):
     def __init__(self, name, plugin_config):
         super().__init__(name, plugin_config)
-        self.jokes = [self.__jokes_lustige_sprueche_net]
+        self.jokes = {
+            'de': [self.__jokes_lustige_sprueche_net],
+            'en': []
+        }
+        self.language = global_config.language
 
     @staticmethod
     def __jokes_lustige_sprueche_net():
@@ -27,8 +32,8 @@ class Entertainment(Plugin):
         return jokes
 
     def __jokes(self):
-        index_method = random.randint(0, len(self.jokes) - 1)
-        jokes = self.jokes[index_method]()
+        index_method = random.randint(0, len(self.jokes[self.language]) - 1)
+        jokes = self.jokes[self.language][index_method]()
         index_jokes = random.randint(0, len(jokes) - 1)
         return jokes[index_jokes]
 
