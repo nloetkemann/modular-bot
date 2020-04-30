@@ -4,8 +4,8 @@ services:
   bot:
     build: .
     container_name: bot
-    entrypoint:
-      DESCRIPTION: ''
-      BOT_NAME: ''
+    environment:
+      DESCRIPTION: 'Ein Bot für alle Fälle'
+      BOT_NAME: 'Lilly'
 
 
