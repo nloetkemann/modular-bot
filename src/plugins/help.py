@@ -59,6 +59,6 @@ class Help(Plugin):
     def plugin_list(self, args):
         plugins = ''
         for plugin in self.plugins:
-            plugins += '\n- {0}'.format(plugin['name'])
+            plugins += '\n- {0}'.format(plugin['name'].replace('_', '\_'))
 
         return {'$list': plugins}

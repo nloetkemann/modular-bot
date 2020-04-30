@@ -8,11 +8,11 @@ weather:
       en: "how is the weather( in $standort)?( at $time)?"
   answers:
     get_weather__it_is:
-      de: "es ist $weather (in $standort)?( um $time)?"
-      en: "it is $weather (in $standort)?( at $time)"
+      de: "es ist $weather (in $standort)?"
+      en: "it is $weather (in $standort)?"
     get_weather__weather:
-      de: "(um $time ist es )?$weather( in $standort)?"
-      en: "(at $time )?the weather is $weather( in $standort)?"
+      de: "$weather( in $standort)?"
+      en: "the weather is $weather( in $standort)?"
   other:
     description:
       de: "Wetter station"
