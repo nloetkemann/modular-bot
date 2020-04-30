@@ -1,133 +1,124 @@
 plugin:
   name: "welcome"
-  description: "eine Suchmaschine"
+  description: description
   methods:
     - name: "say_hello"
-      help: 'Just say hello or any greeting'
+      help: say_hello__help
       keywords:
         list:
-          - "hi\\b"
-          - "hallo"
-          - "moin"
-          - "was geht"
-          - "nabend"
+          - say_hello__hi
+          - say_hello__hello
+          - say_hello__moin
+          - say_hello__evening
+          - say_hello__whats_up
       answers:
         list:
-          - "Hi"
-          - "Moin"
-          - "Was geht"
-          - "Nabend"
-          - "Moin moin"
+          - say_hello__hi
+          - say_hello__moin
+          - say_hello__whats_up
+          - say_hello__evening
+          - say_hello__moin_moin
     - name: "how_are_you"
-      help: 'How is the Bot.
-
-            usage: __wie geht es dir__'
+      help: how_are_you__help
       keywords:
         list:
-          - "wie geht(s)?( es dir)?"
-          - "was geht"
+          - how_are_you__how
+          - how_are_you__whats_up
       answers:
         list:
-          - "Mir geht es sehr gut!"
-          - "Mega gut"
+          - how_are_you__fine
+          - how_are_you__very_fine
     - name: "who_are_you"
-      help: 'Asks for the name
-
-            usage: __wer bist du__
-
-            __wie ist dein name__'
+      help: who_are_you__help
       keywords:
         list:
-          - "wer bist du"
-          - "wie heißt du"
-          - "wie ist dein name"
+          - who_are_you__who
+          - who_are_you__called
+          - who_are_you__name
       answers:
         list:
-          - "Ich bin $name"
-          - "mein name ist $name"
-          - "hi ich bin $name"
+          - who_are_you__i_am
+          - who_are_you__name
+          - who_are_you__hi
         params:
           - name: name
-            desciption: "the name of the bot"
+            description: who_are_you__param_name
     - name: "what_are_you_doing"
-      help: 'Ask what your bot is doing
-
-            use: __was machst du__'
+      help: what_are_you_doing__help
       keywords:
         list:
-          - "was machst du( gerade)?"
+          - what_are_you_doing__what
       answers:
         list:
-          - "$doing, $how"
+          - what_are_you_doing__doing
         params:
           - name: doing
-            description: "what am i doing"
+            description: what_are_you_doing__param_doing
           - name: how
-            desciption: "how am i doing it"
-    - name: 'if_bot_needs_help'
-      help: 'Ask __brauchst du Hilfe__'
+            description: what_are_you_doing__param_how
+    - name: if_bot_needs_help
+      help: if_bot_needs_help__help
       keywords:
         list:
-          - '(wie )?kann ich dir helfen'
-          - 'ist dir noch zu helfen'
-          - 'brauchst du hilfe'
+          - if_bot_needs_help__how
+          - if_bot_needs_help__possible
+          - if_bot_needs_help__need
       answers:
         list:
-          - 'Nee danke, ich komme sehr gut klar'
-          - 'Hm nicht sicher, aufgrund der Gesundheitsbestimmungen darf ich keine Handshakes mehr machen.
-              Ist also alles nicht sicher'
-          - 'Ohh das ist aber nett....'
-          - 'Sehe ich so aus als würde ich Hilfe brauchen'
-          - 'Jetzt wo ich darüber nachdenke, fällt mir bestimmt was ein...'
-          - 'Nicht sicher wie du mir helfen willst.'
+          - if_bot_needs_help__no
+          - if_bot_needs_help__health
+          - if_bot_needs_help__nice
+          - if_bot_needs_help__look
+          - if_bot_needs_help__think
+          - if_bot_needs_help__not_sure
     - name: how_old_is_bot
-      help: ''
+      help: how_old_is_bot__help
       keywords:
         list:
-          - 'wie alt bist du'
-          - 'wie lange lebst du schon'
-          - 'wie lange gibt es dich schon'
-          - 'wie viele jahre alt bist du'
+          - how_old_is_bot__old
+          - how_old_is_bot__long
+          - how_old_is_bot__exsist
+          - how_old_is_bot__jears
       answers:
         list:
-          - 'ich bin schon $days Tage alt'
-          - 'Mich gibt es schon $days Tage'
-          - 'Ich wurde vor $days erschaffen'
+          - how_old_is_bot__i_am
+          - how_old_is_bot__exist
+          - how_old_is_bot__created
     - name: what_bot_is_able_to
-      help: ''
+      help: what_bot_is_able_to__help
       keywords:
         list:
-          - 'was kannst du'
+          - what_bot_is_able_to__what
       answers:
         list:
-          - 'Gar nicht mal so wenig, frag mich mal nach meinen Plugins. "__list plugins__"'
-          - 'Ich lerne immer mehr. Du kannst mich immer nach meinen Plugins fragen. "__list_plugins__"'
-          - 'Es kommt ganz drauf an, welche Skills aktiviert sind. Frag einfach nach "__list_plugins__"'
+          - what_bot_is_able_to__not_few
+          - what_bot_is_able_to__learn
+          - what_bot_is_able_to__skills
     - name: where_is_your_work
-      help: ''
+      help: where_is_your_work__help
       keywords:
         list:
-          - 'wo arbeitest du'
-          - 'als was arbeitest du'
-          - 'was ist dein job'
+          - where_is_your_work__where
+          - where_is_your_work__description
+          - where_is_your_work__what
       answers:
         list:
-          - 'Ich arbeite im Internet und helfe Leuten die mich die ganze mit Fragen löchern.'
-          - 'Ich mache Homeoffice, ich kann sehr gut von zu Hause arbeiten.'
-          - 'Man könnte mich sagen, ich arbeite im Kundenservice.'
+          - where_is_your_work__internet
+          - where_is_your_work__homeoffice
+          - where_is_your_work__customerservice
     - name: what_is_your_gender
       help: ''
       keywords:
         list:
-          - 'bist du eine frau'
-          - 'welches geschlect hast du'
-          - 'bist du ein mann'
+          - what_is_your_gender__woman
+          - what_is_your_gender__gender
+          - what_is_your_gender__man
       answers:
         list:
-          - 'Ich bin was immer du auch möchtest...'
-          - 'Spielt das wirkliche eine Rolle'
-          - 'Da bin ich mir selber nicht ganz sicher, aber ich bin glücklich, so wie ich bin.'
-          - 'Kömische Frage, ist ziemlich persönlich oder?'
-          - 'Ach das ist doch egal, Hauptsache ich kann dir helfen.'
+          - what_is_your_gender__want
+          - what_is_your_gender__role
+          - what_is_your_gender__not_sure
+          - what_is_your_gender__wired
+          - what_is_your_gender__matter
 
 

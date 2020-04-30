@@ -1,45 +1,40 @@
 plugin:
   name: "maps"
-  description: "Maps Plugin"
+  description: "description"
   methods:
     - name: "calc_distance"
-      help: 'get the distance between to cities.
-
-            Ask: __distanz zwischen Hamburg und Berlin__'
+      help: 'calc_distance__help'
       keywords:
         list:
-          - "wie weit ist es von $start bis( nach)? $end"
-          - "entfernung von $start bis( nach)? $end"
-          - "distanz zwischen $start und $end"
-          - "entfernung zwischen $start und $end"
+          - calc_distance__how_far
+          - calc_distance__distance
+          - calc_distance__calc
+          - calc_distance__between
         params:
           - name: start
             count: 2
-            description: "the start location"
+            description: calc_distance__param_start
           - name: end
             count: 2
-            description: "the end location"
+            description: calc_distance__param_end
       answers:
         list:
-          - "Die Distanze beträgt: $distance km"
+          - calc_distance__result
         params:
           - name: distance
-            description: "the distance"
-
+            description: calc_distance__param_distance
     - name: city_info
-      help: 'gets some details about the location.
-
-            Ask: __infos zu Hamburg__'
+      help: 'city_info__help'
       keywords:
        list:
-         - 'infos zu $city'
+         - city_info__infos
        params:
          - name: 'city'
-           description: 'the city name'
+           description: city_info__param_city
       answers:
         list:
-          - 'Hier einige Infos:$result'
+          - city_info__result
         params:
           - name: result
-            description: 'the infos about the city'
+            description: city_info__param_result
 

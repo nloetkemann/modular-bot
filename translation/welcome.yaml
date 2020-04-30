@@ -1,0 +1,219 @@
+welcome:
+  keywords:
+    say_hello__whats_up:
+      de: "was geht"
+      en: "whatz u+p"
+    say_hello__hi:
+      de/en: "hi\\b"
+    say_hello__hello:
+      de: "hallo"
+      en: "hello"
+    say_hello__moin:
+      de: "moin"
+    say_hello__evening:
+      de: "nabend"
+      en: "Good evening"
+    how_are_you__how:
+      de: "wie geht(s)?( es dir)?"
+      en: "how are you"
+    how_are_you__whats_up:
+      en: "what('s|s)? up"
+    who_are_you__who:
+      de: "wer bist du"
+      en: "who are you"
+    who_are_you__called:
+      de: "wie heißt du"
+    who_are_you__name:
+      de: "wie ist dein name"
+      en: "what(s| is)? your name"
+    what_are_you_doing__what:
+      de: "was machst du( gerade)?"
+      en: "what are you doing"
+    if_bot_needs_help__how:
+      de: "(wie )?kann ich dir helfen"
+      en: "how can i help you"
+    if_bot_needs_help__possible:
+      de: "ist dir noch zu helfen"
+    if_bot_needs_help__need:
+      de: "brauchst du hilfe"
+      en: "do you need help"
+    how_old_is_bot__old:
+      de: "wie alt bist du"
+      en: "how old are you"
+    how_old_is_bot__long:
+      de: "wie lange lebst du schon"
+      en: "how long have you been living"
+    how_old_is_bot__exsist:
+      de: "wie lange gibt es dich schon"
+      en: "how long do you exist"
+    how_old_is_bot__jears:
+      de: "wie viele jahre alt bist du"
+      en: "how many years old are you"
+    what_bot_is_able_to__what:
+      de: "was kannst du"
+      en: "what can you do"
+    where_is_your_work__where:
+      de: "wo arbeitest du"
+      en: "where do you work"
+    where_is_your_work__description:
+      de: "als was arbeitest du"
+      en: "what is your job"
+    where_is_your_work__what:
+      de: "was ist dein job"
+    what_is_your_gender__woman:
+      de: "bist du eine frau"
+      en: "are you a woman"
+    what_is_your_gender__gender:
+      de: "welches geschlecht hast du"
+      en: "what gender do you (have|are)"
+    what_is_your_gender__man:
+      de: "bist du ein mann"
+      en: "are you a man"
+  answers:
+    say_hello__hi:
+      de/en: "Hi"
+    say_hello__moin:
+      de: "Moin"
+    say_hello__whats_up:
+      de: "Was geht"
+      en: "Whatz uuuup"
+    say_hello__evening:
+      de: "Nabend"
+      en: "Good evening"
+    say_hello__moin_moin:
+      de: "Moin moin"
+    how_are_you__fine:
+      de: "Mir geht es sehr gut!"
+      en: "Im fine, thanks."
+    how_are_you__very_fine:
+      de: "Mega gut"
+      en: "Everything is perfect."
+    who_are_you__i_am:
+      de: "Ich bin $name"
+      en: "I'm $name"
+    who_are_you__name:
+      de: "Mein Name ist $name"
+      en: "My Name is $name"
+    who_are_you__hi:
+      de: ""
+      en: "Hi, ich bin $name"
+    what_are_you_doing__doing:
+      de/en: "$doing, $how"
+    if_bot_needs_help__no:
+      de: "Nee danke, ich komme sehr gut klar"
+      en: "No thanks, I'm fine"
+    if_bot_needs_help__health:
+      de: "Hm nicht sicher, aufgrund der Gesundheitsbestimmungen darf ich keine Handshakes mehr machen.
+           Ist also alles nicht sicher"
+      en: "Not so sure yet, because handshakes are not so safe, I have some problems"
+    if_bot_needs_help__nice:
+      de: "Ohh das ist aber nett... Aber nein"
+      en: "Ohh thats so nice... But no"
+    if_bot_needs_help__look:
+      de: "Sehe ich so aus als würde ich Hilfe brauchen"
+      en: "Do I look, as if I would need help?"
+    if_bot_needs_help__think:
+      de: "Jetzt wo ich darüber nachdenke, fällt mir bestimmt was ein..."
+      en: "Let me just think about it a little bit"
+    if_bot_needs_help__not_sure:
+      de: "Nicht sicher wie du mir helfen willst."
+      en: "Not sure, how you could help me here..."
+    how_old_is_bot__i_am:
+      de: "ich bin schon $days Tage alt"
+      en: "I am already $days days old"
+    how_old_is_bot__exist:
+      de: "Mich gibt es schon $days Tage"
+      en: "I've been there for $days days"
+    how_old_is_bot__created:
+      de: "Ich wurde vor $days erschaffen"
+      en: "I was created $days days ago."
+    what_bot_is_able_to__not_few:
+      de: "Gar nicht mal so wenig, frag mich mal nach meinen Plugins. '__list plugins__'"
+      en: "Not that little at all, just ask for my plugins: __list plugins__"
+    what_bot_is_able_to__learn:
+      de: "Ich lerne immer mehr. Du kannst mich immer nach meinen Plugins fragen. '__list plugins__'"
+      en: "I am learning more and more. You can always ask me about my plugins. __list plugins__"
+    what_bot_is_able_to__skills:
+      de: "Es kommt ganz drauf an, welche Skills aktiviert sind. Frag einfach nach '__list_plugins__'"
+      en: "Depends on, which plugins are activated. __list plugins__"
+    where_is_your_work__internet:
+      de: "Ich arbeite im Internet und helfe Leuten die mich die ganze mit Fragen löchern."
+      en: "I work on the internet and I'm helping people, who wont stop asking questions..."
+    where_is_your_work__homeoffice:
+      de: "Ich mache Homeoffice, ich kann sehr gut von zu Hause arbeiten."
+      en: "I do home office, I can work very well from home"
+    where_is_your_work__customerservice:
+      de: "Man könnte mich sagen, ich arbeite im Kundenservice."
+      en: "You could say I work in customer service."
+    what_is_your_gender__want:
+      de: "Ich bin was immer du auch möchtest..."
+      en: "I could be, whatever you want..."
+    what_is_your_gender__role:
+      de: "Spielt das wirklich eine Rolle"
+      en: "Does that really matter??"
+    what_is_your_gender__not_sure:
+      de: "Da bin ich mir selber nicht ganz sicher, aber ich bin glücklich, so wie ich bin."
+      en: "I'm not quite sure myself, but I'm happy the way I am."
+    what_is_your_gender__wired:
+      de: "Komische Frage, ist ziemlich persönlich oder?"
+      en: "Funny question, it is pretty personal or?"
+    what_is_your_gender__matter:
+      de: "Ach das ist doch egal, Hauptsache ich kann dir helfen."
+      en: "That doesnt really matter, as long i can help you"
+  other:
+    description:
+      de: "Das Wilkommen-Plugin für jede Art der Kommunikation"
+      en: "The Welcome-Plugin for every kind of communication"
+    say_hello__help:
+      de: "Sag einfach __Hallo__ oder jede andere Art der Begrüssung"
+      en: "Just say __hello__ or any greeting"
+    how_are_you__help:
+      de: "Wie geht es dem Bot.
+
+          Frag einfach: __wie geht es dir__"
+      en: "How is the Bot.
+
+          usage: __how are you__"
+    who_are_you__help:
+      de: "Wer ist dieser Bot eigentlich???
+
+           Frag einfach: __wer bist du__
+
+           oder __wie ist dein name__"
+      en: "Who the f... is this Bot??
+
+           usage: __who are you__
+
+           __whats your name__"
+    who_are_you__param_name:
+      de: "Der Name des Bots"
+      en: "The name of the bot"
+    what_are_you_doing__help:
+      de: "Du kannst fragen was der Bot macht.
+
+           Frag einfach: __was machst du__"
+      en: "Ask what your bot is doing
+
+           use: __what are you doing__"
+    what_are_you_doing__param_doing:
+      de: "Was der Bot gerade macht"
+      en: "what am i doing"
+    what_are_you_doing__param_how:
+      de: "wie der Bot die Arbeit macht"
+      en: "how am i doing it"
+    if_bot_needs_help__help:
+      de: "Frag __brauchst du Hilfe__"
+      en: "Ask __do you need help__"
+    how_old_is_bot__help:
+      de: "Um das alter zu kriegen"
+      en: "To get the age of the bot"
+    what_bot_is_able_to__help:
+      de: "Frag einfach __was kannst du__"
+      en: "Just ask __what can you do"
+    where_is_your_work__help:
+      de: "Ein paar Infos zum Arbeitsplatz des Botes"
+      en: "To get Information about the location where the Bot works"
+    what_is_your_gender__help:
+      de: ""
+      en: ""
+

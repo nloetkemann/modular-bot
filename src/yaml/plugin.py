@@ -4,6 +4,7 @@ from src.config import config
 from src.exceptions.not_found_exception import NotFoundException
 from src.exceptions.token_exception import TokenException
 from src.tools.tools import Tools
+from src.translation import Translation
 from src.yaml.method import Method
 import random
 
@@ -17,7 +18,10 @@ class Plugin:
     def __init__(self, name, plugin_config):
         self.name = name
         self.methods = {}
+        self.translation = Translation(self.name, config.translation_dir)
         self.__config = plugin_config
+        self.__load_translation()
+
         for method in plugin_config['methods']:
             call_method = self.__get_method_by_name(method['name'])
             self.methods[method['name']] = Method(method, call_method)
@@ -26,6 +30,59 @@ class Plugin:
             self.__require_token()
 
         config.add_to_plugins(self)
+
+    def __load_translation(self):
+        language = config.language
+        description_key = self.__config['description']
+        self.__config['description'] = self.translation.get_other_translation(description_key, language)
+
+        methods = []
+        for method in self.__config['methods']:
+            # for help
+            if 'help' in method:
+                translation = self.translation.get_other_translation(method['help'], language)
+                if translation != "":
+                    method['help'] = translation
+
+            # for keywords params
+            if 'params' in method['keywords']:
+                params = []
+                for param in method['keywords']['params']:
+                    translation = self.translation.get_other_translation(param['description'], language)
+                    if translation != "":
+                        param['description'] = translation
+                        params.append(param)
+                method['keywords']['params'] = params
+
+            # for answers params
+            if 'params' in method['answers']:
+                params = []
+                for param in method['answers']['params']:
+                    translation = self.translation.get_other_translation(param['description'], language)
+                    param['description'] = translation
+                    params.append(param)
+                method['answers']['params'] = params
+
+            # for keywords
+            if 'list' in method['keywords']:
+                key_word_list = []
+                for keyword in method['keywords']['list']:
+                    translation = self.translation.get_keyword_translation(keyword, language)
+                    if translation != "":
+                        key_word_list.append(translation)
+                method['keywords']['list'] = key_word_list
+
+            # for answers
+            if 'list' in method['answers']:
+                answer_list = []
+                for answer in method['answers']['list']:
+                    translation = self.translation.get_answer_translation(answer, language)
+                    if translation != "":
+                        answer_list.append(translation)
+                method['answers']['list'] = answer_list
+            methods.append(method)
+
+        self.__config['methods'] = methods
 
     def get_name(self):
         return self.name

@@ -1,35 +1,28 @@
 plugin:
   name: "entertainment"
-  description: "this is for entertainment, jokes, and so on
-
-              nutzt:
-                - lustige-sprueche.net"
+  description: description
   methods:
     - name: "user_is_boring"
-      help: 'get some interesting infos, or jokes
-
-            For example: __mir ist langweilig__'
+      help: user_is_boring__help
       keywords:
         list:
-          - "mir ist langweilig"
+          - user_is_boring__bored
       answers:
         list:
-          - "$response"
+          - user_is_boring__result
         params:
           - name: response
-            description: "the response"
+            description: user_is_boring__param_response
     - name: make_jokes
-      help: 'get some jokes
-
-            For example: __mach einen witz__'
+      help: make_jokes__help
       keywords:
         list:
-          - 'mach einen witz'
-          - 'erzähl mir einen witz'
-          - 'kennst du einen witz'
+          - make_jokes__make
+          - make_jokes__tell
+          - make_jokes__know
       answers:
         list:
-          - '$joke'
+          - make_jokes__jokes
         params:
           - name: joke
-            description: 'the joke'
+            description: make_jokes__param_joke

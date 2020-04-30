@@ -49,14 +49,14 @@ class DiscordBot(Bot, discord.Client):
             content = re.sub(MENTION_REGEX, '', content).strip()
             content = re.sub(self.CALL_PATTERN, '', content).strip()
             plugin, method, params = self.handler.validate_user_input(content)
-            answer, file, _type = self.format_answer(plugin.call_method(method, params))
+            answer, file, _type = plugin.call_method(method, params)
             response = Response(answer, message)
             await self.send_message(response)
 
     async def send_message(self, response):
-        message = response.get_message()
+        message = self.format_answer(response.get_message())
         if len(message) > 2000:
-            shorter_message = Tools.split(message, 2000 , '\n')
+            shorter_message = Tools.split(message, 2000, '\n')
             rest_message = message[len(shorter_message):len(message)]
             await response.get_receiver().channel.send(shorter_message)
             response.message = rest_message

@@ -22,13 +22,17 @@ class Help(Plugin):
                     all_keywords.append(keyword)
                 method_help[method] = {'help': help_text, 'params': all_params, 'keywords': keywords}
 
-            plugin_help = {'description': plugin.get_description(), 'methods': method_help, 'name': plugin.name}
+            plugin_help = {
+                'description': plugin.get_description(),
+                'methods': method_help,
+                'name': plugin.name
+            }
             self.plugins.append(plugin_help)
 
     def general_help(self, args):
         help_text = ''
         for plugin in self.plugins:
-            help_text += '\n*_{0}*_\n{1}'.format(plugin['name'], plugin['description'])
+            help_text += '\n*_{0}*_\n{1}'.format(plugin['name'].replace('_', '\_'), plugin['description'])
             for method in plugin['methods']:
                 help_text += '\n**-> {0}**:\n{1}\n'.format(method, plugin['methods'][method]['help'])
         return {'$help': help_text}
@@ -55,6 +59,6 @@ class Help(Plugin):
     def plugin_list(self, args):
         plugins = ''
         for plugin in self.plugins:
-            plugins += '\n- {0}'.format(plugin['name'])
+            plugins += '\n- {0}'.format(plugin['name'].replace('_', '\_'))
 
         return {'$list': plugins}

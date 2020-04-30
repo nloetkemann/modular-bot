@@ -1,16 +1,16 @@
 plugin:
   name: "nothing"
-  description: "catches every wrong input, should be at the end of the plugin list"
+  description: description
   methods:
     - name: "wrong_command"
       keywords:
         list:
-          - ".*"
+          - all
       answers:
         list:
-          - "Hmm deine Eingabe war ziemlich komisch"
-          - "Das war so nicht richtig..."
-          - "Halt stop, das war nicht richtig"
-          - "Ich weiß nicht genau was ich damit machen soll"
-          - "Ich bin verwirrt, damit kann ich nicht arbeiten..."
+          - wrong_command__wired
+          - wrong_command__not_right
+          - wrong_command__stop
+          - wrong_command__what_to_do
+          - wrong_command__confused
 

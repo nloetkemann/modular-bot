@@ -7,12 +7,11 @@ from src.yaml.plugin import Plugin
 
 
 class Gas_prices(Plugin):
-    url = "https://www.clever-tanken.de/tankstelle_liste?lat={latitude}&lon={longitude}&ort={plz}+{city}&spritsorte={sort}&r=5"
-    gas_types = {'diesel': 3, 'super e5': 7, 'super e10': 5, 'erdgas': 8, 'autogas': 1, 'benzin': 5}
-
-    def __make_request(self, latitude, longitude, plz, location, gas_type):
-        url = self.url.format(latitude=latitude, longitude=longitude, plz=plz, city=location,
-                              sort=self.gas_types[gas_type])
+    def __make_request_de(self, latitude, longitude, plz, location, gas_type):
+        url = "https://www.clever-tanken.de/tankstelle_liste?lat={latitude}&lon={longitude}&ort={plz}+{city}&spritsorte={sort}&r=5"
+        gas_types = {'diesel': 3, 'super e5': 7, 'super e10': 5, 'erdgas': 8, 'autogas': 1, 'benzin': 5}
+        url = url.format(latitude=latitude, longitude=longitude, plz=plz, city=location,
+                              sort=gas_types[gas_type])
         response = requests.get(url)
         return response
 
@@ -42,7 +41,7 @@ class Gas_prices(Plugin):
         else:
             location = 'Espelkamp'
         latitude, longitude, plz = Maps.get_coordinates(location)
-        response = self.__make_request(latitude, longitude, plz, location, gas_type)
+        response = self.__make_request_de(latitude, longitude, plz, location, gas_type)
         result = self.__extract_prices(response)
         return {'$list': result, '$type': Tools.first_to_upper(gas_type)}
 
@@ -51,6 +50,6 @@ class Gas_prices(Plugin):
         gas_type = args['$type']
         location = args['$city']
         latitude, longitude, plz = Maps.get_coordinates(location)
-        response = self.__make_request(latitude, longitude, plz, location, gas_type)
+        response = self.__make_request_de(latitude, longitude, plz, location, gas_type)
         result = self.__extract_prices(response)
         return {'$list': result, '$type': Tools.first_to_upper(gas_type), '$city': Tools.first_to_upper(location)}

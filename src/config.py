@@ -6,7 +6,6 @@
 # -----------------------------------------------------------
 import os
 import re
-
 from src.bot.discord_bot import DiscordBot
 from src.bot.slack_bot import SlackBot
 from src.bot.telegram_bot import TelegramBot
@@ -21,16 +20,26 @@ class Config:
     config = None
     name = ''
     environment = []
-    plugins = None
+    plugins = []
     description = ''
     list_plugin_objects = []
     bots = {}
 
     messenger_names = {'': ''}
 
-    def __init__(self, config_path='./config.yaml', secrets_path=''):
+    def __init__(self, config_path='./config.yaml', secrets_path='', translation_dir='./translation'):
+        self.translation_dir = translation_dir
         self.secrets = Secrets(secrets_path)
         self.load_from_file(config_path)
+        self.__set_language()
+
+    def __set_language(self):
+        if self.env_value_exists('language'):
+            self.language = self.get_env('language')
+        elif 'LANGUAGE' in os.environ:
+            self.language = os.environ['LANGUAGE']
+        else:
+            self.language = 'de'
 
     def load_from_file(self, config_path: str):
         ok, error = Tools.validate_yaml('./schemas/config-schema.yaml', config_path)

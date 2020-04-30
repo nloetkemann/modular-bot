@@ -1,57 +1,48 @@
 plugin:
   name: "help"
-  description: "offers help"
+  description: "description"
   methods:
     - name: plugin_help
-      help: 'A help for one plugin
-
-            Ask: __hilfe für Wiki__
-
-            or __hilfe zu Wolfram__'
+      help: 'plugin_help__help'
       keywords:
         list:
-          - "hilfe (für |zu )$plugin"
+          - plugin_help__help_plugin
         params:
           - name: plugin
-            description: the name of the plugin
+            description: plugin_help__param_plugin
       answers:
         list:
-          - '$help'
+          - plugin_help__help_plugin
         params:
           - name: help
-            description: 'the answer of the plugin'
-
+            description: plugin_help__param_help
     - name: "general_help"
-      help: 'Help for one plugin.
-
-            Ask: __hilfe__
-
-            or __ich brauche hilfe__'
+      help: 'general_help__help'
       keywords:
         list:
-          - "kannst du mir( bitte)? helfen"
-          - "ich brauche hilfe"
-          - "ich weiß nicht was ich (machen|tun){1} soll"
-          - "hilfe"
+          - general_help__please
+          - general_help__need_help
+          - general_help__no_knowlegde
+          - general_help__help
       answers:
         list:
-          - "$help"
+          - general_help__answer
         params:
           - name: help
-            description: "the help"
+            description: general_help__param_help
     - name: "plugin_list"
-      help: 'Just ask __list plugins__ or __welche plugins gibt es__'
+      help: 'plugin_list__help'
       keywords:
         list:
-          - 'list plugins'
-          - 'welche plugins gibt es'
-          - 'alle plugins'
+          - plugin_list__list
+          - plugin_list__which
+          - plugin_list__all
       answers:
         list:
-          - 'Hier sind alle aktiven Plugins:$list'
+          - plugin_list__answer
         params:
           - name: list
-            description: 'the plugin list'
+            description: plugin_list__param_list
 
 
 
