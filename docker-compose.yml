@@ -4,6 +4,7 @@ services:
   bot:
     build: .
     container_name: bot
+    restart: on-failure
     environment:
       DESCRIPTION: 'Ein Bot für alle Fälle'
       BOT_NAME: 'Lilly'
