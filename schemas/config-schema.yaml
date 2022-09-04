@@ -5,6 +5,7 @@ bot_type:
   messenger: list(str())
   description: str()
   environment: list(include('environment_type'))
+  plugins: list(include('plugins_type'))
 
 environment_type:
   name: str()

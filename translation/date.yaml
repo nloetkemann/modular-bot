@@ -17,6 +17,8 @@ date:
       de: "was für ein datum haben wir"
     get_date__which_date:
       de: "welches datum ist es"
+    get_date_which_day:
+      de: "welcher tag ist heute"
   answers:
     get_time__time:
       de: "Es ist $time"

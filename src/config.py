@@ -11,6 +11,7 @@ from src.bot.slack_bot import SlackBot
 from src.bot.telegram_bot import TelegramBot
 from src.exceptions.config_exception import ConfigException
 from src.exceptions.not_found_exception import NotFoundException
+from src.messages.response import Response
 from src.secrets import Secrets
 from src.tools.tools import Tools
 
@@ -106,6 +107,9 @@ class Config:
             if 'name' in entry and entry['name'] == name:
                 return True
         return False
+
+    def message_trigger(self, messenger, chat_id, content):
+        self.bots[messenger].send_message(Response(content, chat_id))
 
 
 config = Config(secrets_path='./secrets.yaml')

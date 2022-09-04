@@ -24,6 +24,7 @@ plugin:
           - get_date__date
           - get_date__daydate
           - get_date__which_date
+          - get_date_which_day
       answers:
         list:
           - get_date__result

@@ -2,6 +2,7 @@ import logging
 import telepot
 from telepot.loop import MessageLoop
 from src.bot.bot import Bot
+from src.exceptions.not_found_exception import NotFoundException
 from src.messages.response import Response
 from src.messages.telegram_request import TelegramRequest
 from src.plugin_handler import PluginHandler
@@ -52,13 +53,21 @@ class TelegramBot(Bot):
     def __on_chat_message(self, message: str):
         request = TelegramRequest(message)
         plugin, method, params = self.handler.validate_user_input(request.get_text())
-        answer, file, _type = plugin.call_method(method, params)
-        response = Response(answer, request.chat_id)
-        self.send_message(response)
-        if _type != '':
-            if _type == 'photo':
-                self.send_image(Response(file, request.chat_id))
-            Tools.remove_file(file)
+        params['chat_id'] = request.chat_id
+        params['messenger'] = 'telegram'
+        try:
+            answer, file, _type = plugin.call_method(method, params)
+            response = Response(answer, request.chat_id)
+            self.send_message(response)
+            if _type != '':
+                if _type == 'photo':
+                    self.send_image(Response(file, request.chat_id))
+                Tools.remove_file(file)
+        except NotFoundException as e:
+            answer = e.message
+            response = Response(answer, request.chat_id)
+            self.send_message(response)
+
 
     def __on_callback(self, callback):
         print(callback)

@@ -1,0 +1,41 @@
+timer:
+  keywords:
+    set_timer__timer:
+      de: "stelle einen timer für $amount $timeunit"
+      en: "set a timer for $amount $timeunit"
+    set_timer__short:
+      de: "timer für $amount $timeunit"
+      en: "timer for $amount $timeunit"
+    stop_timer__timer:
+      de: "stoppe den $amount $timeunit timer"
+      en: "stop the $amount $timeunit timer"
+    status_timer:
+      de: "wie weit ist der $amount $timeunit timer"
+      en: "what is the status of the $amount $timeunit timer"
+  answers:
+    set_timer_started:
+      de: "Timer wurde gestarted"
+      en: "Timer started"
+    stop_timer_stopped:
+      de: "Timer wurde gestoppt"
+      en: "Timer stopped"
+    status_timer:
+      de: "du hast noch $rest_timer"
+      en: "only $rest_timer left"
+  other:
+    description:
+      de: "Timer Beschreibung"
+      en: "Timer description"
+    set_timer:
+      de/help: help
+    set_timer_help:
+      de: Hilfetext
+      en: Helptext
+    stop_timer_help:
+      de/en: help
+    timer__param_amount:
+      de: "die Menge der Zeit"
+      en: "the amount of time"
+    timer_param_unit:
+      de: "die Einheit des Timers"
+      en: "the unit of the timer"

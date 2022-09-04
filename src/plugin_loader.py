@@ -31,6 +31,12 @@ class PluginLoader:
     def get_plugins(self) -> list:
         return self.plugins
 
+    def get_plugin(self, name: str):
+        for plugin in self.plugins:
+            if plugin.name.lower() == name.lower():
+                return plugin
+        return None
+
     @staticmethod
     def import_plugin(name):  # todo add more safety code could be inserted in the loaded plugin
         return getattr(__import__('src.plugins.' + name.lower(), fromlist=[name]), name)

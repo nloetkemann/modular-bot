@@ -25,6 +25,7 @@ keywordparam:
   type: include('allowed_params_type', required=False)
   count: int(required=False)
   description: str(required=False)
+  default: str(required=False)
 
 answerparam:
   name: str()

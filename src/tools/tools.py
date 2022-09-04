@@ -46,7 +46,7 @@ class Tools:
             raise FileNotFoundError('The config file is missing.')
 
         with open(path, 'r') as config_file:
-            return yaml.load(config_file)
+            return yaml.safe_load(config_file)
 
     @staticmethod
     def split(content: str, count: int = 600, needle: str = '.') -> str:

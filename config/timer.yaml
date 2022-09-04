@@ -1,0 +1,50 @@
+plugin:
+  name: "timer"
+  description: "description"
+  methods:
+    - name: set_timer
+      help: set_timer_help
+      keywords:
+        list:
+          - set_timer__timer
+          - set_timer__short
+        params:
+          - name: amount
+            count: 1
+            description: timer__param_amount
+          - name: timeunit
+            count: 1
+            description: timer_param_unit
+      answers:
+        list:
+          - set_timer_started
+    - name: stop_timer
+      help: stop_timer_help
+      keywords:
+        list:
+          - stop_timer__timer
+        params:
+          - name: amount
+            count: 1
+            description: timer__param_amount
+          - name: timeunit
+            count: 1
+            description: timer_param_unit
+      answers:
+        list:
+          - stop_timer_stopped
+    - name: status_timer
+      help: status_help
+      keywords:
+        list:
+          - status_timer
+        params:
+          - name: amount
+            count: 1
+            description: timer__param_amount
+          - name: timeunit
+            count: 1
+            description: timer_param_unit
+      answers:
+        list:
+          - status_timer

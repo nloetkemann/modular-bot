@@ -1,7 +1,8 @@
-from imdb.Movie import Movie
+from imdb import Cinemagoer
+import logging
 from imdb.Person import Person
+from imdb.Movie import Movie
 from src.yaml.plugin import Plugin
-from imdb import IMDb
 
 
 class Movies(Plugin):
@@ -10,7 +11,7 @@ class Movies(Plugin):
 
     def __init__(self, name, config):
         super().__init__(name, config)
-        self.imdb = IMDb()
+        self.imdb = Cinemagoer()
 
     def __get_movie(self, movie_name):
         movies_list = self.imdb.search_movie(movie_name)
@@ -75,33 +76,46 @@ class Movies(Plugin):
 
         filmography = actor['filmography']
 
-        movies = ''
-        for movie in filmography:
-            for key in movie:
-                counter = 0
-                if 'actor' == key or 'actress' == key:
-                    movies += '\n**Schauspieler**:'
-                    for actor_movie in movie[key]:
-                        if counter < self.max_movies_count:
-                            movies += '\n- {0}'.format(str(actor_movie))
-                            counter += 1
-                        else:
-                            break
-                elif 'producer' == key:
-                    movies += '\n**Producer**:'
-                    for producer_movie in movie[key]:
-                        if counter < self.max_movies_count:
-                            movies += '\n- {0}'.format(str(producer_movie))
-                            counter += 1
-                        else:
-                            break
-                elif 'director' == key:
-                    movies += '\n**Director**:'
-                    for director_movie in movie[key]:
-                        if counter < self.max_movies_count:
-                            movies += '\n- {0}'.format(str(director_movie))
-                            counter += 1
-                        else:
-                            break
+        movies = 'Test'
+        # todo list the newest movies
+        for key in filmography:
+            if key == 'actor' or key == 'actress':
+                movies += '\n**Schauspieler**:'.upper()
+            elif 'producer' == key:
+                movies += '\n**Producer**:'.upper()
+            elif 'director' == key:
+                movies += '\n**Director**:'.upper()
+            else:
+                movies += f'\n**{key}**:'.upper()
+            for movie in filmography[key][-10:]:
+                movies += '\n- {0}'.format(str(movie))
+
+        # for movie in filmography:
+        #     for key in movie:
+        #         counter = 0
+        #         if 'actor' == key or 'actress' == key:
+        #             movies += '\n**Schauspieler**:'
+        #             for actor_movie in movie[key]:
+        #                 if counter < self.max_movies_count:
+        #                     movies += '\n- {0}'.format(str(actor_movie))
+        #                     counter += 1
+        #                 else:
+        #                     break
+        #         elif 'producer' == key:
+        #             movies += '\n**Producer**:'
+        #             for producer_movie in movie[key]:
+        #                 if counter < self.max_movies_count:
+        #                     movies += '\n- {0}'.format(str(producer_movie))
+        #                     counter += 1
+        #                 else:
+        #                     break
+        #         elif 'director' == key:
+        #             movies += '\n**Director**:'
+        #             for director_movie in movie[key]:
+        #                 if counter < self.max_movies_count:
+        #                     movies += '\n- {0}'.format(str(director_movie))
+        #                     counter += 1
+        #                 else:
+        #                     break
 
         return {'$details': movies}

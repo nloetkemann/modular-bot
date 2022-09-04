@@ -1,7 +1,7 @@
 bot:
   name: "Lilly"
   messenger:
-    - 'discord'
+#    - 'discord'
     - 'telegram'
   description: ""
   environment:
@@ -23,6 +23,7 @@ bot:
     - name: weather
     - name: welcome
     - name: movies
+    - name: timer
     - name: help
     - name: nothing
 

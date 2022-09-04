@@ -24,7 +24,7 @@ class Maps(Plugin):
 
     @staticmethod
     def get_coordinates(city_name):
-        geolocator = Nominatim()
+        geolocator = Nominatim(user_agent="BotMap")
         city = geolocator.geocode(city_name, timeout=5)
         assert isinstance(city, Location)
         return city.latitude, city.longitude, Maps.extract_plz(city)
@@ -100,22 +100,25 @@ class Maps(Plugin):
         wiki_thread = MethodThread(Wiki.get_summary, city.address)
         wiki_thread.start()
 
-        photo_thread = MethodThread(self.get_map_by_name, city_name)
-        photo_thread.start()
+        # todo insert map  image
+        # photo_thread = MethodThread(self.get_map_by_name, city_name)
+        # photo_thread.start()
 
-        city_photo = photo_thread.join_get_response()
+        # city_photo = photo_thread.join_get_response()
         wiki_infos = wiki_thread.join_get_response()
         infos = '\n{0}\nKoordinaten: {1}, {2}\n{3}'.format(city.address, city.latitude, city.longitude, wiki_infos)
-        return {'$result': infos, '__photo': city_photo}
+        # return {'$result': infos, '__photo': None}
+        return {'$result': infos}
 
     @staticmethod
     def get_map_by_name(location: str) -> str:
         lat, long, _ = Maps.get_coordinates(location)
+        logging.debug(f'{location}: ({lat}:{long})')
         return Maps.get_map_by_coords(lat, long)
 
     @staticmethod
     def get_map_by_coords(latitude: float, longitude: float) -> str:
-        m = StaticMap(800, 800)
+        m = StaticMap(800, 800, 80)
         icon_flag = IconMarker((longitude, latitude), './static/flag.png', 12, 32)
         m.add_marker(icon_flag)
         image = m.render(zoom=12)
