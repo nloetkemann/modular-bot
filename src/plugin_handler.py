@@ -52,9 +52,9 @@ class PluginHandler:
                 return r'\d+\.?\d?'
         else:
             if count > 1:
-                return r'[A-Za-z\d]+( [A-Za-z\d]+){0,' + str(count - 1) + r'}'
+                return r'[A-Za-zäÄüÜöÖ\d]+( [A-Za-zäÄüÜöÖ\d]+){0,' + str(count - 1) + r'}'
             else:
-                return r'[A-Za-z\d]+'
+                return r'[A-Za-zäÄüÜöÖ\d]+'
 
     def __get_keywords_as_regex(self, keywords: list, params: dict):
         """
