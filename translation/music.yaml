@@ -32,7 +32,7 @@ music:
 
           Frag einfach: __welche Alben hat Marc Forster__"
       en: "Returns all the albums of the musician, the name of the
-          musician should be shorter than 4 words.
+          musician should be shorter than 4 words\\.
 
           Ask: __which albums has $singer__"
     get_album__param_singer:

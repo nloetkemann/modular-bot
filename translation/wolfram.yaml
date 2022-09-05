@@ -12,13 +12,13 @@ wolfram:
       en: "The result is $result"
   other:
     description:
-      de: "Ein Inteligerter Rechner. Nutzt wolfram alpha."
-      en: "a smart calculator. Uses wolfram alpha."
+      de: "Ein Inteligerter Rechner\\. Nutzt wolfram alpha\\."
+      en: "a smart calculator\\. Uses wolfram alpha\\."
     add_numbers__help:
-      de: "Addiert zwei Zahlen.
+      de: "Addiert zwei Zahlen\\.
 
            Frag einfach__was ist 3 + 4__"
-      en: "Adds simply two numbers.
+      en: "Adds simply two numbers\\.
 
            ask __what is 3 + 4__"
     add_numbers__param_first:
@@ -28,15 +28,15 @@ wolfram:
       de: "Die zweite Zahl"
       en: "the second number"
     wolfram__param_result:
-      de: "Das Ergebnis der Berechnung."
+      de: "Das Ergebnis der Berechnung\\."
       en: "the result of the term"
     calculate_term__help:
-      de: "Berechnet kompliziertere Rechungen mit Wolfram.
-          Maximale länge, 8 Leerzeichen (8 Wörter).
+      de: "Berechnet kompliziertere Rechungen mit Wolfram\\.
+          Maximale länge, 8 Leerzeichen (8 Wörter)\\.
 
            Hier ein Beispiel: __berechne 12 = x * 2__"
-      en: "Calculates more different math problems.
-          Maximal length: 8 spaces,  (8 Words).
+      en: "Calculates more different math problems\\.
+          Maximal length: 8 spaces,  (8 Words)\\.
 
            use it like: __calc 12 = x * 2__"
     calculate_term__param_term:

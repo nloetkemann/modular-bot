@@ -16,19 +16,19 @@ gas_prices:
       de: "Hier kriegst du die aktuellen Spritpreise
 
            nutzt:
-             - clever-tanken.de"
+             - clever-tanken\\.de"
       en: "get the gas prices
 
            uses:
-             - clever-tanken.de"
+             - clever-tanken\\.de"
     gas_prices__param_type:
       de: "Der Sprit-Type"
       en: "the type of gas"
     get_prices_in_city__param_city:
-      de: "In der Stadt wirst du nach den Preisen suchen."
+      de: "In der Stadt wirst du nach den Preisen suchen\\."
       en: "In this city you will search for the prices"
     gas_prices__param_list:
-      de: "Eine Liste mit den Preisen der Stadt."
+      de: "Eine Liste mit den Preisen der Stadt\\."
       en: "A list with all the prices of that city"
     get_prices__help:
       de: "Hol dir die Preise aus der Stadt die als Standart angegeben ist"

@@ -30,27 +30,27 @@ date:
       en: "It is $day, the $date"
   other:
     description:
-      de: "Du kriegst das Datum oder die Uhrzeit."
+      de: "Du kriegst das Datum oder die Uhrzeit\\."
       en: "You can get the time or the date"
     get_time__help:
-      de: "Du kriegst die Uhrzeit.
+      de: "Du kriegst die Uhrzeit\\.
 
             Zum Beispiel: __wie viel Uhr ist es__"
-      en: "You can get the time.
+      en: "You can get the time\\.
 
            For example: __what time is it__"
     get_time__param_time:
       de: "Die Uhrzeit"
       en: "the time"
     get_date__help:
-      de: "Hier kriegst du das Datum..
+      de: "Hier kriegst du das Datum\\.\\.
 
           Zum Beispiel: __welchen Tag haben wir heute__"
-      en: "You can get the date.
+      en: "You can get the date\\.
 
            For example: __What day is it__"
     get_date__param_day:
-      de: "Der Name des Tages."
+      de: "Der Name des Tages\\."
       en: "the name of the day"
     get_date__param_date:
       de: "Das Datum"

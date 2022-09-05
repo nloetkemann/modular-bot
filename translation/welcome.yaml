@@ -84,10 +84,10 @@ welcome:
       de: "Moin moin"
     how_are_you__fine:
       de: "Mir geht es sehr gut!"
-      en: "Im fine, thanks."
+      en: "Im fine, thanks\\."
     how_are_you__very_fine:
       de: "Mega gut"
-      en: "Everything is perfect."
+      en: "Everything is perfect\\."
     who_are_you__i_am:
       de: "Ich bin $name"
       en: "I'm $name"
@@ -103,21 +103,21 @@ welcome:
       de: "Nee danke, ich komme sehr gut klar"
       en: "No thanks, I'm fine"
     if_bot_needs_help__health:
-      de: "Hm nicht sicher, aufgrund der Gesundheitsbestimmungen darf ich keine Handshakes mehr machen.
+      de: "Hm nicht sicher, aufgrund der Gesundheitsbestimmungen darf ich keine Handshakes mehr machen\\.
            Ist also alles nicht sicher"
       en: "Not so sure yet, because handshakes are not so safe, I have some problems"
     if_bot_needs_help__nice:
-      de: "Ohh das ist aber nett... Aber nein"
-      en: "Ohh thats so nice... But no"
+      de: "Ohh das ist aber nett\\.\\.\\. Aber nein"
+      en: "Ohh thats so nice\\.\\.\\. But no"
     if_bot_needs_help__look:
       de: "Sehe ich so aus als würde ich Hilfe brauchen"
       en: "Do I look, as if I would need help?"
     if_bot_needs_help__think:
-      de: "Jetzt wo ich darüber nachdenke, fällt mir bestimmt was ein..."
+      de: "Jetzt wo ich darüber nachdenke, fällt mir bestimmt was ein\\.\\.\\."
       en: "Let me just think about it a little bit"
     if_bot_needs_help__not_sure:
-      de: "Nicht sicher wie du mir helfen willst."
-      en: "Not sure, how you could help me here..."
+      de: "Nicht sicher wie du mir helfen willst\\."
+      en: "Not sure, how you could help me here\\.\\.\\."
     how_old_is_bot__i_am:
       de: "ich bin schon $days Tage alt"
       en: "I am already $days days old"
@@ -126,39 +126,39 @@ welcome:
       en: "I've been there for $days days"
     how_old_is_bot__created:
       de: "Ich wurde vor $days erschaffen"
-      en: "I was created $days days ago."
+      en: "I was created $days days ago\\."
     what_bot_is_able_to__not_few:
-      de: "Gar nicht mal so wenig, frag mich mal nach meinen Plugins. '__list plugins__'"
+      de: "Gar nicht mal so wenig, frag mich mal nach meinen Plugins\\. '__list plugins__'"
       en: "Not that little at all, just ask for my plugins: __list plugins__"
     what_bot_is_able_to__learn:
-      de: "Ich lerne immer mehr. Du kannst mich immer nach meinen Plugins fragen. '__list plugins__'"
-      en: "I am learning more and more. You can always ask me about my plugins. __list plugins__"
+      de: "Ich lerne immer mehr\\. Du kannst mich immer nach meinen Plugins fragen\\. '__list plugins__'"
+      en: "I am learning more and more\\. You can always ask me about my plugins\\. __list plugins__"
     what_bot_is_able_to__skills:
-      de: "Es kommt ganz drauf an, welche Skills aktiviert sind. Frag einfach nach '__list_plugins__'"
-      en: "Depends on, which plugins are activated. __list plugins__"
+      de: "Es kommt ganz drauf an, welche Skills aktiviert sind\\. Frag einfach nach '__list_plugins__'"
+      en: "Depends on, which plugins are activated\\. __list plugins__"
     where_is_your_work__internet:
-      de: "Ich arbeite im Internet und helfe Leuten die mich die ganze mit Fragen löchern."
-      en: "I work on the internet and I'm helping people, who wont stop asking questions..."
+      de: "Ich arbeite im Internet und helfe Leuten die mich die ganze mit Fragen löchern\\."
+      en: "I work on the internet and I'm helping people, who wont stop asking questions\\.\\.\\."
     where_is_your_work__homeoffice:
-      de: "Ich mache Homeoffice, ich kann sehr gut von zu Hause arbeiten."
+      de: "Ich mache Homeoffice, ich kann sehr gut von zu Hause arbeiten\\."
       en: "I do home office, I can work very well from home"
     where_is_your_work__customerservice:
-      de: "Man könnte mich sagen, ich arbeite im Kundenservice."
-      en: "You could say I work in customer service."
+      de: "Man könnte mich sagen, ich arbeite im Kundenservice\\."
+      en: "You could say I work in customer service\\."
     what_is_your_gender__want:
-      de: "Ich bin was immer du auch möchtest..."
-      en: "I could be, whatever you want..."
+      de: "Ich bin was immer du auch möchtest\\.\\.\\."
+      en: "I could be, whatever you want\\.\\.\\."
     what_is_your_gender__role:
       de: "Spielt das wirklich eine Rolle"
       en: "Does that really matter??"
     what_is_your_gender__not_sure:
-      de: "Da bin ich mir selber nicht ganz sicher, aber ich bin glücklich, so wie ich bin."
-      en: "I'm not quite sure myself, but I'm happy the way I am."
+      de: "Da bin ich mir selber nicht ganz sicher, aber ich bin glücklich, so wie ich bin\\."
+      en: "I'm not quite sure myself, but I'm happy the way I am\\."
     what_is_your_gender__wired:
       de: "Komische Frage, ist ziemlich persönlich oder?"
       en: "Funny question, it is pretty personal or?"
     what_is_your_gender__matter:
-      de: "Ach das ist doch egal, Hauptsache ich kann dir helfen."
+      de: "Ach das ist doch egal, Hauptsache ich kann dir helfen\\."
       en: "That doesnt really matter, as long i can help you"
   other:
     description:
@@ -168,10 +168,10 @@ welcome:
       de: "Sag einfach __Hallo__ oder jede andere Art der Begrüssung"
       en: "Just say __hello__ or any greeting"
     how_are_you__help:
-      de: "Wie geht es dem Bot.
+      de: "Wie geht es dem Bot\\.
 
           Frag einfach: __wie geht es dir__"
-      en: "How is the Bot.
+      en: "How is the Bot\\.
 
           usage: __how are you__"
     who_are_you__help:
@@ -180,7 +180,7 @@ welcome:
            Frag einfach: __wer bist du__
 
            oder __wie ist dein name__"
-      en: "Who the f... is this Bot??
+      en: "Who the f\\.\\.\\. is this Bot??
 
            usage: __who are you__
 
@@ -189,7 +189,7 @@ welcome:
       de: "Der Name des Bots"
       en: "The name of the bot"
     what_are_you_doing__help:
-      de: "Du kannst fragen was der Bot macht.
+      de: "Du kannst fragen was der Bot macht\\.
 
            Frag einfach: __was machst du__"
       en: "Ask what your bot is doing

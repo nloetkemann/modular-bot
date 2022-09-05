@@ -15,7 +15,7 @@ wiki:
       en: "a Wiki-Searchplugin"
     search_wiki__help:
       de: "Hier wird eine Wiki-Suche gestartet und
-           das Ergebnis ist die Zusammenfassung.
+           das Ergebnis ist die Zusammenfassung\\.
 
            Frag einfach __wer ist Taylor Swift__
 

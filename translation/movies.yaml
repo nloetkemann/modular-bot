@@ -34,24 +34,24 @@ movies:
       en: "You can get Infos about movies and actors"
     get_movie_description__help:
       de: "Hier kriegst du Zusammenfassungen von Filmen,
-          die Zusammenfassungne sind alle auf Englisch.
+          die Zusammenfassungne sind alle auf Englisch\\.
 
-           Frag einfach nach dem Inhalt.
+           Frag einfach nach dem Inhalt\\.
 
            Zum Beispiel: __wovon handelt the Matrix__"
-      en: "You get the description of a movie.
+      en: "You get the description of a movie\\.
 
-           Just ask for the content.
+           Just ask for the content\\.
 
            For example: __what is the Matrix about__"
     get_movie_description__param_movie:
-      de: "Der Name des Films auf Englisch. Darf nicht länger sein als 6 Wörter."
-      en: "The name of the movie. Only 6 Words long"
+      de: "Der Name des Films auf Englisch\\. Darf nicht länger sein als 6 Wörter\\."
+      en: "The name of the movie\\. Only 6 Words long"
     get_movie_description__param_description:
       de: "Die Beschreibung des Films"
       en: "the result description"
     get_movie_cast__help:
-      de: "Zeigt die ersten 7 Schauspieler eines Films an.
+      de: "Zeigt die ersten 7 Schauspieler eines Films an\\.
 
           Frag einfach: __wer spielt in the Matrix__"
       en: "Get the first 7 actors of a movie
@@ -67,12 +67,12 @@ movies:
       de: "Hier kriegt man mehr Informationen zu einem Schauspieler
 
            Frag einfach nach: __filme von Morgan Freeman__"
-      en: "Get more Information about an actor.
+      en: "Get more Information about an actor\\.
 
            The question is: __movies of Morgan Freeman__"
     actor_details__param_actor:
       de: "Der Name des Schauspielers"
-      en: "The name of the actor."
+      en: "The name of the actor\\."
     actor_details__param_details:
       de: "Details über den Schauspieler"
       en: "details of the actor"

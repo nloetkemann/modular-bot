@@ -7,7 +7,7 @@ nothing:
       de: "Hmm deine Eingabe war ziemlich komisch"
       en: "Hmm your input was wired"
     wrong_command__not_right:
-      de: "Das war so nicht richtig..."
+      de: "Das war so nicht richtig\\.\\.\\."
       en: "That was not right"
     wrong_command__stop:
       de: "Halt stop, das war nicht richtig"
@@ -16,9 +16,9 @@ nothing:
       de: "Ich weiß nicht genau was ich damit machen soll"
       en: "I dont know what to do"
     wrong_command__confused:
-      de: "Ich bin verwirrt, damit kann ich nicht arbeiten..."
-      en: "I am confused, i cant work with that."
+      de: "Ich bin verwirrt, damit kann ich nicht arbeiten\\.\\.\\."
+      en: "I am confused, i cant work with that\\."
   other:
     description:
-      de: "Das Plugin fängt alle falschen Eingaben ab."
+      de: "Das Plugin fängt alle falschen Eingaben ab\\."
       en: "catches every wrong input, should be at the end of the plugin list"
