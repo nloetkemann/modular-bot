@@ -1,0 +1,76 @@
+# todo more options with more translations
+plugin:
+  name: "checklist"
+  description: description
+  methods:
+    - name: "add_to_checklist"
+      help: add_to_checklist_help
+      keywords:
+        list:
+          - add_to_checklist__short
+          - add_to_checklist__write
+        params:
+          - name: checklistname
+            description: add_to_checklist__name_param
+          - name: checklistitem
+            description: add_to_checklist__item_param
+      answers:
+        list:
+          - add_to_checklist__added
+    - name: "status_checklist"
+      help: status_checklist_help
+      keywords:
+        list:
+          - status_checklist__short
+          - status_checklist__long
+          - status_checklist__read
+        params:
+          - name: checklistname
+            description: status_checklist__checklistname
+      answers:
+        list:
+          - status_checklist__list
+        params:
+          - name: checklist
+            description: status_checklist__checklist
+    - name: "create_checklist"
+      help: create_checklist_help
+      keywords:
+        list:
+          - create_checklist__short
+          - create_checklist__long
+        params:
+          - name: checklistname
+            count: 1
+            description: create_checklist__item_param
+      answers:
+        list:
+          - create_checklist__added
+    - name: check_from_checklist
+      help: check_from_checklist_help
+      keywords:
+        list:
+          - check_from_checklist__short
+          - check_from_checklist__long
+        params:
+          - name: checklistname
+            description: check_from_checklist__checklistname_param
+          - name: checklistitem
+            description: check_from_checklist__checklistitem_param
+      answers:
+        list:
+          - check_from_checklist_answer
+    - name: remove_from_checklist
+      help: remove_from_checklist_help
+      keywords:
+        list:
+          - remove_from_checklist__short
+          - remove_from_checklist__long
+        params:
+          - name: checklistname
+            description: remove_from_checklist__checklistname_param
+          - name: checklistitem
+            description: remove_from_checklist__checklistitem_param
+      answers:
+        list:
+          - remove_from_checklist__removed

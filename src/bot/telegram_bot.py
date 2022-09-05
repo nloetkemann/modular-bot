@@ -1,5 +1,6 @@
 import logging
 import telepot
+from telepot.exception import TelegramError
 from telepot.loop import MessageLoop
 from src.bot.bot import Bot
 from src.exceptions.not_found_exception import NotFoundException
@@ -40,11 +41,11 @@ class TelegramBot(Bot):
         if len(message) > 1000:
             shorter_message = Tools.split(message, 1000, '\n')
             rest_message = message[len(shorter_message):]
-            self.bot.sendMessage(response.get_receiver(), shorter_message, parse_mode='Markdown')
+            self.bot.sendMessage(response.get_receiver(), shorter_message, parse_mode='MarkdownV2')
             response.message = rest_message
             self.send_message(response)
         else:
-            self.bot.sendMessage(response.get_receiver(), message, parse_mode='Markdown')
+            self.bot.sendMessage(response.get_receiver(), message, parse_mode='MarkdownV2')
 
     def send_image(self, response: Response):
         with open(response.get_message(), 'rb') as file:
@@ -58,7 +59,11 @@ class TelegramBot(Bot):
         try:
             answer, file, _type = plugin.call_method(method, params)
             response = Response(answer, request.chat_id)
-            self.send_message(response)
+            try:
+                self.send_message(response)
+            except TelegramError as e:
+                logger.error('Telegram Error', e)
+                logger.error(response.get_message())
             if _type != '':
                 if _type == 'photo':
                     self.send_image(Response(file, request.chat_id))

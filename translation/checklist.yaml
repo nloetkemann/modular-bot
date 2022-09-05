@@ -1,0 +1,71 @@
+checklist:
+  keywords:
+    add_to_checklist__short:
+      de: "füge $checklistitem zu $checklistname hinzu"
+      en: "add $checklistitem to $checklistname"
+    add_to_checklist__write:
+      de: "schreib $checklistitem auf die $checklistname"
+      en: "write $checklistitem to the $checklistname"
+    status_checklist__short:
+      de: "status von $checklistname"
+    status_checklist__long:
+      de: "was ist in der $checklistname"
+    status_checklist__read:
+      de: "lies mir die $checklistname vor"
+    create_checklist__short:
+      de: "erstelle die checkliste $checklistname"
+      en: "create the $checklist_name checklist"
+    create_checklist__long:
+      de: "erstelle eine liste und nenn sie $checklistname"
+    check_from_checklist__short:
+      de: "$checklistitem von $checklistname ist erledigt"
+    check_from_checklist__long:
+      de: "hake $checklistitem von $checklistname ab"
+    check_from_checklist___done:
+      de: "erledige $checklistitem von $checklistname"
+    remove_from_checklist__short:
+      de: "lösche $checklistitem von $checklistname"
+    remove_from_checklist__long:
+      de: "nimm $checklistitem aus der $checklistname"
+  answers:
+    add_to_checklist__added:
+      de: "Wurde hinzugefügt\\."
+      en: "Has been added"
+    status_checklist__list:
+      de: "Hier ist deine Checkliste:\n$checklist"
+    create_checklist__added:
+      de: "Die Checkliste wurde erstellt"
+    check_from_checklist_answer:
+      de: "Wurde abgehakt"
+    remove_from_checklist__removed:
+      de: "Wurde gelöscht"
+  other:
+    description:
+      de: "Timer Beschreibung"
+      en: "Timer description"
+    add_to_checklist__item_param:
+      de: "die hinzuzufügenden Items"
+      en: "the items that will be added"
+    status_checklist__checklist:
+      de/en: "checklist description"
+    create_checklist_help:
+      de: "Test"
+    create_checklist__item_param:
+      de: "Test"
+    add_to_checklist__name_param:
+      de: "Test"
+    status_checklist__checklistname:
+      de: "Test"
+    check_from_checklist_help:
+      de: "Test"
+    check_from_checklist__checklistname_param:
+      de: "Test"
+    check_from_checklist__checklistitem_param:
+      de: "Test"
+    remove_from_checklist_help:
+      de: "Test"
+    remove_from_checklist__checklistname_param:
+      de: "Test"
+    remove_from_checklist__checklistitem_param:
+      de: "Test"
+

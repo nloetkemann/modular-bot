@@ -1,6 +1,6 @@
 .idea
 *.pyc
 secrets.yaml
-./temp/*
+temp/**
 docker-compose.override.yml
 venv/
