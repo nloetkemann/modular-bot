@@ -1,6 +1,6 @@
 import asyncio
 
-from src.bot.bot import Bot
+from src.client.bot import Bot
 from slack import RTMClient
 from src.messages.response import Response
 from src.messages.slack_request import SlackRequest

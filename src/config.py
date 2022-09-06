@@ -6,9 +6,9 @@
 # -----------------------------------------------------------
 import os
 import re
-from src.bot.discord_bot import DiscordBot
-from src.bot.slack_bot import SlackBot
-from src.bot.telegram_bot import TelegramBot
+from src.client.discord_bot import DiscordBot
+from src.client.slack_bot import SlackBot
+from src.client.telegram_bot import TelegramBot
 from src.exceptions.config_exception import ConfigException
 from src.exceptions.not_found_exception import NotFoundException
 from src.messages.response import Response
