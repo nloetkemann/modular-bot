@@ -127,4 +127,20 @@ class Checklist(Plugin):
                 if item.name == checklist_item:
                     item.status = True
             self._save_file(messenger, chat_id, checklists)
-        return {}
+            return {}
+        raise NotFoundException('Nichts gefunden')
+
+    def uncheck_from_checklist(self, args):
+        self.requiere_param(args, '$checklistname', '$checklistitem')
+        messenger = args['messenger']
+        chat_id = args['chat_id']
+        checklist_name = args['$checklistname']
+        checklist_item = args['$checklistitem']
+        if os.path.isfile(self._file_name(messenger, chat_id)):
+            checklists = self._load_file(messenger, chat_id)
+            for item in checklists[checklist_name]:
+                if item.name == checklist_item:
+                    item.status = False
+            self._save_file(messenger, chat_id, checklists)
+            return {}
+        raise NotFoundException('Nichts gefunden')

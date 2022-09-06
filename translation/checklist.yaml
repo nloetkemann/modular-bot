@@ -22,11 +22,13 @@ checklist:
     check_from_checklist__long:
       de: "hake $checklistitem von $checklistname ab"
     check_from_checklist___done:
-      de: "erledige $checklistitem von $checklistname"
+      de: "erledige $checklistitem( von( der)?| aus( der)?)? $checklistname"
     remove_from_checklist__short:
       de: "lösche $checklistitem von $checklistname"
     remove_from_checklist__long:
       de: "nimm $checklistitem aus der $checklistname"
+    uncheck_from_checklist__short:
+      de: "setz $checklistitem( wieder)? auf die $checklistname"
   answers:
     add_to_checklist__added:
       de: "Wurde hinzugefügt\\."
@@ -39,6 +41,8 @@ checklist:
       de: "Wurde abgehakt"
     remove_from_checklist__removed:
       de: "Wurde gelöscht"
+    uncheck_from_checklist_answer:
+      de: "Wurde wieder zurück gesetzt"
   other:
     description:
       de: "Timer Beschreibung"
@@ -68,4 +72,11 @@ checklist:
       de: "Test"
     remove_from_checklist__checklistitem_param:
       de: "Test"
+    uncheck_from_checklist_help:
+      de: "Test"
+    uncheck_from_checklist__checklistname_param:
+      de: "Test"
+    uncheck_from_checklist__checklistitem_param:
+      de: "Test"
+
 

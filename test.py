@@ -1,15 +1,16 @@
 import logging
+import unittest
 
-from tests.test_suits import test_plugins
+from tests.test_plugin import suite
+from tests.test_plugin_handler import TestPluginHandler
 
 logging.basicConfig(level=logging.DEBUG)
 
 logger = logging.getLogger(__name__)
 threads = {}
 
-
-def run_tests():
-    test_plugins()
-
-
-run_tests()
+test_suite = unittest.TestSuite()
+test_suite.addTest(TestPluginHandler('test_validate_user_input'))
+test_suite.addTest(suite())
+runner = unittest.TextTestRunner()
+runner.run(test_suite)

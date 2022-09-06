@@ -52,10 +52,12 @@ plugin:
         list:
           - check_from_checklist__short
           - check_from_checklist__long
+          - check_from_checklist___done
         params:
           - name: checklistname
             description: check_from_checklist__checklistname_param
           - name: checklistitem
+            count: 3
             description: check_from_checklist__checklistitem_param
       answers:
         list:
@@ -74,3 +76,16 @@ plugin:
       answers:
         list:
           - remove_from_checklist__removed
+    - name: uncheck_from_checklist
+      help: uncheck_from_checklist_help
+      keywords:
+        list:
+          - uncheck_from_checklist__short
+        params:
+          - name: checklistname
+            description: uncheck_from_checklist__checklistname_param
+          - name: checklistitem
+            description: uncheck_from_checklist__checklistitem_param
+      answers:
+        list:
+          - uncheck_from_checklist_answer
