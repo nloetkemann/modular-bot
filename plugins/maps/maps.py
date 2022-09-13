@@ -2,7 +2,7 @@ import datetime
 import logging
 from geopy import Location
 from geopy.exc import GeocoderTimedOut, GeocoderUnavailable
-from src.plugins.wiki import Wiki
+from plugins.wiki.wiki import Wiki
 from src.tools.method_thread import MethodThread
 from src.yaml.plugin import Plugin
 from geopy.geocoders import Nominatim

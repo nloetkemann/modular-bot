@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup, element
 from src.config import config as global_config
-from src.plugins.maps import Maps
+from plugins.maps.maps import Maps
 from src.tools.tools import Tools
 from src.yaml.plugin import Plugin
 
