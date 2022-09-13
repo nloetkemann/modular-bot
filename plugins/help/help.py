@@ -35,7 +35,7 @@ class Help(Plugin):
             help_text += '\n*_{0}*_\n{1}'.format(plugin['name'].replace('_', '\_'), plugin['description'])
             for method in plugin['methods']:
                 help_text += '\n**-> {0}**:\n{1}\n'.format(method, plugin['methods'][method]['help'])
-        return {'$help': help_text}
+        return {'$help': help_text, '__parser': 'Markdown'}
 
     def plugin_help(self, args):
         self.requiere_param(args, '$plugin')
@@ -53,8 +53,8 @@ class Help(Plugin):
                     help_text += '\n**-> {0}**:\n{1}\n{2}\n{3}'.format(method, plugin['methods'][method]['help'],
                                                                        keywords, params)
 
-                return {'$help': help_text}
-        return {'$help': 'Zu dem Plugin **{0}** konnte ich keine Hilfe finden.'.format(plugin_name)}
+                return {'$help': help_text, '__parser': 'Markdown'}
+        return {'$help': 'Zu dem Plugin **{0}** konnte ich keine Hilfe finden'.format(plugin_name)}
 
     def plugin_list(self, args):
         plugins = ''

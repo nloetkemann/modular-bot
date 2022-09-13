@@ -1,4 +1,6 @@
 import logging
+import re
+
 import telepot
 from telepot.exception import TelegramError
 from telepot.loop import MessageLoop
@@ -36,16 +38,18 @@ class TelegramBot(Bot):
     def exit(self):
         self.bot = None
 
-    def send_message(self, response: Response):
+    def send_message(self, response: Response, parse='Markdown'):
+        if parse is None:
+            parse = 'Markdown'
         message = self.format_answer(response.get_message())
         if len(message) > 1000:
             shorter_message = Tools.split(message, 1000, '\n')
             rest_message = message[len(shorter_message):]
-            self.bot.sendMessage(response.get_receiver(), shorter_message, parse_mode='MarkdownV2')
+            self.bot.sendMessage(response.get_receiver(), shorter_message, parse_mode=parse)
             response.message = rest_message
-            self.send_message(response)
+            self.send_message(response, parse)
         else:
-            self.bot.sendMessage(response.get_receiver(), message, parse_mode='MarkdownV2')
+            self.bot.sendMessage(response.get_receiver(), message, parse_mode=parse)
 
     def send_image(self, response: Response):
         with open(response.get_message(), 'rb') as file:
@@ -57,10 +61,10 @@ class TelegramBot(Bot):
         params['chat_id'] = request.chat_id
         params['messenger'] = 'telegram'
         try:
-            answer, file, _type = plugin.call_method(method, params)
+            answer, file, _type, parser = plugin.call_method(method, params)
             response = Response(answer, request.chat_id)
             try:
-                self.send_message(response)
+                self.send_message(response, parser)
             except TelegramError as e:
                 logger.error('Telegram Error', e)
                 logger.error(response.get_message())
@@ -72,7 +76,6 @@ class TelegramBot(Bot):
             answer = e.message
             response = Response(answer, request.chat_id)
             self.send_message(response)
-
 
     def __on_callback(self, callback):
         print(callback)

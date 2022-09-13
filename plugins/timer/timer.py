@@ -8,10 +8,10 @@ import time
 
 class Timer(Plugin):
     timer_list: {}
-    multiplier = {'en': {'second': 1, 'seconds': 1, 'minute': 60, 'minutes': 60, 'hour': 360, 'hours': 360,
-                         'day': 8640, 'days': 8640},
-                  'de': {'sekunde': 1, 'sekunden': 1, 'minute': 60, 'minuten': 60, 'stunde': 360, 'stunden': 360,
-                         'tag': 8640, 'tage': 8640}}
+    multiplier = {'en': {'second': 1, 'seconds': 1, 'minute': 60, 'minutes': 60, 'hour': 3600, 'hours': 3600,
+                         'day': 86400, 'days': 86400},
+                  'de': {'sekunde': 1, 'sekunden': 1, 'minute': 60, 'minuten': 60, 'stunde': 3600, 'stunden': 3600,
+                         'tag': 86400, 'tage': 86400}}
 
     def __init__(self, name, plugin_config):
         super().__init__(name, plugin_config)
@@ -20,6 +20,7 @@ class Timer(Plugin):
     @staticmethod
     def _run(thread, messenger, chat_id, seconds):
         thread.value = seconds
+        print(thread.value)
         while thread.running and thread.value > 0:
             time.sleep(1.)
             thread.value -= 1
@@ -58,10 +59,10 @@ class Timer(Plugin):
             raise WrongTypeException('Not the correct param type: ' + amount)
 
     def _convert(self, seconds):
-        days = int(seconds / 3640)
-        seconds = seconds % 3640
-        hours = int(seconds / 360)
-        seconds = seconds % 360
+        days = int(seconds / 86400)
+        seconds = seconds % 86400
+        hours = int(seconds / 3600)
+        seconds = seconds % 3600
         minute = int(seconds / 60)
         seconds = seconds % 60
         return days, hours, minute, seconds
@@ -89,9 +90,11 @@ class Timer(Plugin):
         seconds = amount * self.multiplier[global_config.language][unit]
         try:
             rest_timer = self._status(args['messenger'], args['chat_id'], seconds)
+            print(rest_timer)
         except NotFoundException as e:
             raise e
         days, hours, minutes, seconds = self._convert(rest_timer)
+        print(days, hours, minutes, seconds)
         timer = ''
         if days > 0:
             timer += f'{days} Tage '
