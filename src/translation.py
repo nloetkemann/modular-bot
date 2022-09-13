@@ -16,11 +16,10 @@ class Translation:
         self.__load_translation(self.plugins_list_name)
 
     def __load_translation(self, plugins_name: str):
-        translation_path = self.path + '/' + plugins_name + '.yaml'
-        ok, error = Tools.validate_yaml('./schemas/translation-schema.yaml', translation_path)
+        ok, error = Tools.validate_yaml('./schemas/translation-schema.yaml', self.path)
         if not ok:
             exit(1)
-        translation = Tools.read_config_file(translation_path)
+        translation = Tools.read_config_file(self.path)
         self.translation = translation[plugins_name]
 
     def __get_translation(self,  keyword: str, category: str, language: str):

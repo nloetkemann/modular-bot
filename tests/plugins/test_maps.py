@@ -1,5 +1,4 @@
-from src.plugin_loader import PluginLoader
-from src.plugins.maps import Maps
+from plugins.maps.maps import Maps
 import os
 
 from src.tools.method_thread import MethodThread

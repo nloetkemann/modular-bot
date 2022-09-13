@@ -18,7 +18,7 @@ class Plugin:
     def __init__(self, name, plugin_config):
         self.name = name
         self.methods = {}
-        self.translation = Translation(self.name, config.translation_dir)
+        self.translation = Translation(self.name, f'./plugins/{self.name.lower()}/translation.yaml')
         self.__config = plugin_config
         self.__load_translation()
 

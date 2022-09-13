@@ -12,13 +12,14 @@ logger = logging.getLogger(__name__)
 
 
 class PluginLoader:
-    def __init__(self, pluginlist, plugin_dir='./config/', translation_dir='./translation'):
+    def __init__(self, pluginlist, plugin_dir='./plugins/'):
         self.plugins = []
         for item in pluginlist:
-            plugin_path = plugin_dir + item['name'] + '.yaml'
-            ok, error = Tools.validate_yaml('./schemas/plugin-schema.yaml', plugin_path)
+            plugin_path = plugin_dir + item['name'] + '/'
+            plugin_config = plugin_path + item['name'] + '.yaml'
+            ok, error = Tools.validate_yaml('./schemas/plugin-schema.yaml', plugin_path + item['name'] + '.yaml')
             if ok:
-                plugin_config = Tools.read_config_file(plugin_path)
+                plugin_config = Tools.read_config_file(plugin_config)
                 name = Tools.first_to_upper(plugin_config['plugin']['name'])
                 plugin = self.import_plugin(name)
                 plugin = plugin(name, plugin_config['plugin'])
@@ -39,4 +40,4 @@ class PluginLoader:
 
     @staticmethod
     def import_plugin(name):  # todo add more safety code could be inserted in the loaded plugin
-        return getattr(__import__('src.plugins.' + name.lower(), fromlist=[name]), name)
+        return getattr(__import__('plugins.' + name.lower() + '.' + name.lower(), fromlist=[name]), name)
