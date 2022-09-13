@@ -12,18 +12,18 @@ bot:
     - name: "language"
       value: "de"
   plugins:
-#    - name: translate
-#    - name: wolfram
-#    - name: gas_prices
-#    - name: date
-#    - name: maps
-#    - name: entertainment
-#    - name: music
-#    - name: wiki
-#    - name: weather
-#    - name: welcome
-#    - name: movies
-#    - name: timer
+    - name: translate
+    - name: wolfram
+    - name: gas_prices
+    - name: date
+    - name: maps
+    - name: entertainment
+    - name: music
+    - name: wiki
+    - name: weather
+    - name: welcome
+    - name: movies
+    - name: timer
     - name: checklist
     - name: help
     - name: nothing

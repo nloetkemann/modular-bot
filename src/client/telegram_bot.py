@@ -2,7 +2,7 @@ import logging
 import telepot
 from telepot.exception import TelegramError
 from telepot.loop import MessageLoop
-from src.client.bot import Bot
+from src.client.client import Bot
 from src.exceptions.not_found_exception import NotFoundException
 from src.messages.response import Response
 from src.messages.telegram_request import TelegramRequest

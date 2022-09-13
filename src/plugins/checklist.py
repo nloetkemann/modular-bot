@@ -5,7 +5,16 @@ from src.yaml.plugin import Plugin
 
 
 class Checklist(Plugin):
-    # todo more languages
+    translations = {
+        'no_checklist_file': {
+            'de': 'Es wurden noch keine Checklisten erstellt',
+            'en': 'No Checklists have been created'
+        },
+        'no_checklist': {
+            'de': 'Keine passende Checkliste gefunden',
+            'en': 'No matching Checklist found'
+        }
+    }
     CHECKLIST_PATH = './temp/checklist/'
 
     class ChecklistItem:
@@ -97,9 +106,9 @@ class Checklist(Plugin):
                 text += f'**{checklist_name.upper()}**\n'
                 text += ''.join([item.to_message() for item in checklists[checklist_name]])
                 return {'$checklist': text}
-            return {'$checklist': 'Es gibt die Checkliste nicht'}
+            return {'$checklist': self.translations['no_checklist']}
         else:
-            return {'$checklist': 'Keine Checklisten erstellt'}
+            return {'$checklist': self.translations['no_checklist_file']}
 
     def remove_from_checklist(self, args):
         self.requiere_param(args, '$checklistname', '$checklistitem')
@@ -109,11 +118,13 @@ class Checklist(Plugin):
         checklist_item = args['$checklistitem']
         if os.path.isfile(self._file_name(messenger, chat_id)):
             checklists = self._load_file(messenger, chat_id)
-            items = checklists[checklist_name]
-            checklists[checklist_name] = [item for item in items if item.name != checklist_item]
-            self._save_file(messenger, chat_id, checklists)
-            return {}
-        raise NotFoundException('Keine Checkliste vorhanden')
+            if checklist_name in checklists:
+                items = checklists[checklist_name]
+                checklists[checklist_name] = [item for item in items if item.name != checklist_item]
+                self._save_file(messenger, chat_id, checklists)
+                return {}
+            raise NotFoundException(self.translations['no_checklist'])
+        raise NotFoundException(self.translations['no_checklist_file'])
 
     def check_from_checklist(self, args):
         self.requiere_param(args, '$checklistname', '$checklistitem')
@@ -123,12 +134,14 @@ class Checklist(Plugin):
         checklist_item = args['$checklistitem']
         if os.path.isfile(self._file_name(messenger, chat_id)):
             checklists = self._load_file(messenger, chat_id)
-            for item in checklists[checklist_name]:
-                if item.name == checklist_item:
-                    item.status = True
-            self._save_file(messenger, chat_id, checklists)
-            return {}
-        raise NotFoundException('Nichts gefunden')
+            if checklist_name in checklists:
+                for item in checklists[checklist_name]:
+                    if item.name == checklist_item:
+                        item.status = True
+                self._save_file(messenger, chat_id, checklists)
+                return {}
+            raise NotFoundException(self.translations['no_checklist'])
+        raise NotFoundException(self.translations['no_checklist_file'])
 
     def uncheck_from_checklist(self, args):
         self.requiere_param(args, '$checklistname', '$checklistitem')

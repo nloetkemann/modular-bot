@@ -1,5 +1,7 @@
 import random
 
+from requests.exceptions import SSLError
+
 from src.yaml.plugin import Plugin
 import requests
 from bs4 import BeautifulSoup, element
@@ -11,6 +13,10 @@ class Entertainment(Plugin):
         'not_found': {
             'de': 'Ich habe leider nichts gefunden...',
             'en': 'Nothing found...'
+        },
+        'error_request': {
+            'de': 'Fehler beim laden eines Witzes',
+            'en': 'Error loading a joke'
         }
     }
 
@@ -28,7 +34,10 @@ class Entertainment(Plugin):
                       'veganer-sprueche', 'saufsprueche', 'nerd-witze', 'trinksprueche']
         jokes = []
         index_method = random.randint(0, len(categories) - 1)
-        response = requests.get('https://www.lustige-sprueche.net/{0}'.format(categories[index_method]))
+        try:
+            response = requests.get('https://www.lustige-sprueche.net/{0}'.format(categories[index_method]))
+        except SSLError:
+            return Entertainment.translations['error_request']
         soup = BeautifulSoup(response.text, 'html.parser')
         result = soup.find_all(class_='click_snippet_link_element')
         for joke in result:

@@ -7,7 +7,7 @@ entertainment:
       de: "mach einen witz"
       en: "make a joke"
     make_jokes__tell:
-      de: "erzähl mir einen witz"
+      de: "erzähl( mir)? einen witz"
       en: "tell me a joke"
     make_jokes__know:
       de: "kennst du einen witz"

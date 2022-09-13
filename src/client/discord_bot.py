@@ -2,7 +2,7 @@ import re
 
 import discord
 import asyncio
-from src.client.bot import Bot
+from src.client.client import Bot
 from src.messages.discord_request import DiscordRequest
 from src.messages.response import Response
 from src.tools.tools import Tools
