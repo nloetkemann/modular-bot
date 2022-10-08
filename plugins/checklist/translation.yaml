@@ -31,7 +31,7 @@ checklist:
       de: "setz $checklistitem( wieder)? auf die $checklistname"
   answers:
     add_to_checklist__added:
-      de: "Wurde hinzugefügt\\."
+      de: "Wurde hinzugefügt."
       en: "Has been added"
     status_checklist__list:
       de: "Hier ist deine Checkliste:\n$checklist"

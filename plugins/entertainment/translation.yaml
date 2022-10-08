@@ -22,11 +22,11 @@ entertainment:
       de: "Hier gibt es Unterhaltung, Witzt und coole Sprüche
 
            nutzt:
-             - lustige-sprueche\\.net"
+             - lustige-sprueche.net"
       en: "this is for entertainment, jokes, and so on
 
            uses:
-             - lustige-sprueche\\.net"
+             - lustige-sprueche.net"
     user_is_boring__help:
       de: "Ein paar interessante Infos oder witze
 

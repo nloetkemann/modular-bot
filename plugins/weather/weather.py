@@ -33,7 +33,7 @@ class Weather(Plugin):
         else:
             temp, description = self.weather_today(result)
 
-        response['$weather'] = description + ' mit ' + str(temp).replace('.', '\\.') + ' Grad'
+        response['$weather'] = description + ' mit ' + str(temp).replace('.', '.') + ' Grad'
         return response
 
     def weather_call(self, location):

@@ -53,12 +53,12 @@ help:
 
            Ask: __help for Wiki__"
     general_help__help:
-      de: "Hilfe\\.
+      de: "Hilfe.
 
           Frage einfach: __hilfe__
 
           oder __ich brauche hilfe__"
-      en: "Help\\.
+      en: "Help.
 
            Ask: __help__
 

@@ -27,17 +27,17 @@ maps:
       de: "die maps beschreibung"
       en: "the description"
     city_info__help:
-      de: "Hier kiregst du ein paar Infos zu einer Stadt\\.
+      de: "Hier kiregst du ein paar Infos zu einer Stadt.
 
           Frag einfach __infos zu Berlin__"
-      en: "Gets some details about the location\\.
+      en: "Gets some details about the location.
 
            Ask: __infos to Hamburg__"
     calc_distance__help:
-      de: "Berechne die Distanz zwischen zwei Städten\\.
+      de: "Berechne die Distanz zwischen zwei Städten.
 
           Frage einfach __distanz zwischen Hamburg und Berlin__"
-      en: "get the distance between to cities\\.
+      en: "get the distance between to cities.
 
            Ask: __the distance from Berlin to Hamburg__"
     calc_distance__param_start:
