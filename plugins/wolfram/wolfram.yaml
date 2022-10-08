@@ -27,9 +27,11 @@ plugin:
       keywords:
         list:
           - calculate_term_calc
+          - calculate_term_solve
         params:
           - name: "term"
-            count: 8
+            count: 15
+            type: all
             description: calculate_term__param_term
       answers:
         list:

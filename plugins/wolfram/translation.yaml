@@ -6,6 +6,9 @@ wolfram:
     calculate_term_calc:
       de: "berechne( mir)? $term"
       en: "calc $term"
+    calculate_term_solve:
+      de: "löse $term"
+      en: "solve $term"
   answers:
     wolfram__result:
       de: "Das Ergebnis ist $result"

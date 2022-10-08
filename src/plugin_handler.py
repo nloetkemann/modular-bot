@@ -50,6 +50,8 @@ class PluginHandler:
                 return r'(\d+\.?\d? *){1,' + str(count - 1) + r'}\d+\.?\d?'
             else:
                 return r'\d+\.?\d?'
+        elif param_type == 'all':
+            return r'((\S)+ ){0,' + str(count - 1) + r'}\S+'
         else:
             if count > 1:
                 return r'[A-Za-zäÄüÜöÖ\d]+( [A-Za-zäÄüÜöÖ\d]+){0,' + str(count - 1) + r'}'
