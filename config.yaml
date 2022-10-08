@@ -6,7 +6,7 @@ bot:
   description: ""
   environment:
     - name: "location"
-      value: "Rahden"
+      value: "Espelkamp"
     - name: "timezone"
       value: "Europe/Berlin"
     - name: "language"

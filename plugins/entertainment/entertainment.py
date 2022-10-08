@@ -11,12 +11,12 @@ from src.config import config as global_config
 class Entertainment(Plugin):
     translations = {
         'not_found': {
-            'de': 'Ich habe leider nichts gefunden...',
-            'en': 'Nothing found...'
+            'de': ['Ich habe leider nichts gefunden...'],
+            'en': ['Nothing found...']
         },
         'error_request': {
-            'de': 'Fehler beim laden eines Witzes',
-            'en': 'Error loading a joke'
+            'de': ['Fehler beim laden eines Witzes'],
+            'en': ['Error loading a joke']
         }
     }
 
@@ -32,7 +32,7 @@ class Entertainment(Plugin):
     def __jokes_lustige_sprueche_net():
         categories = ['coronavirus-sprueche', 'dumme-sprueche', 'chuck-norris-sprueche', 'quarantaene-sprueche',
                       'veganer-sprueche', 'saufsprueche', 'nerd-witze', 'trinksprueche']
-        jokes = []
+        jokes = {'de': []}
         index_method = random.randint(0, len(categories) - 1)
         try:
             response = requests.get('https://www.lustige-sprueche.net/{0}'.format(categories[index_method]))
@@ -44,15 +44,15 @@ class Entertainment(Plugin):
             assert isinstance(joke, element.Tag)
             elem = joke.find_previous('a')
             if 'title' in elem.attrs:
-                jokes.append(elem.attrs['title'])
+                jokes['de'].append(elem.attrs['title'])
         return jokes
 
     def __jokes(self):
         if len(self.jokes[self.language]) > 0:
             index_method = random.randint(0, len(self.jokes[self.language]) - 1)
             jokes = self.jokes[self.language][index_method]()
-            index_jokes = random.randint(0, len(jokes) - 1)
-            return jokes[index_jokes]
+            index_jokes = random.randint(0, len(jokes[self.language]) - 1)
+            return jokes[self.language][index_jokes]
         return self.translations['not_found'][self.language]
 
     def make_jokes(self, args):
