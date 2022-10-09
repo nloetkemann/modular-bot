@@ -10,6 +10,8 @@ class Gas_prices(Plugin):
     def __make_request_de(self, latitude, longitude, plz, location, gas_type):
         url = "https://www.clever-tanken.de/tankstelle_liste?lat={latitude}&lon={longitude}&ort={plz}+{city}&spritsorte={sort}&r=5"
         gas_types = {'diesel': 3, 'super e5': 7, 'super e10': 5, 'erdgas': 8, 'autogas': 1, 'benzin': 5}
+        if gas_type not in gas_types:
+            raise KeyError('Gas Type not found')
         url = url.format(latitude=latitude, longitude=longitude, plz=plz, city=location,
                               sort=gas_types[gas_type])
         response = requests.get(url)
@@ -41,7 +43,10 @@ class Gas_prices(Plugin):
         else:
             location = 'Espelkamp'
         latitude, longitude, plz = Maps.get_coordinates(location)
-        response = self.__make_request_de(latitude, longitude, plz, location, gas_type)
+        try:
+            response = self.__make_request_de(latitude, longitude, plz, location, gas_type)
+        except KeyError as e:
+            raise e
         result = self.__extract_prices(response)
         return {'$list': result, '$type': Tools.first_to_upper(gas_type)}
 
@@ -50,6 +55,9 @@ class Gas_prices(Plugin):
         gas_type = args['$type']
         location = args['$city']
         latitude, longitude, plz = Maps.get_coordinates(location)
-        response = self.__make_request_de(latitude, longitude, plz, location, gas_type)
+        try:
+            response = self.__make_request_de(latitude, longitude, plz, location, gas_type)
+        except KeyError as e:
+            raise e
         result = self.__extract_prices(response)
         return {'$list': result, '$type': Tools.first_to_upper(gas_type), '$city': Tools.first_to_upper(location)}

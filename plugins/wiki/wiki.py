@@ -1,3 +1,5 @@
+import logging
+
 from wikipedia import PageError
 
 from src.tools.tools import Tools
@@ -16,7 +18,13 @@ class Wiki(Plugin):
         wikipedia.set_lang(global_config.language)
         try:
             result = wikipedia.summary(keyword)
-        except PageError:
+        except PageError as e:
+            try:
+                result = wikipedia.summary(keyword, auto_suggest=False)
+                return Tools.split(result, end, '.')
+            except PageError as ee:
+                logging.error(ee)
+            logging.error(e)
             return 'Kein Ergebnis gefunden'
         return Tools.split(result, end, '.')
 
