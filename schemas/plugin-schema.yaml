@@ -33,4 +33,4 @@ answerparam:
   required: bool(required=False)
   description: str(required=False)
 
-allowed_params_type: enum('string', 'integer', 'number', 'all')
+allowed_params_type: enum('string', 'integer', 'number', 'all', 'phrase')

@@ -1,0 +1,21 @@
+plugin:
+  name: "trading"
+  description: description
+  methods:
+    - name: what_price
+      help: what_price__help
+      keywords:
+        list:
+          - what_price__price
+        params:
+          - name: asset
+            count: 3
+            description: what_price__param_asset
+      answers:
+        list:
+          - what_price__result
+        params:
+          - name: asset
+            description: what_price__param_asset
+          - name: value
+            description: gas_prices__param_value

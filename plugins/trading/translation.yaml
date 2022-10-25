@@ -1,0 +1,19 @@
+trading:
+  keywords:
+    what_price__price:
+      de: "wert von $asset"
+      en: "value of $asset"
+  answers:
+    what_price__result:
+      de: "$assets ist bei $value"
+      en: "$assets is at $value"
+  other:
+    description:
+      de: "Trading Beschreibung"
+      en: "Trading description"
+    what_price__param_asset:
+      de: "Blub"
+      en: "Blub"
+    gas_prices__param_value:
+      de: "Blub"
+      en: "Blub"

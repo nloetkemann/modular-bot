@@ -11,6 +11,8 @@ bot:
       value: "Europe/Berlin"
     - name: "language"
       value: "de"
+    - name: "search_api"
+      value: "duckduckgo"
   plugins:
     - name: translate
     - name: wolfram
@@ -25,6 +27,8 @@ bot:
     - name: movies
     - name: timer
     - name: checklist
+    - name: search
+#    - name: trading
 #    - name: help
     - name: nothing
 

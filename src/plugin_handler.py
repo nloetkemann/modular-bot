@@ -26,6 +26,7 @@ class PluginHandler:
                 keywords = method.get_keywords()
                 list_methods = self.__get_keywords_as_regex(keywords.get_list(), keywords.get_params())
                 plugin_method[method.get_name()] = list_methods
+                logger.debug(list_methods)
             self.keywords[plugin.get_name()] = plugin_method
 
     def get_plugin_by_name(self, plugin_name: str) -> any:
@@ -51,7 +52,7 @@ class PluginHandler:
             else:
                 return r'\d+\.?\d?'
         elif param_type == 'all':
-            return r'((\S)+ ){0,' + str(count - 1) + r'}\S+'
+            return r'((\S)+ )*\S*$'
         else:
             if count > 1:
                 return r'[A-Za-zäÄüÜöÖ\d]+( [A-Za-zäÄüÜöÖ\d]+){0,' + str(count - 1) + r'}'
@@ -143,6 +144,8 @@ class PluginHandler:
                     user_input = re.sub(word, '', user_input, 1)
                 else:
                     user_input = re.sub(r'\b' + word, '', user_input, 1)
+        if param_type == 'all':
+            return user_input.strip()
         invert = r'((?!{0}).)*'
         param_regex = self._get_regex_for_variable_type(param_type, count)
         found = re.sub(invert.format(param_regex), '', user_input, 1)

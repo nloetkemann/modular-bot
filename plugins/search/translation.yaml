@@ -1,0 +1,19 @@
+search:
+  keywords:
+    search_query__query:
+      de: "suche $query"
+      en: "search $query"
+  answers:
+    search_query__result:
+      de: "Hier sind deine Ergebnisse:\n$result"
+      en: "Here are your results:\n$result"
+  other:
+    description:
+      de: "Trading Beschreibung"
+      en: "Trading description"
+    search_query__param_query:
+      de: "Blub"
+      en: "Blub"
+    nothing_found:
+      de: "Nichts gefunden"
+      en: "Nothing found"

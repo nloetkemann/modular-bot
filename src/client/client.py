@@ -28,7 +28,14 @@ class Bot:
         raise NotImplementedError('The send_message method has not been implemented ' + str(self.__class__))
 
     def format_answer(self, answer):
-        answer = re.sub(r'\*\*', self.bold_regex, answer)
-        answer = re.sub(r'__', self.italic_regex, answer)
-        answer = re.sub(r'\*_', self.bold_italic_regex, answer)
+        answer = re.sub(r'\*\*', '++', answer)
+        answer = re.sub(r'__', '||', answer)
+        # answer = re.sub(r'\*_', '::', answer)
+
+        answer = re.sub(r'_', '\_', answer)
+        answer = re.sub(r'\*', '\*', answer)
+
+        answer = re.sub(r'\+\+', self.bold_regex, answer)
+        answer = re.sub(r'\|\|', self.italic_regex, answer)
+        # answer = re.sub(r'::', self.bold_italic_regex, answer)
         return answer

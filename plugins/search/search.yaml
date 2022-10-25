@@ -1,0 +1,20 @@
+plugin:
+  name: "search"
+  description: description
+  methods:
+    - name: search_query
+      help: search_query__help
+      keywords:
+        list:
+          - search_query__query
+        params:
+          - name: query
+            type: all
+            count: 15
+            description: search_query__param_query
+      answers:
+        list:
+          - search_query__result
+        params:
+          - name: result
+            description: search_query__param_query
