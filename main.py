@@ -4,7 +4,8 @@ from src.plugin_loader import PluginLoader
 from src.plugin_handler import PluginHandler
 from src.tools.bot_thread import BotThread
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.INFO, format='%(asctime)s %(message)s', datefmt='%d.%m.%Y %H:%M:%S ',
+                    handlers=[logging.StreamHandler(), logging.FileHandler('./logs/log.txt', mode='w')])
 
 logger = logging.getLogger(__name__)
 threads = {}
