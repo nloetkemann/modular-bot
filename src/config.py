@@ -7,7 +7,6 @@
 import os
 import re
 from src.client.discord_bot import DiscordBot
-from src.client.slack_bot import SlackBot
 from src.client.telegram_bot import TelegramBot
 from src.exceptions.config_exception import ConfigException
 from src.exceptions.not_found_exception import NotFoundException
@@ -74,8 +73,6 @@ class Config:
             bot = TelegramBot(token)
         elif bot_name == 'discord':
             bot = DiscordBot(token)
-        elif bot_name == 'slack':
-            bot = SlackBot(token)
         else:
             raise NotFoundException('{0} does not exist'.format(bot_name))
         return bot
