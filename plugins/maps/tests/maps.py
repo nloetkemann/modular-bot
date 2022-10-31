@@ -1,12 +1,15 @@
 from plugins.maps.maps import Maps
 import os
 
+from src.plugin_test import PluginTest
 from src.tools.method_thread import MethodThread
 
-import unittest
 
+class TestMaps(PluginTest):
 
-class TestMaps(unittest.TestCase):
+    @staticmethod
+    def get_test_obj_name():
+        return 'maps'
 
     def test_map_image(self):
         image_name = Maps.get_map_by_name('Rahden')
@@ -22,10 +25,6 @@ class TestMaps(unittest.TestCase):
         if os.path.isfile(city_photo):
             os.remove(city_photo)
 
-    # def test_city_info(self):
-    #     loader = PluginLoader([{'name': 'maps'}])
-    #     maps = loader.get_plugin('maps')
-    #     result = maps.city_info({'$city': 'Rahden'})
-    #     self.assertEqual(os.path.isfile(result['__photo']), True)
-    #     if os.path.isfile(result['__photo']):
-    #         os.remove(result['__photo'])
+    @staticmethod
+    def tests():
+        return TestMaps('test_map_image'), TestMaps('test_map_image_thread')

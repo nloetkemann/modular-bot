@@ -5,3 +5,4 @@ temp/**
 docker-compose.override.yml
 venv/
 logs/log.txt
+logs/tests.txt
