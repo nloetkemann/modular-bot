@@ -21,6 +21,12 @@ class Plugin:
         self.translation = Translation(self.name, f'./plugins/{self.name.lower()}/translation.yaml')
         self.__config = plugin_config
         self.__load_translation()
+        self.responses = {
+            'not_found': {
+                'de': 'Nichts gefunden',
+                'en': 'Nothing found'
+            }
+        }
 
         for method in plugin_config['methods']:
             call_method = self.__get_method_by_name(method['name'])
