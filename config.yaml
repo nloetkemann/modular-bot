@@ -28,6 +28,7 @@ bot:
     - name: timer
     - name: checklist
     - name: search
+    - name: health
 #    - name: trading
     - name: help
     - name: nothing

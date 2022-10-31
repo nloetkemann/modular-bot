@@ -1,0 +1,18 @@
+plugin:
+  name: "health"
+  description: description
+  methods:
+    - name: feel_sick
+      help: feel_sick__help
+      keywords:
+        list:
+          - feel_sick___short
+        params:
+          - name: 'result'
+            description: feel_sick__param_result
+      answers:
+        list:
+          - feel_sick__result
+        params:
+          - name: result
+            description: feel_sick__param_result

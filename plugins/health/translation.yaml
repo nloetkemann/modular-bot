@@ -1,0 +1,15 @@
+health:
+  keywords:
+    feel_sick___short:
+      de: "ich fühle mich nicht gut"
+      en: "im feeling sick"
+  answers:
+    feel_sick__result:
+      de: "$result"
+  other:
+    description:
+      de: "Test"
+      en: "Test"
+    feel_sick__param_result:
+      de: "TEst"
+      en: "Test"
